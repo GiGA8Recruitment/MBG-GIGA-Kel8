@@ -1,0 +1,28 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="SimpleCardAddons"
+run/main_scene="uid://bwyj0rvwbrlo1"
+config/features=PackedStringArray("4.5", "Forward Plus")
+config/icon="res://icon.svg"
+
+[autoload]
+
+CG="*res://addons/simple_cards/card_global.gd"
+
+[dotnet]
+
+project/assembly_name="SimpleCardAddons"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/simple_cards/plugin.cfg")

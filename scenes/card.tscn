@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://c47660odfhvrs"]
+
+[ext_resource type="Script" uid="uid://dowgud10rp5yf" path="res://addons/simple_cards/card/card.gd" id="1_kikvd"]
+
+[node name="Card" type="Button"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(80, 112)
+offset_right = 80.0
+offset_bottom = 112.0
+pivot_offset = Vector2(40, 56)
+script = ExtResource("1_kikvd")
+front_layout_name = &"food_layout"
+back_layout_name = &"default_back"
+metadata/_custom_type_script = "uid://dowgud10rp5yf"

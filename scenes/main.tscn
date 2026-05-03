@@ -1,0 +1,135 @@
+[gd_scene load_steps=9 format=3 uid="uid://bwyj0rvwbrlo1"]
+
+[ext_resource type="Script" uid="uid://bt08wwpc43yyr" path="res://scenes/main.gd" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://bbi8i6vef3f6y" path="res://addons/simple_cards/containers/hand/card_hand.gd" id="2_0xm2m"]
+[ext_resource type="Script" uid="uid://btwakv2103085" path="res://addons/simple_cards/containers/slot/card_slot.gd" id="3_1bvp3"]
+[ext_resource type="Resource" uid="uid://cl3wsk0jv27yu" path="res://cards/food/nasi_goreng.tres" id="4_lquwl"]
+[ext_resource type="Script" uid="uid://dowgud10rp5yf" path="res://addons/simple_cards/card/card.gd" id="5_7mycd"]
+[ext_resource type="Resource" uid="uid://deg6igb5dphvm" path="res://cards/food/nasi_putih.tres" id="6_272bh"]
+[ext_resource type="Resource" uid="uid://bb6nnwkgc0n7k" path="res://cards/food/nasi_merah.tres" id="7_5vw27"]
+[ext_resource type="Resource" uid="uid://gw7b3m2lyjtc" path="res://cards/food/mie_goreng.tres" id="7_tipki"]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_ig7tw")
+
+[node name="CardHand" type="Panel" parent="."]
+custom_minimum_size = Vector2(80, 112)
+layout_mode = 0
+offset_left = 533.0
+offset_top = 507.0
+offset_right = 613.0
+offset_bottom = 619.0
+script = ExtResource("2_0xm2m")
+max_cards = 8
+metadata/_custom_type_script = "uid://bbi8i6vef3f6y"
+
+[node name="NasiMerah" type="Button" parent="CardHand"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(80, 112)
+layout_mode = 0
+offset_right = 80.0
+offset_bottom = 112.0
+pivot_offset = Vector2(40, 56)
+script = ExtResource("5_7mycd")
+card_data = ExtResource("7_5vw27")
+front_layout_name = &"food_layout"
+metadata/_custom_type_script = "uid://dowgud10rp5yf"
+
+[node name="NasiGoreng" type="Button" parent="CardHand"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(80, 112)
+layout_mode = 0
+offset_right = 80.0
+offset_bottom = 112.0
+pivot_offset = Vector2(40, 56)
+script = ExtResource("5_7mycd")
+card_data = ExtResource("4_lquwl")
+front_layout_name = &"food_layout"
+metadata/_custom_type_script = "uid://dowgud10rp5yf"
+
+[node name="NasiPutih" type="Button" parent="CardHand"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(80, 112)
+layout_mode = 0
+offset_right = 80.0
+offset_bottom = 112.0
+pivot_offset = Vector2(40, 56)
+script = ExtResource("5_7mycd")
+card_data = ExtResource("6_272bh")
+front_layout_name = &"food_layout"
+metadata/_custom_type_script = "uid://dowgud10rp5yf"
+
+[node name="MieGoreng" type="Button" parent="CardHand"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(80, 112)
+layout_mode = 0
+offset_right = 80.0
+offset_bottom = 112.0
+pivot_offset = Vector2(40, 56)
+script = ExtResource("5_7mycd")
+card_data = ExtResource("7_tipki")
+front_layout_name = &"food_layout"
+metadata/_custom_type_script = "uid://dowgud10rp5yf"
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 0
+offset_left = 446.0
+offset_top = 96.0
+offset_right = 694.0
+offset_bottom = 324.0
+columns = 3
+
+[node name="CardSlot" type="Panel" parent="GridContainer"]
+visibility_layer = 2
+z_index = 1
+custom_minimum_size = Vector2(80, 112)
+layout_mode = 2
+script = ExtResource("3_1bvp3")
+metadata/_custom_type_script = "uid://btwakv2103085"
+
+[node name="CardSlot2" type="Panel" parent="GridContainer"]
+visibility_layer = 2
+z_index = 1
+custom_minimum_size = Vector2(80, 112)
+layout_mode = 2
+script = ExtResource("3_1bvp3")
+max_cards = 1
+metadata/_custom_type_script = "uid://btwakv2103085"
+
+[node name="CardSlot3" type="Panel" parent="GridContainer"]
+visibility_layer = 2
+z_index = 1
+custom_minimum_size = Vector2(80, 112)
+layout_mode = 2
+script = ExtResource("3_1bvp3")
+max_cards = 1
+metadata/_custom_type_script = "uid://btwakv2103085"
+
+[node name="CardSlot4" type="Panel" parent="GridContainer"]
+visibility_layer = 2
+z_index = 1
+custom_minimum_size = Vector2(80, 112)
+layout_mode = 2
+script = ExtResource("3_1bvp3")
+max_cards = 1
+metadata/_custom_type_script = "uid://btwakv2103085"
+
+[node name="CardSlot5" type="Panel" parent="GridContainer"]
+visibility_layer = 2
+z_index = 1
+custom_minimum_size = Vector2(80, 112)
+layout_mode = 2
+script = ExtResource("3_1bvp3")
+max_cards = 1
+metadata/_custom_type_script = "uid://btwakv2103085"
+
+[node name="CardSlot6" type="Panel" parent="GridContainer"]
+visibility_layer = 2
+z_index = 1
+custom_minimum_size = Vector2(80, 112)
+layout_mode = 2
+script = ExtResource("3_1bvp3")
+max_cards = 1
+metadata/_custom_type_script = "uid://btwakv2103085"

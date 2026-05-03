@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://debuq7ogm1nri"]
+
+[ext_resource type="Script" uid="uid://bbi8i6vef3f6y" path="res://addons/simple_cards/containers/hand/card_hand.gd" id="1_5km37"]
+
+[node name="CardHand" type="Panel"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_5km37")
+metadata/_custom_type_script = "uid://bbi8i6vef3f6y"

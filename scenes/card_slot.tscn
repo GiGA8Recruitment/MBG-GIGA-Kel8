@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://clq1a21qytpqp"]
+
+[ext_resource type="Script" uid="uid://btwakv2103085" path="res://addons/simple_cards/containers/slot/card_slot.gd" id="1_qx3y6"]
+
+[node name="CardSlot" type="Panel"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_qx3y6")
+metadata/_custom_type_script = "uid://btwakv2103085"
