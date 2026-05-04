@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dowgud10rp5yf" path="res://addons/simple_cards/card/card.gd" id="1_kikvd"]
 
-[node name="Card" type="Button"]
+[node name="FoodCard" type="Button"]
 self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(80, 112)
 offset_right = 80.0

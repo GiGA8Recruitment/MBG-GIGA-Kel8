@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="FoodCardResource" load_steps=3 format=3 uid="uid://deg6igb5dphvm"]
 
 [ext_resource type="Texture2D" uid="uid://dfd2c0nffpme7" path="res://assets/images/nasiputih.png" id="1_6cmri"]
-[ext_resource type="Script" uid="uid://clcv636replkf" path="res://cards/FoodCardResource.gd" id="2_6644r"]
+[ext_resource type="Script" uid="uid://clcv636replkf" path="res://FoodCardResource.gd" id="2_6644r"]
 
 [resource]
 script = ExtResource("2_6644r")

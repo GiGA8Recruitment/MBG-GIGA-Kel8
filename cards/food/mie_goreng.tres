@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="FoodCardResource" load_steps=3 format=3 uid="uid://gw7b3m2lyjtc"]
 
-[ext_resource type="Script" uid="uid://clcv636replkf" path="res://cards/FoodCardResource.gd" id="1_efelb"]
+[ext_resource type="Script" uid="uid://clcv636replkf" path="res://FoodCardResource.gd" id="1_efelb"]
 [ext_resource type="Texture2D" uid="uid://d874vvff7sas" path="res://assets/images/miegoreng.png" id="1_lvhwb"]
 
 [resource]
