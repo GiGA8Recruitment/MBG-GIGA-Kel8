@@ -4,13 +4,48 @@ extends Node
 @onready var detail_panel = $UI/CardDetailPanel
 @onready var food_deck: CardDeck
 @onready var food_deck_manager = $FoodCardDeckManager
+@onready var card_slots: Array = [$GridContainer/CardSlot, $GridContainer/CardSlot2, $GridContainer/CardSlot3, $GridContainer/CardSlot4, $GridContainer/CardSlot5, $GridContainer/CardSlot6]
+@onready var stat_panel = $UI/StatsSummaryPanel
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	food_deck = food_deck_manager.deck
-	detail_panel.hide()
 	player_hand.card_added.connect(_on_card_added)
+	for slot in card_slots:
+		slot.card_dropped_on.connect(_on_card_dropped)
+		slot.card_rejected.connect(_on_card_rejected)
+		slot.slot_swapped.connect(_on_card_swapped)
 	spawn_from_deck(food_deck)
+
+func _on_card_dropped(card: Card):
+	var harga = 0
+	var karbohidrat = 0
+	var protein = 0
+	var vitamin = 0
+	var lemak = 0
+	var gula = 0
+	for slot in card_slots:
+		if slot.is_empty():
+			continue
+		harga += slot.get_card_at(0).card_data.harga
+		karbohidrat += slot.get_card_at(0).card_data.karbohidrat
+		protein += slot.get_card_at(0).card_data.protein
+		vitamin += slot.get_card_at(0).card_data.vitamin
+		gula += slot.get_card_at(0).card_data.gula
+		lemak += slot.get_card_at(0).card_data.lemak
+		#print(slot.get_card_at(0).card_data.harga)
+	print("-------------------------------")
+	print("total harga: " + str(harga))
+	print("total karbo: " + str(karbohidrat))
+	print("total protein: " + str(protein))
+	print("total vitamin: " + str(vitamin))
+	print("total gula: " + str(gula))
+	print("total lemak: " + str(lemak))
+	
+func _on_card_rejected(card: Card, reason: String):
+	print("rejected good")
+	
+func _on_card_swapped(old_card: Card, new_card: Card):
+	print("swapped good")
 
 func spawn_from_deck(deck: CardDeck):
 	if not deck:
@@ -31,7 +66,6 @@ func _on_card_added(card: Card, _index: int):
 		
 func _show_details(card: Card):
 	var data = card.card_data as FoodCardResource
-	
 	if data:
 		detail_panel.get_node("CardDetailContainer/Nama").text = "Nama: " + data.card_name
 		detail_panel.get_node("CardDetailContainer/Harga").text = "Harga: " + str(data.harga)	
