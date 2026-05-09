@@ -1,19 +1,17 @@
-[gd_scene load_steps=12 format=3 uid="uid://bwyj0rvwbrlo1"]
+[gd_scene load_steps=9 format=3 uid="uid://bwyj0rvwbrlo1"]
 
 [ext_resource type="Script" uid="uid://bt08wwpc43yyr" path="res://scenes/main.gd" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://bbi8i6vef3f6y" path="res://addons/simple_cards/containers/hand/card_hand.gd" id="2_0xm2m"]
 [ext_resource type="Script" uid="uid://btwakv2103085" path="res://addons/simple_cards/containers/slot/card_slot.gd" id="3_1bvp3"]
 [ext_resource type="Script" uid="uid://cgtxv1fnflwfu" path="res://addons/simple_cards/shape/premade_shapes/arc_shape.gd" id="3_85g3d"]
-[ext_resource type="Resource" uid="uid://cl3wsk0jv27yu" path="res://cards/food/nasi_goreng.tres" id="4_lquwl"]
-[ext_resource type="Script" uid="uid://dowgud10rp5yf" path="res://addons/simple_cards/card/card.gd" id="5_7mycd"]
-[ext_resource type="Resource" uid="uid://deg6igb5dphvm" path="res://cards/food/nasi_putih.tres" id="6_272bh"]
-[ext_resource type="Resource" uid="uid://bb6nnwkgc0n7k" path="res://cards/food/nasi_merah.tres" id="7_5vw27"]
-[ext_resource type="Resource" uid="uid://gw7b3m2lyjtc" path="res://cards/food/mie_goreng.tres" id="7_tipki"]
-[ext_resource type="PackedScene" uid="uid://c47660odfhvrs" path="res://scenes/FoodCard.tscn" id="8_choun"]
+[ext_resource type="Script" uid="uid://bisyk4bowdvsf" path="res://addons/simple_cards/deck/manager/card_deck_manager.gd" id="5_tbgi4"]
+[ext_resource type="Resource" uid="uid://bw6arxp28re4x" path="res://cards/food_deck.tres" id="6_tefeu"]
 
-[sub_resource type="Resource" id="Resource_85g3d"]
+[sub_resource type="Resource" id="Resource_tefeu"]
 script = ExtResource("3_85g3d")
 metadata/_custom_type_script = "uid://cgtxv1fnflwfu"
+
+[sub_resource type="LabelSettings" id="LabelSettings_choun"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_ig7tw")
@@ -31,49 +29,9 @@ offset_right = 40.0
 grow_horizontal = 2
 grow_vertical = 0
 script = ExtResource("2_0xm2m")
-shape = SubResource("Resource_85g3d")
+shape = SubResource("Resource_tefeu")
 max_cards = 8
 metadata/_custom_type_script = "uid://bbi8i6vef3f6y"
-
-[node name="NasiMerah" type="Button" parent="CardHand"]
-self_modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(80, 112)
-layout_mode = 0
-offset_right = 80.0
-offset_bottom = 112.0
-pivot_offset = Vector2(40, 56)
-script = ExtResource("5_7mycd")
-card_data = ExtResource("7_5vw27")
-front_layout_name = &"food_layout"
-metadata/_custom_type_script = "uid://dowgud10rp5yf"
-
-[node name="NasiGoreng" type="Button" parent="CardHand"]
-self_modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(80, 112)
-layout_mode = 0
-offset_right = 80.0
-offset_bottom = 112.0
-pivot_offset = Vector2(40, 56)
-script = ExtResource("5_7mycd")
-card_data = ExtResource("4_lquwl")
-front_layout_name = &"food_layout"
-metadata/_custom_type_script = "uid://dowgud10rp5yf"
-
-[node name="NasiPutih" type="Button" parent="CardHand"]
-self_modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(80, 112)
-layout_mode = 0
-offset_right = 80.0
-offset_bottom = 112.0
-pivot_offset = Vector2(40, 56)
-script = ExtResource("5_7mycd")
-card_data = ExtResource("6_272bh")
-front_layout_name = &"food_layout"
-metadata/_custom_type_script = "uid://dowgud10rp5yf"
-
-[node name="MieGoreng" parent="CardHand" instance=ExtResource("8_choun")]
-layout_mode = 0
-card_data = ExtResource("7_tipki")
 
 [node name="GridContainer" type="GridContainer" parent="."]
 anchors_preset = 5
@@ -145,44 +103,83 @@ metadata/_custom_type_script = "uid://btwakv2103085"
 offset_right = 219.0
 offset_bottom = 212.0
 
-[node name="GridContainer" type="VBoxContainer" parent="UI/CardDetailPanel"]
-layout_mode = 0
-offset_left = 13.0
-offset_top = 66.0
-offset_right = 200.0
-offset_bottom = 197.0
-
-[node name="Karbohidrat" type="Label" parent="UI/CardDetailPanel/GridContainer"]
-layout_mode = 2
-text = "Karbohidrat"
-
-[node name="Protein2" type="Label" parent="UI/CardDetailPanel/GridContainer"]
-layout_mode = 2
-text = "Protein"
-
-[node name="Vitamin2" type="Label" parent="UI/CardDetailPanel/GridContainer"]
-layout_mode = 2
-text = "Vitamin"
-
-[node name="Lemak2" type="Label" parent="UI/CardDetailPanel/GridContainer"]
-layout_mode = 2
-text = "Lemak"
-
-[node name="Gula2" type="Label" parent="UI/CardDetailPanel/GridContainer"]
-layout_mode = 2
-text = "Gula"
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="UI/CardDetailPanel"]
+[node name="CardDetailContainer" type="VBoxContainer" parent="UI/CardDetailPanel"]
 layout_mode = 0
 offset_left = 13.0
 offset_top = 9.0
 offset_right = 200.0
 offset_bottom = 59.0
 
-[node name="Nama" type="Label" parent="UI/CardDetailPanel/VBoxContainer2"]
+[node name="Nama" type="Label" parent="UI/CardDetailPanel/CardDetailContainer"]
 layout_mode = 2
 text = "Nama"
+label_settings = SubResource("LabelSettings_choun")
 
-[node name="Harga" type="Label" parent="UI/CardDetailPanel/VBoxContainer2"]
+[node name="Harga" type="Label" parent="UI/CardDetailPanel/CardDetailContainer"]
 layout_mode = 2
 text = "Harga"
+
+[node name="Karbohidrat" type="Label" parent="UI/CardDetailPanel/CardDetailContainer"]
+layout_mode = 2
+text = "Karbohidrat"
+
+[node name="Protein" type="Label" parent="UI/CardDetailPanel/CardDetailContainer"]
+layout_mode = 2
+text = "Protein"
+
+[node name="Vitamin" type="Label" parent="UI/CardDetailPanel/CardDetailContainer"]
+layout_mode = 2
+text = "Vitamin"
+
+[node name="Lemak" type="Label" parent="UI/CardDetailPanel/CardDetailContainer"]
+layout_mode = 2
+text = "Lemak"
+
+[node name="Gula" type="Label" parent="UI/CardDetailPanel/CardDetailContainer"]
+layout_mode = 2
+text = "Gula"
+
+[node name="StatsSummary" type="Panel" parent="UI"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+
+[node name="StatsSummaryContainer" type="VBoxContainer" parent="UI/StatsSummary"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 9.0
+offset_right = 200.0
+offset_bottom = 59.0
+
+[node name="Harga" type="Label" parent="UI/StatsSummary/StatsSummaryContainer"]
+layout_mode = 2
+text = "Harga"
+
+[node name="Karbohidrat" type="Label" parent="UI/StatsSummary/StatsSummaryContainer"]
+layout_mode = 2
+text = "Karbohidrat"
+
+[node name="Protein" type="Label" parent="UI/StatsSummary/StatsSummaryContainer"]
+layout_mode = 2
+text = "Protein"
+
+[node name="Vitamin" type="Label" parent="UI/StatsSummary/StatsSummaryContainer"]
+layout_mode = 2
+text = "Vitamin"
+
+[node name="Lemak" type="Label" parent="UI/StatsSummary/StatsSummaryContainer"]
+layout_mode = 2
+text = "Lemak"
+
+[node name="Gula" type="Label" parent="UI/StatsSummary/StatsSummaryContainer"]
+layout_mode = 2
+text = "Gula"
+
+[node name="FoodCardDeckManager" type="Node" parent="." node_paths=PackedStringArray("starting_pile")]
+script = ExtResource("5_tbgi4")
+deck = ExtResource("6_tefeu")
+starting_pile = NodePath("")
+metadata/_custom_type_script = "uid://bisyk4bowdvsf"

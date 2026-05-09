@@ -13,7 +13,7 @@
 	},
 	"res://examples/cards/standard_deck/standard_back_layout.tscn": {
 		"enabled": true,
-		"last_modified": 1777804406,
+		"last_modified": 1777804406.0,
 		"layout_id": "standard_back_layout",
 		"tags": [
 			"back"
@@ -21,7 +21,7 @@
 	},
 	"res://examples/cards/standard_deck/standard_layout.tscn": {
 		"enabled": true,
-		"last_modified": 1777804406,
+		"last_modified": 1777804406.0,
 		"layout_id": "standard_layout",
 		"tags": [
 			"front"
@@ -29,7 +29,7 @@
 	},
 	"res://food_layout.tscn": {
 		"enabled": true,
-		"last_modified": 1777806689,
+		"last_modified": 1777851326.0,
 		"layout_id": "food_layout",
 		"tags": [
 			"food"

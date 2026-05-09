@@ -9,4 +9,5 @@ card_name = "Nasi Goreng"
 card_image = ExtResource("1_h6s7x")
 harga = 25
 karbohidrat = 15
+front_layout_name = &"food_layout"
 metadata/_custom_type_script = "uid://clcv636replkf"

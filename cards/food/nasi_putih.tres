@@ -9,4 +9,5 @@ card_name = "Nasi Putih"
 card_image = ExtResource("1_6cmri")
 harga = 5
 karbohidrat = 25
+front_layout_name = &"food_layout"
 metadata/_custom_type_script = "uid://clcv636replkf"
