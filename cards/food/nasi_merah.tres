@@ -9,5 +9,6 @@ card_name = "Nasi Merah"
 card_image = ExtResource("1_lsaji")
 harga = 30
 karbohidrat = 15
+vitamin = 5
 front_layout_name = &"food_layout"
 metadata/_custom_type_script = "uid://clcv636replkf"
