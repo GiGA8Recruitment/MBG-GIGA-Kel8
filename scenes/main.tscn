@@ -8,6 +8,14 @@
 [ext_resource type="Resource" uid="uid://bw6arxp28re4x" path="res://cards/food_deck.tres" id="6_tefeu"]
 [ext_resource type="Script" uid="uid://d2l8uaoel5whd" path="res://addons/simple_cards/containers/pile/card_pile.gd" id="7_o6xl0"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o6xl0"]
+bg_color = Color(0.29411766, 0.30588236, 0.42745098, 1)
+border_width_left = 16
+border_width_top = 16
+border_width_right = 16
+border_width_bottom = 16
+border_color = Color(0.28627452, 0.20784314, 0.28235295, 1)
+
 [sub_resource type="LabelSettings" id="LabelSettings_choun"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o6xl0"]
@@ -22,25 +30,33 @@ content_margin_left = 10.0
 content_margin_top = 10.0
 bg_color = Color(0.1764706, 0.1764706, 0.1764706, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o6xl0"]
-bg_color = Color(0.29411766, 0.30588236, 0.42745098, 1)
-border_width_left = 16
-border_width_top = 16
-border_width_right = 16
-border_width_bottom = 16
-border_color = Color(0.28627452, 0.20784314, 0.28235295, 1)
-
 [node name="Main" type="Node"]
 script = ExtResource("1_ig7tw")
+
+[node name="FoodCardDeckManager" type="Node" parent="." node_paths=PackedStringArray("starting_pile")]
+unique_name_in_owner = true
+script = ExtResource("5_tbgi4")
+deck = ExtResource("6_tefeu")
+starting_pile = NodePath("../UI/HBoxContainer/DrawPile")
+metadata/_custom_type_script = "uid://bisyk4bowdvsf"
+
+[node name="BGPanel" type="Panel" parent="."]
+z_index = -10
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_o6xl0")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="CardDetailPanel" type="Panel" parent="UI"]
 unique_name_in_owner = true
-offset_left = 34.0
-offset_top = 37.0
-offset_right = 253.0
-offset_bottom = 272.0
+offset_left = 19.0
+offset_top = 18.0
+offset_right = 238.0
+offset_bottom = 253.0
 
 [node name="CardDetailContainer" type="VBoxContainer" parent="UI/CardDetailPanel"]
 layout_mode = 0
@@ -87,10 +103,10 @@ unique_name_in_owner = true
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -259.0
-offset_top = 40.0
-offset_right = -34.0
-offset_bottom = 242.0
+offset_left = -244.0
+offset_top = 18.0
+offset_right = -19.0
+offset_bottom = 220.0
 grow_horizontal = 0
 
 [node name="StatsSummaryContainer" type="VBoxContainer" parent="UI/StatsSummaryPanel"]
@@ -124,40 +140,6 @@ text = "Lemak"
 layout_mode = 2
 text = "Gula"
 
-[node name="DrawPile" type="Panel" parent="UI"]
-unique_name_in_owner = true
-offset_left = 1037.0
-offset_top = 276.0
-offset_right = 1117.0
-offset_bottom = 388.0
-script = ExtResource("7_o6xl0")
-metadata/_custom_type_script = "uid://d2l8uaoel5whd"
-
-[node name="Label" type="Label" parent="UI/DrawPile"]
-layout_mode = 0
-offset_left = 11.0
-offset_top = 43.0
-offset_right = 70.0
-offset_bottom = 66.0
-text = "Discard"
-
-[node name="DiscardPile" type="Panel" parent="UI"]
-unique_name_in_owner = true
-offset_left = 31.0
-offset_top = 502.0
-offset_right = 111.0
-offset_bottom = 614.0
-script = ExtResource("7_o6xl0")
-metadata/_custom_type_script = "uid://d2l8uaoel5whd"
-
-[node name="Label" type="Label" parent="UI/DiscardPile"]
-layout_mode = 0
-offset_left = 19.0
-offset_top = 40.0
-offset_right = 61.0
-offset_bottom = 63.0
-text = "Draw"
-
 [node name="CardHand" type="Panel" parent="UI"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(80, 112)
@@ -175,7 +157,7 @@ grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_o6xl0")
 script = ExtResource("2_0xm2m")
 shape = SubResource("Resource_tefeu")
-max_cards = 5
+max_cards = 8
 metadata/_custom_type_script = "uid://bbi8i6vef3f6y"
 
 [node name="CardSlotContainer" type="GridContainer" parent="UI"]
@@ -183,12 +165,12 @@ unique_name_in_owner = true
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -124.0
-offset_top = 100.0
-offset_right = 124.0
-offset_bottom = 328.0
+offset_left = -166.0
+offset_top = 150.0
+offset_right = 166.0
+offset_bottom = 378.0
 grow_horizontal = 2
-columns = 3
+columns = 4
 
 [node name="CardSlot" type="Panel" parent="UI/CardSlotContainer"]
 visibility_layer = 2
@@ -197,33 +179,17 @@ custom_minimum_size = Vector2(80, 112)
 layout_mode = 2
 script = ExtResource("5_tipki")
 allowed_category = 3
+max_cards = 1
 metadata/_custom_type_script = "uid://btwakv2103085"
 
 [node name="Label" type="Label" parent="UI/CardSlotContainer/CardSlot"]
 layout_mode = 0
-offset_left = 7.0
-offset_top = 46.0
-offset_right = 88.0
-offset_bottom = 69.0
-text = "Random"
-
-[node name="CardSlot2" type="Panel" parent="UI/CardSlotContainer"]
-visibility_layer = 2
-z_index = 1
-custom_minimum_size = Vector2(80, 112)
-layout_mode = 2
-script = ExtResource("5_tipki")
-allowed_category = 1
-max_cards = 1
-metadata/_custom_type_script = "uid://btwakv2103085"
-
-[node name="Label" type="Label" parent="UI/CardSlotContainer/CardSlot2"]
-layout_mode = 0
-offset_left = 12.0
-offset_top = 47.0
-offset_right = 69.0
-offset_bottom = 70.0
-text = "Protein"
+offset_top = 48.0
+offset_right = 81.0
+offset_bottom = 71.0
+text = "Addons"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="CardSlot3" type="Panel" parent="UI/CardSlotContainer"]
 visibility_layer = 2
@@ -232,16 +198,51 @@ custom_minimum_size = Vector2(80, 112)
 layout_mode = 2
 script = ExtResource("5_tipki")
 allowed_category = 1
-max_cards = 1
 metadata/_custom_type_script = "uid://btwakv2103085"
 
 [node name="Label" type="Label" parent="UI/CardSlotContainer/CardSlot3"]
 layout_mode = 0
-offset_left = 12.0
+offset_left = 11.0
+offset_top = 47.0
+offset_right = 68.0
+offset_bottom = 70.0
+text = "Protein"
+
+[node name="CardSlot2" type="Panel" parent="UI/CardSlotContainer"]
+visibility_layer = 2
+z_index = 1
+custom_minimum_size = Vector2(80, 112)
+layout_mode = 2
+script = ExtResource("5_tipki")
+allowed_category = 2
+metadata/_custom_type_script = "uid://btwakv2103085"
+
+[node name="Label" type="Label" parent="UI/CardSlotContainer/CardSlot2"]
+layout_mode = 0
+offset_left = 9.0
 offset_top = 47.0
 offset_right = 69.0
 offset_bottom = 70.0
-text = "Protein"
+text = "Vitamin"
+
+[node name="CardSlot7" type="Panel" parent="UI/CardSlotContainer"]
+visibility_layer = 2
+z_index = 1
+custom_minimum_size = Vector2(80, 112)
+layout_mode = 2
+script = ExtResource("5_tipki")
+allowed_category = 3
+max_cards = 1
+metadata/_custom_type_script = "uid://btwakv2103085"
+
+[node name="Label" type="Label" parent="UI/CardSlotContainer/CardSlot7"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 47.0
+offset_right = 69.0
+offset_bottom = 70.0
+text = "Power"
+horizontal_alignment = 1
 
 [node name="CardSlot4" type="Panel" parent="UI/CardSlotContainer"]
 visibility_layer = 2
@@ -249,7 +250,6 @@ z_index = 1
 custom_minimum_size = Vector2(80, 112)
 layout_mode = 2
 script = ExtResource("5_tipki")
-max_cards = 1
 metadata/_custom_type_script = "uid://btwakv2103085"
 
 [node name="Label" type="Label" parent="UI/CardSlotContainer/CardSlot4"]
@@ -260,6 +260,23 @@ offset_right = 64.0
 offset_bottom = 70.0
 text = "Karbo"
 
+[node name="CardSlot6" type="Panel" parent="UI/CardSlotContainer"]
+visibility_layer = 2
+z_index = 1
+custom_minimum_size = Vector2(80, 112)
+layout_mode = 2
+script = ExtResource("5_tipki")
+allowed_category = 1
+metadata/_custom_type_script = "uid://btwakv2103085"
+
+[node name="Label" type="Label" parent="UI/CardSlotContainer/CardSlot6"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 47.0
+offset_right = 69.0
+offset_bottom = 70.0
+text = "Protein"
+
 [node name="CardSlot5" type="Panel" parent="UI/CardSlotContainer"]
 visibility_layer = 2
 z_index = 1
@@ -267,7 +284,6 @@ custom_minimum_size = Vector2(80, 112)
 layout_mode = 2
 script = ExtResource("5_tipki")
 allowed_category = 2
-max_cards = 1
 metadata/_custom_type_script = "uid://btwakv2103085"
 
 [node name="Label" type="Label" parent="UI/CardSlotContainer/CardSlot5"]
@@ -278,30 +294,31 @@ offset_right = 70.0
 offset_bottom = 70.0
 text = "Vitamin"
 
-[node name="CardSlot6" type="Panel" parent="UI/CardSlotContainer"]
+[node name="CardSlot8" type="Panel" parent="UI/CardSlotContainer"]
 visibility_layer = 2
 z_index = 1
 custom_minimum_size = Vector2(80, 112)
 layout_mode = 2
 script = ExtResource("5_tipki")
-allowed_category = 2
+allowed_category = 3
 max_cards = 1
 metadata/_custom_type_script = "uid://btwakv2103085"
 
-[node name="Label" type="Label" parent="UI/CardSlotContainer/CardSlot6"]
+[node name="Label" type="Label" parent="UI/CardSlotContainer/CardSlot8"]
 layout_mode = 0
 offset_left = 9.0
 offset_top = 47.0
 offset_right = 69.0
 offset_bottom = 70.0
-text = "Vitamin"
+text = "Power"
+horizontal_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI"]
 custom_minimum_size = Vector2(150, 100)
-offset_left = 1002.0
-offset_top = 445.0
-offset_right = 1152.0
-offset_bottom = 648.0
+offset_left = 984.0
+offset_top = 427.0
+offset_right = 1134.0
+offset_bottom = 630.0
 size_flags_horizontal = 8
 size_flags_vertical = 8
 
@@ -309,14 +326,13 @@ size_flags_vertical = 8
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
-text = "Play"
+text = "Draw"
 
 [node name="DealButton" type="Button" parent="UI/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
-text = "Deal
-"
+text = "Play"
 
 [node name="MoneyLabel" type="Label" parent="UI/VBoxContainer"]
 unique_name_in_owner = true
@@ -325,22 +341,45 @@ layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_tipki")
 text = "Uang: "
 
-[node name="FoodCardDeckManager" type="Node" parent="."]
-unique_name_in_owner = true
-script = ExtResource("5_tbgi4")
-deck = ExtResource("6_tefeu")
-metadata/_custom_type_script = "uid://bisyk4bowdvsf"
+[node name="HBoxContainer" type="HBoxContainer" parent="UI"]
+offset_left = 19.0
+offset_top = 519.0
+offset_right = 183.0
+offset_bottom = 631.0
 
-[node name="BGPanel" type="Panel" parent="."]
-visible = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_o6xl0")
+[node name="DiscardPile" type="Panel" parent="UI/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 112)
+layout_mode = 2
+script = ExtResource("7_o6xl0")
+metadata/_custom_type_script = "uid://d2l8uaoel5whd"
+
+[node name="Label" type="Label" parent="UI/HBoxContainer/DiscardPile"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 43.0
+offset_right = 70.0
+offset_bottom = 66.0
+text = "Discard"
+
+[node name="DrawPile" type="Panel" parent="UI/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 112)
+layout_mode = 2
+script = ExtResource("7_o6xl0")
+metadata/_custom_type_script = "uid://d2l8uaoel5whd"
+
+[node name="Label" type="Label" parent="UI/HBoxContainer/DrawPile"]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 40.0
+offset_right = 61.0
+offset_bottom = 63.0
+text = "Draw"
 
 [connection signal="card_added" from="UI/CardHand" to="." method="_on_card_hand_card_added"]
+[connection signal="container_full" from="UI/CardSlotContainer/CardSlot7" to="." method="_on_card_slot_6_container_full"]
 [connection signal="container_full" from="UI/CardSlotContainer/CardSlot6" to="." method="_on_card_slot_6_container_full"]
+[connection signal="container_full" from="UI/CardSlotContainer/CardSlot8" to="." method="_on_card_slot_6_container_full"]
 [connection signal="pressed" from="UI/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="UI/VBoxContainer/DealButton" to="." method="_on_play_button_pressed"]

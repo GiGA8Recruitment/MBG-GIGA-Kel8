@@ -24,11 +24,28 @@ func _ready() -> void:
 	for slot in card_slots:
 		slot.card_dropped_on.connect(_on_card_dropped)
 		
-	spawn_from_deck(food_deck)
+	food_deck_manager.starting_pile = draw_pile
+	food_deck_manager.setup()
+	draw_starting_hand()
+	#spawn_from_deck(food_deck)
 	
+func draw_starting_hand():
+	await draw_pile.deal_to(player_hand, 3, 0.4, 0.1)
+	print(draw_pile.cards)
+	
+func draw_card() -> void:
+	if draw_pile.is_empty():
+		print("no card in draw pile")
+		await discard_pile.move_all_to(draw_pile, 0)
+		draw_pile.shuffle()
+	await draw_pile.deal_to(player_hand, 1, 0.3)
+	
+func discard_card():
+	pass
 	
 func _on_play_pressed():
-	print("pressed")
+	#print("pressed")
+	draw_card()
 	
 
 func _on_card_dropped(card: Card):

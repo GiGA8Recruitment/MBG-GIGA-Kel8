@@ -3,6 +3,7 @@
 
 class_name LayoutID
 
+const CUSTOM_FOOD_LAYOUT: StringName = &"custom_food_layout"
 const DEFAULT: StringName = &"default"
 const DEFAULT_BACK: StringName = &"default_back"
 const FOOD_LAYOUT: StringName = &"food_layout"
@@ -13,6 +14,7 @@ const STANDARD_LAYOUT: StringName = &"standard_layout"
 ## Returns all available layout IDs
 static func get_all() -> Array[StringName]:
 	return [
+		CUSTOM_FOOD_LAYOUT,
 		DEFAULT,
 		DEFAULT_BACK,
 		FOOD_LAYOUT,
