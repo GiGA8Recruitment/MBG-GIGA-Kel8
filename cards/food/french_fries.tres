@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="FoodCardResource" load_steps=3 format=3 uid="uid://6u765miy11uu"]
+
+[ext_resource type="Texture2D" uid="uid://dda8lpadb0yt6" path="res://assets/images/bahan/frenchfries.png" id="1_q8846"]
+[ext_resource type="Script" uid="uid://clcv636replkf" path="res://FoodCardResource.gd" id="2_jmqer"]
+
+[resource]
+script = ExtResource("2_jmqer")
+card_name = "French Fries"
+category = "Karbo"
+card_image = ExtResource("1_q8846")
+harga = 10
+karbohidrat = 10
+lemak = 10
+gula = 10
+front_layout_name = &"food_layout"

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="FoodCardResource" load_steps=3 format=3 uid="uid://bifnspmu8t51m"]
+
+[ext_resource type="Texture2D" uid="uid://ij56o5hx1oob" path="res://assets/images/bahan/kangkung.png" id="1_wcset"]
+[ext_resource type="Script" uid="uid://clcv636replkf" path="res://FoodCardResource.gd" id="2_78m37"]
+
+[resource]
+script = ExtResource("2_78m37")
+card_name = "Kangkung"
+category = "Sayur"
+card_image = ExtResource("1_wcset")
+harga = 15
+lemak = 5
+gula = 5
+vitamin = 20
+front_layout_name = &"food_layout"

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="FoodCardResource" load_steps=3 format=3 uid="uid://dee8rpyr554gs"]
+
+[ext_resource type="Texture2D" uid="uid://s1himvxfee0x" path="res://assets/images/bahan/brokoli.png" id="1_ynnqa"]
+[ext_resource type="Script" uid="uid://clcv636replkf" path="res://FoodCardResource.gd" id="2_88w4x"]
+
+[resource]
+script = ExtResource("2_88w4x")
+card_name = "Brokoli Rebus"
+category = "Sayur"
+card_image = ExtResource("1_ynnqa")
+harga = 30
+vitamin = 25
+front_layout_name = &"food_layout"

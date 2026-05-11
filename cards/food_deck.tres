@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CardDeck" load_steps=7 format=3 uid="uid://bw6arxp28re4x"]
+[gd_resource type="Resource" script_class="CardDeck" load_steps=11 format=3 uid="uid://bw6arxp28re4x"]
 
 [ext_resource type="Script" uid="uid://c8315v58tr66b" path="res://addons/simple_cards/card/card_resource/card_resource.gd" id="1_ndwhy"]
 [ext_resource type="Script" uid="uid://lhb5ry3o8icy" path="res://addons/simple_cards/deck/card_deck.gd" id="2_jj8s3"]
@@ -6,9 +6,13 @@
 [ext_resource type="Resource" uid="uid://cl3wsk0jv27yu" path="res://cards/food/nasi_goreng.tres" id="3_jat0q"]
 [ext_resource type="Resource" uid="uid://bb6nnwkgc0n7k" path="res://cards/food/nasi_merah.tres" id="4_7frs3"]
 [ext_resource type="Resource" uid="uid://deg6igb5dphvm" path="res://cards/food/nasi_putih.tres" id="5_k3fog"]
+[ext_resource type="Resource" uid="uid://b1jtjx23feqi" path="res://cards/food/jeruk.tres" id="6_m5pk5"]
+[ext_resource type="Resource" uid="uid://wtutsvkslf82" path="res://cards/food/capcay.tres" id="7_6la1n"]
+[ext_resource type="Resource" uid="uid://bk7fvwotb3bti" path="res://cards/food/jagung.tres" id="8_ng03j"]
+[ext_resource type="Resource" uid="uid://1gand58poghc" path="res://cards/food/pisang.tres" id="9_0wstd"]
 
 [resource]
 script = ExtResource("2_jj8s3")
 deck_name = &"food_deck"
-cards = Array[ExtResource("1_ndwhy")]([ExtResource("2_jtwys"), ExtResource("3_jat0q"), ExtResource("4_7frs3"), ExtResource("5_k3fog")])
+cards = Array[ExtResource("1_ndwhy")]([ExtResource("2_jtwys"), ExtResource("3_jat0q"), ExtResource("4_7frs3"), ExtResource("5_k3fog"), ExtResource("6_m5pk5"), ExtResource("7_6la1n"), ExtResource("8_ng03j"), ExtResource("9_0wstd")])
 metadata/_custom_type_script = "uid://lhb5ry3o8icy"

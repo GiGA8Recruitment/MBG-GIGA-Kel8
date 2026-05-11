@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="FoodCardResource" load_steps=3 format=3 uid="uid://1gand58poghc"]
+
+[ext_resource type="Texture2D" uid="uid://2tr7r5uu3om0" path="res://assets/images/bahan/pisang.png" id="1_ouoni"]
+[ext_resource type="Script" uid="uid://clcv636replkf" path="res://FoodCardResource.gd" id="2_bwdot"]
+
+[resource]
+script = ExtResource("2_bwdot")
+card_name = "Pisang"
+category = "Pelengkap"
+card_image = ExtResource("1_ouoni")
+harga = 5
+karbohidrat = 5
+vitamin = 5
+front_layout_name = &"food_layout"

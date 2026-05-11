@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="FoodCardResource" load_steps=3 format=3 uid="uid://bxkd84b0w72do"]
+
+[ext_resource type="Texture2D" uid="uid://7n05gtnf2qtr" path="res://assets/images/bahan/puddingbuah.png" id="1_47jfx"]
+[ext_resource type="Script" uid="uid://clcv636replkf" path="res://FoodCardResource.gd" id="2_n4klp"]
+
+[resource]
+script = ExtResource("2_n4klp")
+card_name = "Pudding Buah"
+category = "Pelengkap"
+card_image = ExtResource("1_47jfx")
+harga = 10
+karbohidrat = 5
+gula = 20
+vitamin = 10
+front_layout_name = &"food_layout"

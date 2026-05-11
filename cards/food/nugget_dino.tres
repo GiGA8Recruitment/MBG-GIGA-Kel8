@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="FoodCardResource" load_steps=3 format=3 uid="uid://d0qj4fr5bbkwg"]
+
+[ext_resource type="Texture2D" uid="uid://bl70sdvi88w5j" path="res://assets/images/bahan/nuggetdino.png" id="1_fub5o"]
+[ext_resource type="Script" uid="uid://clcv636replkf" path="res://FoodCardResource.gd" id="2_hakp1"]
+
+[resource]
+script = ExtResource("2_hakp1")
+card_name = "Nugget Dino"
+category = "Protein"
+card_image = ExtResource("1_fub5o")
+harga = 5
+karbohidrat = 5
+protein = 10
+lemak = 10
+front_layout_name = &"food_layout"

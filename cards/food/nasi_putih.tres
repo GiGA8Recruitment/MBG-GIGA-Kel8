@@ -1,13 +1,14 @@
 [gd_resource type="Resource" script_class="FoodCardResource" load_steps=3 format=3 uid="uid://deg6igb5dphvm"]
 
-[ext_resource type="Texture2D" uid="uid://dfd2c0nffpme7" path="res://assets/images/nasiputih.png" id="1_6cmri"]
+[ext_resource type="Texture2D" uid="uid://dfd2c0nffpme7" path="res://assets/images/bahan/nasiputih.png" id="1_y86dw"]
 [ext_resource type="Script" uid="uid://clcv636replkf" path="res://FoodCardResource.gd" id="2_6644r"]
 
 [resource]
 script = ExtResource("2_6644r")
 card_name = "Nasi Putih"
-card_image = ExtResource("1_6cmri")
-harga = 5
-karbohidrat = 25
+category = "Karbo"
+card_image = ExtResource("1_y86dw")
+harga = 20
+karbohidrat = 15
 front_layout_name = &"food_layout"
 metadata/_custom_type_script = "uid://clcv636replkf"

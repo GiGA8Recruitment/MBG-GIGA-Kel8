@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="FoodCardResource" load_steps=3 format=3 uid="uid://cccpahme3sw5b"]
+
+[ext_resource type="Texture2D" uid="uid://x6x1th2lv1r5" path="res://assets/images/bahan/ayamgoreng.png" id="1_mmmff"]
+[ext_resource type="Script" uid="uid://clcv636replkf" path="res://FoodCardResource.gd" id="2_jwfga"]
+
+[resource]
+script = ExtResource("2_jwfga")
+card_name = "Ayam Goreng"
+category = "Protein"
+card_image = ExtResource("1_mmmff")
+harga = 20
+protein = 20
+lemak = 10
+front_layout_name = &"food_layout"
