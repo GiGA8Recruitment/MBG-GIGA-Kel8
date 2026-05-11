@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://pv300mgh1qbj"]
+[gd_scene load_steps=7 format=3 uid="uid://pv300mgh1qbj"]
 
 [ext_resource type="Script" uid="uid://ci8ju72qvgsyt" path="res://custom_food_layout.gd" id="1_n62c1"]
 [ext_resource type="Texture2D" uid="uid://c27sp8edpxqra" path="res://assets/KarboTemplate1.png" id="2_u4146"]
@@ -16,6 +16,9 @@ corner_radius_top_left = 2
 corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
 corner_detail = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i7u7y"]
+bg_color = Color(1, 1, 1, 1)
 
 [node name="CardLayout" type="SubViewportContainer"]
 texture_filter = 1
@@ -165,3 +168,11 @@ theme_override_font_sizes/font_size = 8
 text = "25"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="BG" type="PanelContainer" parent="SubViewport"]
+z_index = -1
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 78.0
+offset_bottom = 110.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_i7u7y")
