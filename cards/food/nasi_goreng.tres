@@ -13,4 +13,5 @@ karbohidrat = 20
 protein = 5
 lemak = 10
 front_layout_name = &"food_layout"
+back_layout_name = &"food_layout"
 metadata/_custom_type_script = "uid://clcv636replkf"

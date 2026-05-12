@@ -1,107 +1,64 @@
-[gd_scene load_steps=9 format=3 uid="uid://bwyj0rvwbrlo1"]
+[gd_scene load_steps=15 format=3 uid="uid://bwyj0rvwbrlo1"]
 
 [ext_resource type="Script" uid="uid://bt08wwpc43yyr" path="res://scenes/main.gd" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://bbi8i6vef3f6y" path="res://addons/simple_cards/containers/hand/card_hand.gd" id="2_0xm2m"]
-[ext_resource type="Script" uid="uid://btwakv2103085" path="res://addons/simple_cards/containers/slot/card_slot.gd" id="3_1bvp3"]
-[ext_resource type="Script" uid="uid://b1s6x4iyt2pps" path="res://addons/simple_cards/shape/premade_shapes/line_shape.gd" id="3_tefeu"]
+[ext_resource type="Script" uid="uid://cgtxv1fnflwfu" path="res://addons/simple_cards/shape/premade_shapes/arc_shape.gd" id="3_85g3d"]
 [ext_resource type="Script" uid="uid://bisyk4bowdvsf" path="res://addons/simple_cards/deck/manager/card_deck_manager.gd" id="5_tbgi4"]
+[ext_resource type="Script" uid="uid://f41q4rxkbh46" path="res://scenes/food_card_slot.gd" id="5_tipki"]
 [ext_resource type="Resource" uid="uid://bw6arxp28re4x" path="res://cards/food_deck.tres" id="6_tefeu"]
+[ext_resource type="Script" uid="uid://d2l8uaoel5whd" path="res://addons/simple_cards/containers/pile/card_pile.gd" id="7_o6xl0"]
+[ext_resource type="Script" uid="uid://btwakv2103085" path="res://addons/simple_cards/containers/slot/card_slot.gd" id="8_tipki"]
+[ext_resource type="PackedScene" uid="uid://cjq5t60ybmbh0" path="res://scenes/ShopPanel.tscn" id="9_85g3d"]
 
-[sub_resource type="Resource" id="Resource_tefeu"]
-script = ExtResource("3_tefeu")
-metadata/_custom_type_script = "uid://b1s6x4iyt2pps"
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o6xl0"]
+bg_color = Color(0.29411766, 0.30588236, 0.42745098, 1)
+border_width_left = 16
+border_width_top = 16
+border_width_right = 16
+border_width_bottom = 16
+border_color = Color(0.28627452, 0.20784314, 0.28235295, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_choun"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o6xl0"]
+
+[sub_resource type="Resource" id="Resource_tefeu"]
+script = ExtResource("3_85g3d")
+card_spacing = 70.0
+metadata/_custom_type_script = "uid://cgtxv1fnflwfu"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tipki"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+bg_color = Color(0.1764706, 0.1764706, 0.1764706, 1)
 
 [node name="Main" type="Node"]
 script = ExtResource("1_ig7tw")
 
-[node name="CardHand" type="Panel" parent="."]
-custom_minimum_size = Vector2(80, 112)
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
+[node name="FoodCardDeckManager" type="Node" parent="." node_paths=PackedStringArray("starting_pile")]
+unique_name_in_owner = true
+script = ExtResource("5_tbgi4")
+deck = ExtResource("6_tefeu")
+starting_pile = NodePath("../UI/PileContainer/DrawPile")
+metadata/_custom_type_script = "uid://bisyk4bowdvsf"
+
+[node name="BGPanel" type="Panel" parent="."]
+z_index = -10
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -40.0
-offset_top = -112.0
-offset_right = 40.0
 grow_horizontal = 2
-grow_vertical = 0
-script = ExtResource("2_0xm2m")
-shape = SubResource("Resource_tefeu")
-max_cards = 8
-metadata/_custom_type_script = "uid://bbi8i6vef3f6y"
-
-[node name="GridContainer" type="GridContainer" parent="."]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -124.0
-offset_top = 50.0
-offset_right = 124.0
-offset_bottom = 278.0
-grow_horizontal = 2
-columns = 3
-
-[node name="CardSlot" type="Panel" parent="GridContainer"]
-visibility_layer = 2
-z_index = 1
-custom_minimum_size = Vector2(80, 112)
-layout_mode = 2
-script = ExtResource("3_1bvp3")
-metadata/_custom_type_script = "uid://btwakv2103085"
-
-[node name="CardSlot2" type="Panel" parent="GridContainer"]
-visibility_layer = 2
-z_index = 1
-custom_minimum_size = Vector2(80, 112)
-layout_mode = 2
-script = ExtResource("3_1bvp3")
-max_cards = 1
-metadata/_custom_type_script = "uid://btwakv2103085"
-
-[node name="CardSlot3" type="Panel" parent="GridContainer"]
-visibility_layer = 2
-z_index = 1
-custom_minimum_size = Vector2(80, 112)
-layout_mode = 2
-script = ExtResource("3_1bvp3")
-max_cards = 1
-metadata/_custom_type_script = "uid://btwakv2103085"
-
-[node name="CardSlot4" type="Panel" parent="GridContainer"]
-visibility_layer = 2
-z_index = 1
-custom_minimum_size = Vector2(80, 112)
-layout_mode = 2
-script = ExtResource("3_1bvp3")
-max_cards = 1
-metadata/_custom_type_script = "uid://btwakv2103085"
-
-[node name="CardSlot5" type="Panel" parent="GridContainer"]
-visibility_layer = 2
-z_index = 1
-custom_minimum_size = Vector2(80, 112)
-layout_mode = 2
-script = ExtResource("3_1bvp3")
-max_cards = 1
-metadata/_custom_type_script = "uid://btwakv2103085"
-
-[node name="CardSlot6" type="Panel" parent="GridContainer"]
-visibility_layer = 2
-z_index = 1
-custom_minimum_size = Vector2(80, 112)
-layout_mode = 2
-script = ExtResource("3_1bvp3")
-max_cards = 1
-metadata/_custom_type_script = "uid://btwakv2103085"
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_o6xl0")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="CardDetailPanel" type="Panel" parent="UI"]
-offset_right = 219.0
-offset_bottom = 212.0
+unique_name_in_owner = true
+offset_left = 19.0
+offset_top = 18.0
+offset_right = 238.0
+offset_bottom = 253.0
 
 [node name="CardDetailContainer" type="VBoxContainer" parent="UI/CardDetailPanel"]
 layout_mode = 0
@@ -114,6 +71,10 @@ offset_bottom = 59.0
 layout_mode = 2
 text = "Nama"
 label_settings = SubResource("LabelSettings_choun")
+
+[node name="Kategori" type="Label" parent="UI/CardDetailPanel/CardDetailContainer"]
+layout_mode = 2
+text = "Kategori "
 
 [node name="Harga" type="Label" parent="UI/CardDetailPanel/CardDetailContainer"]
 layout_mode = 2
@@ -140,11 +101,14 @@ layout_mode = 2
 text = "Gula"
 
 [node name="StatsSummaryPanel" type="Panel" parent="UI"]
+unique_name_in_owner = true
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -225.0
-offset_bottom = 202.0
+offset_left = -244.0
+offset_top = 18.0
+offset_right = -19.0
+offset_bottom = 195.0
 grow_horizontal = 0
 
 [node name="StatsSummaryContainer" type="VBoxContainer" parent="UI/StatsSummaryPanel"]
@@ -178,7 +142,357 @@ text = "Lemak"
 layout_mode = 2
 text = "Gula"
 
-[node name="FoodCardDeckManager" type="Node" parent="."]
-script = ExtResource("5_tbgi4")
-deck = ExtResource("6_tefeu")
-metadata/_custom_type_script = "uid://bisyk4bowdvsf"
+[node name="TargetPanel" type="Panel" parent="UI"]
+unique_name_in_owner = true
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -244.0
+offset_top = 200.0
+offset_right = -19.0
+offset_bottom = 347.0
+grow_horizontal = 0
+
+[node name="StatsSummaryContainer" type="VBoxContainer" parent="UI/TargetPanel"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 9.0
+offset_right = 200.0
+offset_bottom = 59.0
+
+[node name="Karbohidrat" type="Label" parent="UI/TargetPanel/StatsSummaryContainer"]
+layout_mode = 2
+text = "Karbohidrat"
+
+[node name="Protein" type="Label" parent="UI/TargetPanel/StatsSummaryContainer"]
+layout_mode = 2
+text = "Protein"
+
+[node name="Vitamin" type="Label" parent="UI/TargetPanel/StatsSummaryContainer"]
+layout_mode = 2
+text = "Vitamin"
+
+[node name="Lemak" type="Label" parent="UI/TargetPanel/StatsSummaryContainer"]
+layout_mode = 2
+text = "Lemak"
+
+[node name="Gula" type="Label" parent="UI/TargetPanel/StatsSummaryContainer"]
+layout_mode = 2
+text = "Gula"
+
+[node name="CardHand" type="Panel" parent="UI"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 112)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -149.0
+offset_right = 40.0
+offset_bottom = -37.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_o6xl0")
+script = ExtResource("2_0xm2m")
+shape = SubResource("Resource_tefeu")
+max_cards = 8
+metadata/_custom_type_script = "uid://bbi8i6vef3f6y"
+
+[node name="CardSlotContainer" type="GridContainer" parent="UI"]
+unique_name_in_owner = true
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -166.0
+offset_top = 177.0
+offset_right = 166.0
+offset_bottom = 405.0
+grow_horizontal = 2
+columns = 4
+
+[node name="CardSlot" type="Panel" parent="UI/CardSlotContainer"]
+visibility_layer = 2
+z_index = 1
+custom_minimum_size = Vector2(80, 112)
+layout_mode = 2
+script = ExtResource("5_tipki")
+allowed_category = 3
+max_cards = 1
+metadata/_custom_type_script = "uid://btwakv2103085"
+
+[node name="Label" type="Label" parent="UI/CardSlotContainer/CardSlot"]
+layout_mode = 0
+offset_top = 48.0
+offset_right = 81.0
+offset_bottom = 71.0
+text = "Addons"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CardSlot5" type="Panel" parent="UI/CardSlotContainer"]
+visibility_layer = 2
+z_index = 1
+custom_minimum_size = Vector2(80, 112)
+layout_mode = 2
+script = ExtResource("5_tipki")
+allowed_category = 2
+metadata/_custom_type_script = "uid://btwakv2103085"
+
+[node name="Label" type="Label" parent="UI/CardSlotContainer/CardSlot5"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 47.0
+offset_right = 70.0
+offset_bottom = 70.0
+text = "Vitamin"
+
+[node name="CardSlot2" type="Panel" parent="UI/CardSlotContainer"]
+visibility_layer = 2
+z_index = 1
+custom_minimum_size = Vector2(80, 112)
+layout_mode = 2
+script = ExtResource("5_tipki")
+allowed_category = 2
+metadata/_custom_type_script = "uid://btwakv2103085"
+
+[node name="Label" type="Label" parent="UI/CardSlotContainer/CardSlot2"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 47.0
+offset_right = 69.0
+offset_bottom = 70.0
+text = "Vitamin"
+
+[node name="CardSlot7" type="Panel" parent="UI/CardSlotContainer"]
+visibility_layer = 2
+z_index = 1
+custom_minimum_size = Vector2(80, 112)
+layout_mode = 2
+script = ExtResource("5_tipki")
+allowed_category = 3
+max_cards = 1
+metadata/_custom_type_script = "uid://btwakv2103085"
+
+[node name="Label" type="Label" parent="UI/CardSlotContainer/CardSlot7"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 47.0
+offset_right = 69.0
+offset_bottom = 70.0
+text = "Power"
+horizontal_alignment = 1
+
+[node name="CardSlot4" type="Panel" parent="UI/CardSlotContainer"]
+visibility_layer = 2
+z_index = 1
+custom_minimum_size = Vector2(80, 112)
+layout_mode = 2
+script = ExtResource("5_tipki")
+metadata/_custom_type_script = "uid://btwakv2103085"
+
+[node name="Label" type="Label" parent="UI/CardSlotContainer/CardSlot4"]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 47.0
+offset_right = 64.0
+offset_bottom = 70.0
+text = "Karbo"
+
+[node name="CardSlot6" type="Panel" parent="UI/CardSlotContainer"]
+visibility_layer = 2
+z_index = 1
+custom_minimum_size = Vector2(80, 112)
+layout_mode = 2
+script = ExtResource("5_tipki")
+allowed_category = 1
+metadata/_custom_type_script = "uid://btwakv2103085"
+
+[node name="Label" type="Label" parent="UI/CardSlotContainer/CardSlot6"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 47.0
+offset_right = 69.0
+offset_bottom = 70.0
+text = "Protein"
+
+[node name="CardSlot3" type="Panel" parent="UI/CardSlotContainer"]
+visibility_layer = 2
+z_index = 1
+custom_minimum_size = Vector2(80, 112)
+layout_mode = 2
+script = ExtResource("5_tipki")
+allowed_category = 1
+metadata/_custom_type_script = "uid://btwakv2103085"
+
+[node name="Label" type="Label" parent="UI/CardSlotContainer/CardSlot3"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 47.0
+offset_right = 68.0
+offset_bottom = 70.0
+text = "Protein"
+
+[node name="CardSlot8" type="Panel" parent="UI/CardSlotContainer"]
+visibility_layer = 2
+z_index = 1
+custom_minimum_size = Vector2(80, 112)
+layout_mode = 2
+script = ExtResource("5_tipki")
+allowed_category = 3
+max_cards = 1
+metadata/_custom_type_script = "uid://btwakv2103085"
+
+[node name="Label" type="Label" parent="UI/CardSlotContainer/CardSlot8"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 47.0
+offset_right = 69.0
+offset_bottom = 70.0
+text = "Power"
+horizontal_alignment = 1
+
+[node name="ButtonContainer" type="VBoxContainer" parent="UI"]
+custom_minimum_size = Vector2(150, 100)
+offset_left = 984.0
+offset_top = 459.0
+offset_right = 1134.0
+offset_bottom = 632.0
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="ShopButton" type="Button" parent="UI/ButtonContainer"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+text = "Shop
+"
+
+[node name="PlayButton" type="Button" parent="UI/ButtonContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+text = "Play"
+
+[node name="MoneyLabel" type="Label" parent="UI/ButtonContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 45)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_tipki")
+text = "Uang: "
+
+[node name="SkorLabel" type="Label" parent="UI/ButtonContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 45)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_tipki")
+text = "Skor: "
+
+[node name="PileContainer" type="HBoxContainer" parent="UI"]
+offset_left = 19.0
+offset_top = 519.0
+offset_right = 183.0
+offset_bottom = 631.0
+
+[node name="DiscardPile" type="Panel" parent="UI/PileContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 112)
+layout_mode = 2
+script = ExtResource("7_o6xl0")
+metadata/_custom_type_script = "uid://d2l8uaoel5whd"
+
+[node name="Label" type="Label" parent="UI/PileContainer/DiscardPile"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 43.0
+offset_right = 70.0
+offset_bottom = 66.0
+text = "Discard"
+
+[node name="DrawPile" type="Panel" parent="UI/PileContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 112)
+layout_mode = 2
+script = ExtResource("7_o6xl0")
+metadata/_custom_type_script = "uid://d2l8uaoel5whd"
+
+[node name="Label" type="Label" parent="UI/PileContainer/DrawPile"]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 40.0
+offset_right = 61.0
+offset_bottom = 63.0
+text = "Draw"
+
+[node name="Trash" type="Panel" parent="UI"]
+custom_minimum_size = Vector2(80, 112)
+offset_left = 19.0
+offset_top = 403.0
+offset_right = 99.0
+offset_bottom = 515.0
+script = ExtResource("8_tipki")
+metadata/_custom_type_script = "uid://btwakv2103085"
+
+[node name="Label" type="Label" parent="UI/Trash"]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 47.0
+offset_right = 61.0
+offset_bottom = 70.0
+text = "Trash"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BuffContainer" type="HBoxContainer" parent="UI"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -166.0
+offset_top = 20.0
+offset_right = 166.0
+offset_bottom = 132.0
+grow_horizontal = 2
+
+[node name="CardSlot" type="Panel" parent="UI/BuffContainer"]
+custom_minimum_size = Vector2(80, 112)
+layout_mode = 2
+script = ExtResource("8_tipki")
+metadata/_custom_type_script = "uid://btwakv2103085"
+
+[node name="CardSlot2" type="Panel" parent="UI/BuffContainer"]
+custom_minimum_size = Vector2(80, 112)
+layout_mode = 2
+script = ExtResource("8_tipki")
+max_cards = 1
+metadata/_custom_type_script = "uid://btwakv2103085"
+
+[node name="CardSlot3" type="Panel" parent="UI/BuffContainer"]
+custom_minimum_size = Vector2(80, 112)
+layout_mode = 2
+script = ExtResource("8_tipki")
+max_cards = 1
+metadata/_custom_type_script = "uid://btwakv2103085"
+
+[node name="CardSlot4" type="Panel" parent="UI/BuffContainer"]
+custom_minimum_size = Vector2(80, 112)
+layout_mode = 2
+script = ExtResource("8_tipki")
+max_cards = 1
+metadata/_custom_type_script = "uid://btwakv2103085"
+
+[node name="ShopPanel" parent="." instance=ExtResource("9_85g3d")]
+visible = false
+z_index = 1000
+offset_left = 60.0
+offset_top = 141.0
+offset_right = 1096.0
+offset_bottom = 504.0
+
+[connection signal="card_added" from="UI/CardHand" to="." method="_on_card_hand_card_added"]
+[connection signal="container_full" from="UI/CardSlotContainer/CardSlot7" to="." method="_on_card_slot_6_container_full"]
+[connection signal="container_full" from="UI/CardSlotContainer/CardSlot6" to="." method="_on_card_slot_6_container_full"]
+[connection signal="container_full" from="UI/CardSlotContainer/CardSlot8" to="." method="_on_card_slot_6_container_full"]
+[connection signal="pressed" from="UI/ButtonContainer/ShopButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="UI/ButtonContainer/PlayButton" to="." method="_on_play_button_pressed"]

@@ -11,6 +11,14 @@
 		"layout_id": "default",
 		"tags": []
 	},
+	"res://custom_food_layout.tscn": {
+		"enabled": true,
+		"last_modified": 1778505883,
+		"layout_id": "custom_food_layout",
+		"tags": [
+			"food"
+		]
+	},
 	"res://examples/cards/standard_deck/standard_back_layout.tscn": {
 		"enabled": true,
 		"last_modified": 1778500164,
@@ -21,7 +29,7 @@
 	},
 	"res://examples/cards/standard_deck/standard_layout.tscn": {
 		"enabled": true,
-		"last_modified": 1778500164,
+		"last_modified": 1778505883,
 		"layout_id": "standard_layout",
 		"tags": [
 			"front"

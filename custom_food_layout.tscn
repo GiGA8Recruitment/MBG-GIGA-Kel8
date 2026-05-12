@@ -1,0 +1,178 @@
+[gd_scene load_steps=7 format=3 uid="uid://pv300mgh1qbj"]
+
+[ext_resource type="Script" uid="uid://ci8ju72qvgsyt" path="res://custom_food_layout.gd" id="1_n62c1"]
+[ext_resource type="Texture2D" uid="uid://c27sp8edpxqra" path="res://assets/KarboTemplate1.png" id="2_u4146"]
+[ext_resource type="FontFile" uid="uid://b05apd647gksd" path="res://assets/Minecraftia-Regular.ttf" id="3_i7u7y"]
+[ext_resource type="Texture2D" uid="uid://cljf003xu8hd3" path="res://assets/245281.jpg" id="3_n62c1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n62c1"]
+bg_color = Color(0.60038817, 0.60038817, 0.60038817, 0)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.9056227, 0.1289393, 0, 1)
+corner_radius_top_left = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i7u7y"]
+bg_color = Color(1, 1, 1, 1)
+
+[node name="CardLayout" type="SubViewportContainer"]
+texture_filter = 1
+offset_right = 80.0
+offset_bottom = 112.0
+script = ExtResource("1_n62c1")
+metadata/is_layout = true
+metadata/layout_id = "custom_food_layout"
+metadata/tags = ["food"]
+metadata/_custom_type_script = "uid://dm115oleoggyt"
+
+[node name="SubViewport" type="SubViewport" parent="."]
+handle_input_locally = false
+size = Vector2i(80, 112)
+render_target_update_mode = 4
+
+[node name="Border" type="PanelContainer" parent="SubViewport"]
+unique_name_in_owner = true
+visible = false
+z_index = 2
+offset_right = 80.0
+offset_bottom = 112.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_n62c1")
+
+[node name="BG" type="PanelContainer" parent="SubViewport"]
+z_index = -1
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 78.0
+offset_bottom = 110.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_i7u7y")
+
+[node name="Template" type="TextureRect" parent="SubViewport"]
+unique_name_in_owner = true
+z_index = 1
+texture_filter = 1
+offset_left = -24.0
+offset_top = -10.0
+offset_right = 104.0
+offset_bottom = 118.0
+texture = ExtResource("2_u4146")
+expand_mode = 1
+
+[node name="Nama" type="Label" parent="SubViewport"]
+unique_name_in_owner = true
+z_index = 1
+texture_filter = 1
+offset_left = 8.0
+offset_top = 3.0
+offset_right = 62.0
+offset_bottom = 19.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 3
+theme_override_constants/paragraph_spacing = 0
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("3_i7u7y")
+theme_override_font_sizes/font_size = 8
+text = "Nasi Putih"
+vertical_alignment = 1
+
+[node name="Image" type="TextureRect" parent="SubViewport"]
+unique_name_in_owner = true
+offset_left = 5.0
+offset_top = 21.0
+offset_right = 75.0
+offset_bottom = 58.0
+texture = ExtResource("3_n62c1")
+expand_mode = 1
+
+[node name="Harga" type="Label" parent="SubViewport"]
+unique_name_in_owner = true
+z_index = 1
+texture_filter = 1
+offset_left = 65.0
+offset_top = 2.0
+offset_right = 77.0
+offset_bottom = 16.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_i7u7y")
+theme_override_font_sizes/font_size = 8
+text = "20"
+horizontal_alignment = 1
+
+[node name="Karbohidrat" type="Label" parent="SubViewport"]
+unique_name_in_owner = true
+z_index = 1
+offset_left = 26.0
+offset_top = 63.0
+offset_right = 46.0
+offset_bottom = 79.0
+scale = Vector2(0.8, 0.8)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_i7u7y")
+theme_override_font_sizes/font_size = 8
+text = "25"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Protein" type="Label" parent="SubViewport"]
+unique_name_in_owner = true
+z_index = 1
+offset_left = 62.0
+offset_top = 63.0
+offset_right = 82.0
+offset_bottom = 79.0
+scale = Vector2(0.8, 0.8)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_i7u7y")
+theme_override_font_sizes/font_size = 8
+text = "25"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Lemak" type="Label" parent="SubViewport"]
+unique_name_in_owner = true
+z_index = 1
+offset_left = 26.0
+offset_top = 76.0
+offset_right = 46.0
+offset_bottom = 92.0
+scale = Vector2(0.8, 0.8)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_i7u7y")
+theme_override_font_sizes/font_size = 8
+text = "25"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Gula" type="Label" parent="SubViewport"]
+unique_name_in_owner = true
+z_index = 1
+offset_left = 62.0
+offset_top = 76.0
+offset_right = 82.0
+offset_bottom = 92.0
+scale = Vector2(0.8, 0.8)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_i7u7y")
+theme_override_font_sizes/font_size = 8
+text = "25"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Vitamin" type="Label" parent="SubViewport"]
+unique_name_in_owner = true
+z_index = 1
+offset_left = 26.0
+offset_top = 89.0
+offset_right = 46.0
+offset_bottom = 105.0
+scale = Vector2(0.8, 0.8)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_i7u7y")
+theme_override_font_sizes/font_size = 8
+text = "25"
+horizontal_alignment = 1
+vertical_alignment = 1
