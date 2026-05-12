@@ -55,6 +55,7 @@
 [ext_resource type="Resource" uid="uid://d0strvakycwlt" path="res://examples/cards/standard_deck/spade/three_spade.tres" id="52_ndjau"]
 [ext_resource type="Resource" uid="uid://cyfnm6nvviloh" path="res://examples/cards/standard_deck/spade/two_spade.tres" id="53_03ogt"]
 
+
 [resource]
 script = ExtResource("2_2gyh5")
 deck_name = &"Balatro"

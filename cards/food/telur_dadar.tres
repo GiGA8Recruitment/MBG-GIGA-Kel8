@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="FoodCardResource" load_steps=3 format=3 uid="uid://b5ie40kobg0s1"]
+
+[ext_resource type="Texture2D" uid="uid://b0x7phiit85vm" path="res://assets/images/bahan/telurdadar.png" id="1_ux5m4"]
+[ext_resource type="Script" uid="uid://clcv636replkf" path="res://FoodCardResource.gd" id="2_0v33l"]
+
+[resource]
+script = ExtResource("2_0v33l")
+card_name = "Telur Dadar"
+card_image = ExtResource("1_ux5m4")
+kategori = 1
+harga = 5
+protein = 10
+lemak = 10
+front_layout_name = &"food_layout"

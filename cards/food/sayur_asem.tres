@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="FoodCardResource" load_steps=3 format=3 uid="uid://bltxstwrhirb2"]
+
+[ext_resource type="Texture2D" uid="uid://b1ojmsubaqgu5" path="res://assets/images/bahan/sayurasem.png" id="1_sku52"]
+[ext_resource type="Script" uid="uid://clcv636replkf" path="res://FoodCardResource.gd" id="2_pipwm"]
+
+[resource]
+script = ExtResource("2_pipwm")
+card_name = "Sayur Asem"
+card_image = ExtResource("1_sku52")
+kategori = 2
+harga = 10
+gula = 10
+vitamin = 15
+front_layout_name = &"food_layout"

@@ -1,15 +1,14 @@
 [gd_resource type="Resource" script_class="FoodCardResource" load_steps=3 format=3 uid="uid://gw7b3m2lyjtc"]
 
 [ext_resource type="Script" uid="uid://clcv636replkf" path="res://FoodCardResource.gd" id="1_efelb"]
-[ext_resource type="Texture2D" uid="uid://d874vvff7sas" path="res://assets/images/miegoreng.png" id="1_lvhwb"]
+[ext_resource type="Texture2D" uid="uid://d874vvff7sas" path="res://assets/images/bahan/miegoreng.png" id="1_lvhwb"]
 
 [resource]
 script = ExtResource("1_efelb")
 card_name = "Mie Goreng"
 card_image = ExtResource("1_lvhwb")
 harga = 15
-karbohidrat = 15
-lemak = 10
+karbohidrat = 20
+lemak = 15
 front_layout_name = &"food_layout"
-back_layout_name = &"food_layout"
 metadata/_custom_type_script = "uid://clcv636replkf"

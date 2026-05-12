@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="FoodCardResource" load_steps=3 format=3 uid="uid://bjnv3kk5xthi4"]
+
+[ext_resource type="Texture2D" uid="uid://cdn8wix0er6yi" path="res://assets/images/bahan/eskrim.png" id="1_8b56j"]
+[ext_resource type="Script" uid="uid://clcv636replkf" path="res://FoodCardResource.gd" id="2_fxhjv"]
+
+[resource]
+script = ExtResource("2_fxhjv")
+card_name = "Es Krim"
+card_image = ExtResource("1_8b56j")
+kategori = 3
+rarity = 1
+harga = 10
+karbohidrat = 5
+lemak = 10
+gula = 30
+front_layout_name = &"food_layout"

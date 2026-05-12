@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="FoodCardResource" load_steps=3 format=3 uid="uid://l0l84tqut2eb"]
+
+[ext_resource type="Texture2D" uid="uid://c8r0nbuf7dy5f" path="res://assets/images/bahan/doriasammanis.png" id="1_qfbf7"]
+[ext_resource type="Script" uid="uid://clcv636replkf" path="res://FoodCardResource.gd" id="2_v71ur"]
+
+[resource]
+script = ExtResource("2_v71ur")
+card_name = "Dori Asam Manis"
+card_image = ExtResource("1_qfbf7")
+kategori = 1
+rarity = 2
+harga = 30
+protein = 30
+lemak = 15
+gula = 10
+front_layout_name = &"food_layout"

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="FoodCardResource" load_steps=3 format=3 uid="uid://b7p05lhrqdvrr"]
+
+[ext_resource type="Texture2D" uid="uid://cjg3w5c71rxb6" path="res://assets/images/bahan/abonsapi.png" id="1_46fum"]
+[ext_resource type="Script" uid="uid://clcv636replkf" path="res://FoodCardResource.gd" id="2_d3ap1"]
+
+[resource]
+script = ExtResource("2_d3ap1")
+card_name = "Abon Sapi"
+card_image = ExtResource("1_46fum")
+kategori = 3
+harga = 5
+protein = 5
+front_layout_name = &"food_layout"

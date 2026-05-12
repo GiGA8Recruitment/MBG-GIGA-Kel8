@@ -20,7 +20,6 @@ func _update_display() -> void:
 		return
 	template_image.texture = data.card_image
 	nama_label.text = data.card_name
-	art_image.texture = data.art_image
 	harga_label.text = str(data.harga)
 	karbo_label.text = str(data.karbohidrat)
 	protein_label.text = str(data.protein)

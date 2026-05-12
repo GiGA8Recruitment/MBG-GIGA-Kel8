@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="FoodCardResource" load_steps=3 format=3 uid="uid://dt7ju1sijyxpm"]
+
+[ext_resource type="Texture2D" uid="uid://c3vv6rq4ly50u" path="res://assets/images/bahan/telurbalado.png" id="1_rc3r0"]
+[ext_resource type="Script" uid="uid://clcv636replkf" path="res://FoodCardResource.gd" id="2_r2skc"]
+
+[resource]
+script = ExtResource("2_r2skc")
+card_name = "Telur Balado"
+card_image = ExtResource("1_rc3r0")
+kategori = 1
+harga = 15
+protein = 20
+lemak = 20
+vitamin = 5
+front_layout_name = &"food_layout"

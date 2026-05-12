@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="FoodCardResource" load_steps=3 format=3 uid="uid://fio6ogleeany"]
+
+[ext_resource type="Texture2D" uid="uid://bltcg70r38i6m" path="res://assets/images/bahan/biskuit.png" id="1_b1vua"]
+[ext_resource type="Script" uid="uid://clcv636replkf" path="res://FoodCardResource.gd" id="2_jv8wm"]
+
+[resource]
+script = ExtResource("2_jv8wm")
+card_name = "Biskuit"
+card_image = ExtResource("1_b1vua")
+kategori = 3
+harga = 5
+karbohidrat = 10
+gula = 15
+front_layout_name = &"food_layout"

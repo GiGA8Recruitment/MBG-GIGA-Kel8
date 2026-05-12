@@ -5,13 +5,14 @@
 [ext_resource type="Script" uid="uid://bisyk4bowdvsf" path="res://addons/simple_cards/deck/manager/card_deck_manager.gd" id="3_hg8is"]
 [ext_resource type="Resource" uid="uid://u1x8i453q018" path="res://examples/cards/standard_deck/standard_deck.tres" id="4_2a7na"]
 [ext_resource type="FontFile" uid="uid://fpoco0u13011" path="res://examples/cards/standard_deck/KarenFat.ttf" id="4_gmp31"]
-[ext_resource type="Script" uid="uid://d2l8uaoel5whd" path="res://addons/simple_cards/containers/pile/card_pile.gd" id="4_oq12x"]
+[ext_resource type="Script" uid="uid://d2l8uaoel5whd" path="res://addons/simple_cards/card/containers/pile/card_pile.gd" id="4_oq12x"]
 [ext_resource type="Script" uid="uid://cllotwm1jb3ta" path="res://examples/balatro/combo_label.gd" id="5_eqskn"]
-[ext_resource type="Script" uid="uid://bbi8i6vef3f6y" path="res://addons/simple_cards/containers/hand/card_hand.gd" id="5_gjekf"]
+[ext_resource type="Script" uid="uid://bbi8i6vef3f6y" path="res://addons/simple_cards/card/containers/hand/card_hand.gd" id="5_gjekf"]
 [ext_resource type="Script" uid="uid://cgtxv1fnflwfu" path="res://addons/simple_cards/shape/premade_shapes/arc_shape.gd" id="7_oq12x"]
 [ext_resource type="Script" uid="uid://cle02hultetj5" path="res://addons/simple_cards/shape/premade_shapes/stack_shape.gd" id="9_gmp31"]
 [ext_resource type="Script" uid="uid://b1s6x4iyt2pps" path="res://addons/simple_cards/shape/premade_shapes/line_shape.gd" id="10_asqof"]
 [ext_resource type="Script" uid="uid://qd3kangeiqg" path="res://addons/simple_cards/shape/premade_shapes/grid_shape.gd" id="11_gmp31"]
+
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m6hid"]
 bg_color = Color(0.16078432, 0.2784314, 0.20784314, 1)

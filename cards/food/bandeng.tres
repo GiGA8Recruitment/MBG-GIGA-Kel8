@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="FoodCardResource" load_steps=3 format=3 uid="uid://bb787f5pwdsm3"]
+
+[ext_resource type="Texture2D" uid="uid://dypvuffd77hyu" path="res://assets/images/bahan/bandeng.png" id="1_8rgsf"]
+[ext_resource type="Script" uid="uid://clcv636replkf" path="res://FoodCardResource.gd" id="2_6dkot"]
+
+[resource]
+script = ExtResource("2_6dkot")
+card_name = "Bandeng"
+card_image = ExtResource("1_8rgsf")
+kategori = 1
+rarity = 1
+harga = 20
+protein = 25
+lemak = 15
+front_layout_name = &"food_layout"

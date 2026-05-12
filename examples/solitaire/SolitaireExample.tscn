@@ -9,8 +9,9 @@
 [ext_resource type="Script" uid="uid://b1s6x4iyt2pps" path="res://addons/simple_cards/shape/premade_shapes/line_shape.gd" id="7_resxj"]
 [ext_resource type="Script" uid="uid://du1ike80fkx83" path="res://addons/simple_cards/mat/card_mat.gd" id="8_303tp"]
 [ext_resource type="Script" uid="uid://ddqdtbqqh2xxi" path="res://examples/solitaire/fan_tail_shape.gd" id="10_008rh"]
-[ext_resource type="Script" uid="uid://d2l8uaoel5whd" path="res://addons/simple_cards/containers/pile/card_pile.gd" id="10_x6rcj"]
+[ext_resource type="Script" uid="uid://d2l8uaoel5whd" path="res://addons/simple_cards/card/containers/pile/card_pile.gd" id="10_x6rcj"]
 [ext_resource type="Script" uid="uid://d1of64dbex4mm" path="res://examples/solitaire/solitaire_undo.gd" id="11_undo"]
+
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qytrh"]
 bg_color = Color(0.1619519, 0.27889124, 0.20867068, 1)

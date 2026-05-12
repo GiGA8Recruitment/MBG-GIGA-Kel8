@@ -54,6 +54,7 @@ func _on_card_dropped(card: Card):
 
 
 func _on_card_added(card: Card, _index: int):
+	card.is_front_face = true
 	card.card_clicked.connect(_show_details)
 	card.drag_started.connect(_show_details)
 	

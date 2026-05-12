@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="FoodCardResource" load_steps=3 format=3 uid="uid://d3nxsm8w48nmv"]
+
+[ext_resource type="Texture2D" uid="uid://5q468sxeu6jl" path="res://assets/images/bahan/rotitawar.png" id="1_o6mby"]
+[ext_resource type="Script" uid="uid://clcv636replkf" path="res://FoodCardResource.gd" id="2_yt6ah"]
+
+[resource]
+script = ExtResource("2_yt6ah")
+card_name = "Roti Tawar"
+category = "Karbo"
+card_image = ExtResource("1_o6mby")
+harga = 10
+karbohidrat = 15
+gula = 10
+front_layout_name = &"food_layout"

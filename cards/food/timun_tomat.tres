@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="FoodCardResource" load_steps=3 format=3 uid="uid://dgajgu7osnk5r"]
+
+[ext_resource type="Texture2D" uid="uid://ygia1tuv4rua" path="res://assets/images/bahan/timuntomat.png" id="1_7rlum"]
+[ext_resource type="Script" uid="uid://clcv636replkf" path="res://FoodCardResource.gd" id="2_2smig"]
+
+[resource]
+script = ExtResource("2_2smig")
+card_name = "Timun Tomat"
+card_image = ExtResource("1_7rlum")
+kategori = 2
+harga = 5
+vitamin = 5
+front_layout_name = &"food_layout"

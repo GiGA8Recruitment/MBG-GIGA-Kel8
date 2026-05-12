@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="FoodCardResource" load_steps=3 format=3 uid="uid://b1jtjx23feqi"]
+
+[ext_resource type="Texture2D" uid="uid://dtjms6dv0dh83" path="res://assets/images/bahan/jeruk.png" id="1_7w8e4"]
+[ext_resource type="Script" uid="uid://clcv636replkf" path="res://FoodCardResource.gd" id="2_146wp"]
+
+[resource]
+script = ExtResource("2_146wp")
+card_name = "Jeruk"
+card_image = ExtResource("1_7w8e4")
+kategori = 3
+harga = 5
+gula = 5
+vitamin = 5
+front_layout_name = &"food_layout"

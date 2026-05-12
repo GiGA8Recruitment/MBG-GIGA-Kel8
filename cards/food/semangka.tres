@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="FoodCardResource" load_steps=3 format=3 uid="uid://f2ays7ptf8nx"]
+
+[ext_resource type="Texture2D" uid="uid://d34lm6t5khipy" path="res://assets/images/bahan/semangka.png" id="1_40xf4"]
+[ext_resource type="Script" uid="uid://clcv636replkf" path="res://FoodCardResource.gd" id="2_4y26f"]
+
+[resource]
+script = ExtResource("2_4y26f")
+card_name = "Semangka"
+card_image = ExtResource("1_40xf4")
+kategori = 3
+harga = 10
+gula = 15
+vitamin = 10
+front_layout_name = &"food_layout"

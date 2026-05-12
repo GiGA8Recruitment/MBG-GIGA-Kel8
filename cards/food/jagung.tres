@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="FoodCardResource" load_steps=3 format=3 uid="uid://bk7fvwotb3bti"]
+
+[ext_resource type="Texture2D" uid="uid://c4khqvklhndcp" path="res://assets/images/bahan/jagung.png" id="1_joxcy"]
+[ext_resource type="Script" uid="uid://clcv636replkf" path="res://FoodCardResource.gd" id="2_fi7kc"]
+
+[resource]
+script = ExtResource("2_fi7kc")
+card_name = "Jagung"
+category = "Karbo"
+card_image = ExtResource("1_joxcy")
+harga = 5
+karbohidrat = 5
+gula = 10
+vitamin = 5
+front_layout_name = &"food_layout"

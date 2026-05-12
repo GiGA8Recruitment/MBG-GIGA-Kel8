@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="FoodCardResource" load_steps=3 format=3 uid="uid://1wq1fvp87hgp"]
+
+[ext_resource type="Texture2D" uid="uid://dvdri3xjssgs6" path="res://assets/images/bahan/susuuht.png" id="1_itbwe"]
+[ext_resource type="Script" uid="uid://clcv636replkf" path="res://FoodCardResource.gd" id="2_jibj8"]
+
+[resource]
+script = ExtResource("2_jibj8")
+card_name = "Susu Uht"
+card_image = ExtResource("1_itbwe")
+kategori = 3
+harga = 10
+protein = 5
+lemak = 5
+gula = 10
+vitamin = 5
+front_layout_name = &"food_layout"
