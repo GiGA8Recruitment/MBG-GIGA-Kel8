@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="FoodCardResource" load_steps=3 format=3 uid="uid://c3k7eeitliuqx"]
+
+[ext_resource type="Texture2D" uid="uid://bhdkwlolnmj1b" path="res://assets/images/bahan/tempebacem.png" id="1_fu6nm"]
+[ext_resource type="Script" uid="uid://clcv636replkf" path="res://FoodCardResource.gd" id="2_rry3q"]
+
+[resource]
+script = ExtResource("2_rry3q")
+card_name = "Tempe Bacem"
+category = "Protein"
+card_image = ExtResource("1_fu6nm")
+harga = 10
+protein = 10
+gula = 5
+front_layout_name = &"food_layout"

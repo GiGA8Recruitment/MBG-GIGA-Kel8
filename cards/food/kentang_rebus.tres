@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="FoodCardResource" load_steps=3 format=3 uid="uid://gfdgdhe682ch"]
+
+[ext_resource type="Texture2D" uid="uid://10ykd71x1lyd" path="res://assets/images/bahan/kentangrebus.png" id="1_m8lmp"]
+[ext_resource type="Script" uid="uid://clcv636replkf" path="res://FoodCardResource.gd" id="2_qc7iv"]
+
+[resource]
+script = ExtResource("2_qc7iv")
+card_name = "Kentang Rebus"
+category = "Karbo"
+card_image = ExtResource("1_m8lmp")
+harga = 15
+karbohidrat = 15
+gula = 5
+front_layout_name = &"food_layout"

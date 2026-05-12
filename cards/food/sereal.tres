@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="FoodCardResource" load_steps=3 format=3 uid="uid://x742s2nks7jl"]
+
+[ext_resource type="Texture2D" uid="uid://j4eurejtf5so" path="res://assets/images/bahan/sereal.png" id="1_gmks8"]
+[ext_resource type="Script" uid="uid://clcv636replkf" path="res://FoodCardResource.gd" id="2_jbt7r"]
+
+[resource]
+script = ExtResource("2_jbt7r")
+card_name = "sereal"
+category = "Karbo"
+card_image = ExtResource("1_gmks8")
+harga = 5
+karbohidrat = 15
+gula = 15
+front_layout_name = &"food_layout"

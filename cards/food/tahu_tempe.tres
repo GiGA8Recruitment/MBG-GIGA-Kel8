@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="FoodCardResource" load_steps=3 format=3 uid="uid://cbre57a3g6g7r"]
+
+[ext_resource type="Texture2D" uid="uid://bugtt4bspl5i" path="res://assets/images/bahan/tahutempe.png" id="1_kxv50"]
+[ext_resource type="Script" uid="uid://clcv636replkf" path="res://FoodCardResource.gd" id="2_dmywo"]
+
+[resource]
+script = ExtResource("2_dmywo")
+card_name = "Tahu Tempe"
+category = "Protein"
+card_image = ExtResource("1_kxv50")
+harga = 10
+protein = 15
+lemak = 10
+front_layout_name = &"food_layout"

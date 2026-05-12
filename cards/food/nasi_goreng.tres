@@ -1,15 +1,17 @@
 [gd_resource type="Resource" script_class="FoodCardResource" load_steps=3 format=3 uid="uid://cl3wsk0jv27yu"]
 
-[ext_resource type="Texture2D" uid="uid://bep4fhpt1a08g" path="res://assets/images/nasigoreng.png" id="1_h6s7x"]
+[ext_resource type="Texture2D" uid="uid://bep4fhpt1a08g" path="res://assets/images/bahan/nasigoreng.png" id="1_ov1os"]
 [ext_resource type="Script" uid="uid://clcv636replkf" path="res://FoodCardResource.gd" id="2_g1m01"]
 
 [resource]
 script = ExtResource("2_g1m01")
 card_name = "Nasi Goreng"
-card_image = ExtResource("1_h6s7x")
-rarity = 1
+category = "Karbo"
+card_image = ExtResource("1_ov1os")
 harga = 25
-karbohidrat = 15
+karbohidrat = 20
+protein = 5
+lemak = 10
 front_layout_name = &"food_layout"
 back_layout_name = &"food_layout"
 metadata/_custom_type_script = "uid://clcv636replkf"

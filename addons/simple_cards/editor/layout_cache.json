@@ -21,7 +21,7 @@
 	},
 	"res://examples/cards/standard_deck/standard_back_layout.tscn": {
 		"enabled": true,
-		"last_modified": 1777804406.0,
+		"last_modified": 1778500164,
 		"layout_id": "standard_back_layout",
 		"tags": [
 			"back"
@@ -37,7 +37,7 @@
 	},
 	"res://food_layout.tscn": {
 		"enabled": true,
-		"last_modified": 1777851326.0,
+		"last_modified": 1778500164,
 		"layout_id": "food_layout",
 		"tags": [
 			"food"

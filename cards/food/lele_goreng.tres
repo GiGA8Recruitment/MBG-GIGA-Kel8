@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="FoodCardResource" load_steps=3 format=3 uid="uid://dd2gb7xbxxbna"]
+
+[ext_resource type="Texture2D" uid="uid://br5fbetue7yq5" path="res://assets/images/bahan/lelegoreng.png" id="1_crbos"]
+[ext_resource type="Script" uid="uid://clcv636replkf" path="res://FoodCardResource.gd" id="2_gal4a"]
+
+[resource]
+script = ExtResource("2_gal4a")
+card_name = "Lele Goreng"
+category = "Protein"
+card_image = ExtResource("1_crbos")
+harga = 10
+protein = 15
+lemak = 15
+front_layout_name = &"food_layout"

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="FoodCardResource" load_steps=3 format=3 uid="uid://c82kfie2dbjvh"]
+
+[ext_resource type="Texture2D" uid="uid://iop80pehflb8" path="res://assets/images/bahan/saladsayur.png" id="1_66dtt"]
+[ext_resource type="Script" uid="uid://clcv636replkf" path="res://FoodCardResource.gd" id="2_0w7fg"]
+
+[resource]
+script = ExtResource("2_0w7fg")
+card_name = "Salad Sayur"
+category = "Sayur"
+card_image = ExtResource("1_66dtt")
+harga = 10
+vitamin = 10
+front_layout_name = &"food_layout"
