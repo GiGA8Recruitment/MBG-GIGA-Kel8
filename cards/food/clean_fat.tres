@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="FoodCardResource" load_steps=3 format=3 uid="uid://bj3dmyde3rjre"]
 
-[ext_resource type="Texture2D" uid="uid://ch802psllw4a2" path="res://assets/images/slot_wild.png" id="1_jgtnx"]
+[ext_resource type="Texture2D" uid="uid://cnehvhxchk3ku" path="res://assets/images/tisu_minyak.png" id="1_jgtnx"]
 [ext_resource type="Script" uid="uid://clcv636replkf" path="res://FoodCardResource.gd" id="2_fj44d"]
 
 [resource]

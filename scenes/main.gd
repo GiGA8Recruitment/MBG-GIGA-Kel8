@@ -106,31 +106,27 @@ func _sum_stats():
 			FoodCardResource.Powerup.SUPPLEMENT:
 				vitamin = int(vitamin * 1.5)
 			FoodCardResource.Powerup.REHEAT:
-				koin = int(koin * 2.5)
+				koin = int(koin * 1.5)
 				karbohidrat += 20
 			FoodCardResource.Powerup.DOUBLE_CARBS:
 				karbohidrat *= 2
 			FoodCardResource.Powerup.OVERCOOK:
-				if gula == 0 and lemak == 0:
-					harga += 20
-					karbohidrat = int(karbohidrat * 1.75)
-					protein = int(protein * 1.75)
-					vitamin = int(vitamin * 1.75)
+				gula = 0
+				lemak= 0
+				karbohidrat = int(karbohidrat * 0.75)
+				protein = int(protein * 0.75)
+				vitamin = int(vitamin * 0.75)
 			FoodCardResource.Powerup.SEAFOOD_BOOST:
 				if "seafood" in daftar_makanan:
 					protein = int(protein * 1.2)
 			FoodCardResource.Powerup.KETO_DIET:
 				if karbohidrat >= 20:
-					karbohidrat -= 20
 					protein *= 2
 			FoodCardResource.Powerup.PERFECT_BALANCE:
 				if gula == 0 and lemak == 0:
-					harga += 20
 					karbohidrat += 20
 					protein += 20
 					vitamin += 20
-					gula = 0
-					lemak = 0
 					koin *= 2
 
 	stat_panel.get_node("StatsSummaryContainer/Harga").text = "Harga: " + str(harga)

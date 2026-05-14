@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ciidamgiqhrw6"
-path="res://.godot/imported/ayamgoreng.png-51890777de174e8320945492a3c24bd1.ctex"
+uid="uid://cnehvhxchk3ku"
+path="res://.godot/imported/tisu_minyak.png-c669ed281f5d7651e95cf272d36b5307.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/ayamgoreng.png"
-dest_files=["res://.godot/imported/ayamgoreng.png-51890777de174e8320945492a3c24bd1.ctex"]
+source_file="res://assets/images/tisu_minyak.png"
+dest_files=["res://.godot/imported/tisu_minyak.png-c669ed281f5d7651e95cf272d36b5307.ctex"]
 
 [params]
 
