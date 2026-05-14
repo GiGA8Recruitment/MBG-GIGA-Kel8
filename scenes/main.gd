@@ -13,7 +13,7 @@ extends Node
 	%CardSlotContainer/CardSlot7, 
 	%CardSlotContainer/CardSlot8
 ]
-@onready var buff_slots: Array		= [
+@onready var buff_slots: Array	= [
 	%BuffSlotContainer/CardSlot,
 	%BuffSlotContainer/CardSlot2,
 	%BuffSlotContainer/CardSlot3,
@@ -39,28 +39,38 @@ extends Node
 
 # TARGET
 
-@onready var TARGET_KARBO: int 		= 10
-@onready var TARGET_PROTEIN: int 	= 10
-@onready var TARGET_VITAMIN: int 	= 10
-@onready var MAX_LEMAK: int 		= 10
-@onready var MAX_GULA: int 			= 10
+@onready var TARGET_KARBO 	= 10
+@onready var TARGET_PROTEIN = 10
+@onready var TARGET_VITAMIN = 10
+@onready var MAX_LEMAK	 	= 10
+@onready var MAX_GULA 		= 10
 
 # CURRENT GIZI
 
-var CURRENT_KARBO: int = 0
-var CURRENT_PROTEIN: int = 0
-var CURRENT_VITAMIN: int = 0
-var CURRENT_LEMAK: int = 0
-var CURRENT_GULA: int = 0
-var CURRENT_HARGA: int = 0
+var current_stats := MealStats.new()
 
 # CURRENT PLAYER STATS
 
-var CURRENT_MONEY: int = 100
-var CURRENT_SCORE: int = 0
-var CURRENT_LIVES: int = 3
+var CURRENT_MONEY: int 		= 100
+var CURRENT_SCORE: int 		= 0
+var CURRENT_LIVES: int 		= 3
 var CURRENT_DIFFICULTY: int = 1
-var NEXT_SCORE = 1000
+var NEXT_DIFF_SCORE: int 	= 1000
+var NEXT_BUFF_SCORE: int	= 5000
+
+# STATE
+
+enum GameState {
+	SHOP,
+	PREPARE,
+	EVALUATE,
+	GAME_OVER
+}
+
+# CONST
+
+const STARTING_HAND_SIZE = 10
+const DRAW_SIZE = 5
 
 func _ready() -> void:
 	play_button.disabled = true
@@ -83,36 +93,93 @@ func _ready() -> void:
 	print_score()
 	print_lives()
 	display_target()
+
+func _on_card_added(card: Card, _index: int):
+	card.is_front_face = true
+	card.card_clicked.connect(show_details)
+	card.drag_started.connect(show_details)
 	
-func evaluate_meal():
-	var success = true
-	var failed_reasons = []
+func _on_card_back_to_hand(card: Card):
+	card.move_to(player_hand)
+	current_stats = StatCalculator.calculate(card_slots)
+	stat_panel.display(current_stats)
+	
+#func _on_card_dropped(card: Card):
+	#_sum_stats()
+	#play_button.disabled = false
+	
+func _on_card_dropped(card: Card):
+	current_stats = StatCalculator.calculate(card_slots)
+	stat_panel.display(current_stats)
+	play_button.disabled = false
 
-	if CURRENT_KARBO < TARGET_KARBO:
-		success = false
-		failed_reasons.append("Karbo kurang")
+#func _on_card_back_to_hand(card: Card):
+	#card.move_to(player_hand)
+	#_sum_stats()
+	
+func _on_card_dropped_on_trash_slot(card: Card):
+	if CURRENT_MONEY < 5:
+		print("uang tdk cukup")
+		return
+	subtract_money(5)
+	discard_card(card)
+	draw_card(1)
+	#return_money(card)
 
-	if CURRENT_PROTEIN < TARGET_PROTEIN:
-		success = false
-		failed_reasons.append("Protein kurang")
-
-	if CURRENT_VITAMIN < TARGET_VITAMIN:
-		success = false
-		failed_reasons.append("Vitamin kurang")
-
-	if CURRENT_GULA > MAX_GULA:
-		success = false
-		failed_reasons.append("Gula terlalu tinggi")
-
-	if CURRENT_LEMAK > MAX_LEMAK:
-		success = false
-		failed_reasons.append("Lemak terlalu tinggi")
-
-	if success:
+	print_money()
+	
+func _on_shop_pressed():
+	if shop_panel.visible:
+		close_shop()
+		return
+	open_shop()
+	
+func _on_play_pressed():
+	current_stats = StatCalculator.calculate(card_slots)
+	apply_buffs(current_stats)
+	stat_panel.display(current_stats)
+	var result = MealEvaluator.evaluate(
+		current_stats,
+		TARGET_KARBO,
+		TARGET_PROTEIN,
+		TARGET_VITAMIN,
+		MAX_GULA,
+		MAX_LEMAK
+	)
+	if result.success:
 		round_success()
 	else:
-		round_failed(failed_reasons)
-		
+		round_failed(result.reasons)
+	
+#func evaluate_meal():
+	#var success = true
+	#var failed_reasons = []
+#
+	#if CURRENT_KARBO < TARGET_KARBO:
+		#success = false
+		#failed_reasons.append("Karbo kurang")
+#
+	#if CURRENT_PROTEIN < TARGET_PROTEIN:
+		#success = false
+		#failed_reasons.append("Protein kurang")
+#
+	#if CURRENT_VITAMIN < TARGET_VITAMIN:
+		#success = false
+		#failed_reasons.append("Vitamin kurang")
+#
+	#if CURRENT_GULA > MAX_GULA:
+		#success = false
+		#failed_reasons.append("Gula terlalu tinggi")
+#
+	#if CURRENT_LEMAK > MAX_LEMAK:
+		#success = false
+		#failed_reasons.append("Lemak terlalu tinggi")
+#
+	#if success:
+		#round_success()
+	#else:
+		#round_failed(failed_reasons)
+		#
 func round_success():
 	print("ROUND BERHASIL")
 
@@ -120,13 +187,13 @@ func round_success():
 	var reward_score = 100 * CURRENT_DIFFICULTY
 
 	CURRENT_MONEY += reward_money
-	CURRENT_SCORE += reward_score
+	CURRENT_MONEY += reward_score
 
 	print_money()
 	print_score()
 	print_lives()
 
-	add_difficulty()
+	increase_difficulty()
 	next_round()
 	display_target()
 	
@@ -152,7 +219,7 @@ func round_failed(reasons: Array):
 		
 func next_round():
 	clear_board()
-	draw_card()
+	draw_card(5)
 
 func clear_board():
 	for slot in card_slots:
@@ -176,24 +243,17 @@ func display_target():
 
 
 	
-func _on_card_dropped_on_trash_slot(card: Card):
-	discard_card(card)
-	return_money(card)
-	print_money()
+
 	
 func return_money(card: Card):
 	var data = card.card_data as FoodCardResource
-	CURRENT_MONEY += (data.harga / 2)
+	CURRENT_MONEY += int(data.harga / 2)
 
 func draw_starting_hand():
-	await draw_pile.deal_to(player_hand, 10, 0.4, 0.1)
+	await draw_pile.deal_to(player_hand, STARTING_HAND_SIZE, 0.4, 0.1)
 	print(draw_pile.cards)
 	
-func _on_shop_pressed():
-	if shop_panel.visible:
-		close_shop()
-		return
-	open_shop()
+
 	
 func open_shop():
 	shop_panel.show()
@@ -201,13 +261,15 @@ func open_shop():
 func close_shop():
 	shop_panel.hide()
 	
-func draw_card() -> void:
+func draw_card(amount) -> void:
 	if draw_pile.is_empty():
 		print("no card in draw pile")
 		await discard_pile.move_all_to(draw_pile, 0)
 		draw_pile.shuffle()
-	await draw_pile.deal_to(player_hand, 1, 0.3)
+	await draw_pile.deal_to(player_hand, amount, 0.3)
 	
+# PRINT N DISPLAY	
+
 func print_money():
 	money_label.text = "Uang: " + str(CURRENT_MONEY)
 	
@@ -223,104 +285,105 @@ func discard_card(card: Card):
 #func _on_play_pressed():
 	#draw_card()
 	
-func _on_play_pressed():
+#func _on_play_pressed():
+	#_sum_stats()
+	#evaluate_meal()
+	
 
-	_sum_stats()
-
-	evaluate_meal()
 	
 func subtract_money(amount: int):
 	if CURRENT_MONEY < amount:
 		return
 	CURRENT_MONEY -= amount
 	
-func _on_card_dropped(card: Card):
-	_sum_stats()
-	play_button.disabled = false
 
-func _on_card_back_to_hand(card: Card):
-	card.move_to(player_hand)
-	_sum_stats()
+	
 
-func add_difficulty():
-	if CURRENT_SCORE >= NEXT_SCORE:
+
+func increase_difficulty():
+	if CURRENT_SCORE >= NEXT_DIFF_SCORE:
 		CURRENT_DIFFICULTY += 1
-		NEXT_SCORE += 1000
+		NEXT_DIFF_SCORE += 1000
+	adjust_target()
+		
+func adjust_target():
+	TARGET_KARBO += 5 * CURRENT_DIFFICULTY
+	TARGET_PROTEIN += 5 * CURRENT_DIFFICULTY
+	TARGET_VITAMIN += 5 * CURRENT_DIFFICULTY
+	MAX_GULA += 5 * CURRENT_DIFFICULTY
+	MAX_LEMAK += 5 * CURRENT_DIFFICULTY
 
-func _on_card_added(card: Card, _index: int):
-	card.is_front_face = true
-	card.card_clicked.connect(_show_details)
-	card.drag_started.connect(_show_details)
+
 	
-func _sum_stats():
-	CURRENT_HARGA = 0
-	CURRENT_KARBO = 0
-	CURRENT_PROTEIN = 0
-	CURRENT_VITAMIN = 0
-	CURRENT_GULA = 0
-	CURRENT_LEMAK = 0
-	
-	var daftar_powerup = []
-	var daftar_makanan = []
-
-	for slot in card_slots:
-		if slot.is_empty(): 
-			continue
-
-		var data = slot.get_card_at(0).card_data as FoodCardResource
-		if data.kategori == FoodCardResource.Kategori.POWERUP:
-			daftar_powerup.append(data)
-		else:
-			daftar_makanan.append(data.card_name.to_lower())
-			CURRENT_HARGA 		+= data.harga
-			CURRENT_KARBO 		+= data.karbohidrat
-			CURRENT_PROTEIN 	+= data.protein
-			CURRENT_VITAMIN 	+= data.vitamin
-			CURRENT_GULA 		+= data.gula
-			CURRENT_LEMAK 		+= data.lemak
-	
-	daftar_powerup.sort_custom(func(a, b): return a.power_up < b.power_up)
-
-	for powerup in daftar_powerup:
-		match powerup.power_up:
-			FoodCardResource.Powerup.DOUBLE_COINS:
-				CURRENT_MONEY *= 2
-			FoodCardResource.Powerup.CLEAN_SUGAR:
-				CURRENT_GULA = 0
-			FoodCardResource.Powerup.CLEAN_FAT:
-				CURRENT_LEMAK = 0
-			FoodCardResource.Powerup.SUPPLEMENT:
-				CURRENT_VITAMIN = int(CURRENT_VITAMIN * 1.5)
-			FoodCardResource.Powerup.REHEAT:
-				CURRENT_MONEY = int(CURRENT_MONEY * 1.5)
-				CURRENT_KARBO += 20
-			FoodCardResource.Powerup.DOUBLE_CARBS:
-				CURRENT_KARBO *= 2
-			FoodCardResource.Powerup.OVERCOOK:
-				CURRENT_GULA = 0
-				CURRENT_LEMAK = 0
-				CURRENT_KARBO = int(CURRENT_KARBO * 0.75)
-				CURRENT_PROTEIN = int(CURRENT_PROTEIN * 0.75)
-				CURRENT_VITAMIN = int(CURRENT_VITAMIN * 0.75)
-			FoodCardResource.Powerup.SEAFOOD_BOOST:
-				if "seafood" in daftar_makanan:
-					CURRENT_PROTEIN = int(CURRENT_PROTEIN * 1.2)
-			FoodCardResource.Powerup.KETO_DIET:
-				if CURRENT_KARBO >= 20:
-					CURRENT_PROTEIN *= 2
-			FoodCardResource.Powerup.PERFECT_BALANCE:
-				if CURRENT_GULA == 0 and CURRENT_LEMAK == 0:
-					CURRENT_KARBO += 20
-					CURRENT_PROTEIN += 20
-					CURRENT_VITAMIN += 20
-					CURRENT_MONEY *= 2
-
-	stat_panel.get_node("StatsSummaryContainer/Harga").text = "Harga: " + str(CURRENT_HARGA)
-	stat_panel.get_node("StatsSummaryContainer/Karbohidrat").text = "Karbo: " + str(CURRENT_KARBO)
-	stat_panel.get_node("StatsSummaryContainer/Protein").text = "Protein: " + str(CURRENT_PROTEIN)
-	stat_panel.get_node("StatsSummaryContainer/Vitamin").text = "Vitamin: " + str(CURRENT_VITAMIN)
-	stat_panel.get_node("StatsSummaryContainer/Gula").text = "Gula: " + str(CURRENT_GULA)
-	stat_panel.get_node("StatsSummaryContainer/Lemak").text = "Lemak: " + str(CURRENT_LEMAK)
+#func _sum_stats():
+	#CURRENT_HARGA = 0
+	#CURRENT_KARBO = 0
+	#CURRENT_PROTEIN = 0
+	#CURRENT_VITAMIN = 0
+	#CURRENT_GULA = 0
+	#CURRENT_LEMAK = 0
+	#
+	#var daftar_powerup = []
+	#var daftar_makanan = []
+#
+	#for slot in card_slots:
+		#if slot.is_empty(): 
+			#continue
+#
+		#var data = slot.get_card_at(0).card_data as FoodCardResource
+		#if data.kategori == FoodCardResource.Kategori.POWERUP:
+			#daftar_powerup.append(data)
+		#else:
+			#daftar_makanan.append(data.card_name.to_lower())
+			#CURRENT_HARGA 		+= data.harga
+			#CURRENT_KARBO 		+= data.karbohidrat
+			#CURRENT_PROTEIN 	+= data.protein
+			#CURRENT_VITAMIN 	+= data.vitamin
+			#CURRENT_GULA 		+= data.gula
+			#CURRENT_LEMAK 		+= data.lemak
+	#
+	#daftar_powerup.sort_custom(func(a, b): return a.power_up < b.power_up)
+#
+	#for powerup in daftar_powerup:
+		#match powerup.power_up:
+			#FoodCardResource.Powerup.DOUBLE_COINS:
+				#CURRENT_MONEY *= 2
+			#FoodCardResource.Powerup.CLEAN_SUGAR:
+				#CURRENT_GULA = 0
+			#FoodCardResource.Powerup.CLEAN_FAT:
+				#CURRENT_LEMAK = 0
+			#FoodCardResource.Powerup.SUPPLEMENT:
+				#CURRENT_VITAMIN = int(CURRENT_VITAMIN * 1.5)
+			#FoodCardResource.Powerup.REHEAT:
+				#CURRENT_MONEY = int(CURRENT_MONEY * 1.5)
+				#CURRENT_KARBO += 20
+			#FoodCardResource.Powerup.DOUBLE_CARBS:
+				#CURRENT_KARBO *= 2
+			#FoodCardResource.Powerup.OVERCOOK:
+				#CURRENT_GULA = 0
+				#CURRENT_LEMAK = 0
+				#CURRENT_KARBO = int(CURRENT_KARBO * 0.75)
+				#CURRENT_PROTEIN = int(CURRENT_PROTEIN * 0.75)
+				#CURRENT_VITAMIN = int(CURRENT_VITAMIN * 0.75)
+			#FoodCardResource.Powerup.SEAFOOD_BOOST:
+				#if "seafood" in daftar_makanan:
+					#CURRENT_PROTEIN = int(CURRENT_PROTEIN * 1.2)
+			#FoodCardResource.Powerup.KETO_DIET:
+				#if CURRENT_KARBO >= 20:
+					#CURRENT_PROTEIN *= 2
+			#FoodCardResource.Powerup.PERFECT_BALANCE:
+				#if CURRENT_GULA == 0 and CURRENT_LEMAK == 0:
+					#CURRENT_KARBO += 20
+					#CURRENT_PROTEIN += 20
+					#CURRENT_VITAMIN += 20
+					#CURRENT_MONEY *= 2
+#
+	#stat_panel.get_node("StatsSummaryContainer/Harga").text = "Harga: " + str(CURRENT_HARGA)
+	#stat_panel.get_node("StatsSummaryContainer/Karbohidrat").text = "Karbo: " + str(CURRENT_KARBO)
+	#stat_panel.get_node("StatsSummaryContainer/Protein").text = "Protein: " + str(CURRENT_PROTEIN)
+	#stat_panel.get_node("StatsSummaryContainer/Vitamin").text = "Vitamin: " + str(CURRENT_VITAMIN)
+	#stat_panel.get_node("StatsSummaryContainer/Gula").text = "Gula: " + str(CURRENT_GULA)
+	#stat_panel.get_node("StatsSummaryContainer/Lemak").text = "Lemak: " + str(CURRENT_LEMAK)
 
 
 func spawn_from_deck(deck: CardDeck):
@@ -336,7 +399,7 @@ func spawn_from_deck(deck: CardDeck):
 		add_child(new_card)
 		new_card.move_to(player_hand)
 
-func _show_details(card: Card):
+func show_details(card: Card):
 	var data = card.card_data as FoodCardResource
 	if data:
 		detail_panel.get_node("CardDetailContainer/Nama").text = "Nama: " + data.card_name
@@ -348,6 +411,29 @@ func _show_details(card: Card):
 		detail_panel.get_node("CardDetailContainer/Lemak").text = "Lemak: " + str(data.lemak)
 		detail_panel.get_node("CardDetailContainer/Gula").text = "Gula: " + str(data.gula)
 		detail_panel.show()
+		
+func get_active_buffs() -> Array:
+	var buffs = []
+
+	for slot in buff_slots:
+		if slot.is_empty():
+			continue
+
+		var data = slot.get_card_at(0).card_data as FoodCardResource
+		buffs.append(data)
+
+	return buffs
+	
+func apply_buffs(stats: MealStats):
+	var buffs = get_active_buffs()
+
+	for buff in buffs:
+		match buff.power_up:
+			FoodCardResource.Powerup.DOUBLE_CARBS:
+				stats.karbohidrat *= 2
+
+			FoodCardResource.Powerup.CLEAN_SUGAR:
+				stats.gula = 0
 
 #func _process(delta: float) -> void:
 	#pass

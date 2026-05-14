@@ -1,7 +1,8 @@
-[gd_scene load_steps=29 format=3 uid="uid://bwyj0rvwbrlo1"]
+[gd_scene load_steps=30 format=3 uid="uid://bwyj0rvwbrlo1"]
 
 [ext_resource type="Script" uid="uid://bt08wwpc43yyr" path="res://scenes/main.gd" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://bbi8i6vef3f6y" path="res://addons/simple_cards/card/containers/hand/card_hand.gd" id="2_0xm2m"]
+[ext_resource type="Script" uid="uid://cw1rrjeiasjif" path="res://scenes/stats_summary_panel.gd" id="4_jkv2x"]
 [ext_resource type="Script" uid="uid://b1s6x4iyt2pps" path="res://addons/simple_cards/shape/premade_shapes/line_shape.gd" id="5_jkv2x"]
 [ext_resource type="Script" uid="uid://bisyk4bowdvsf" path="res://addons/simple_cards/deck/manager/card_deck_manager.gd" id="5_tbgi4"]
 [ext_resource type="Script" uid="uid://f41q4rxkbh46" path="res://scenes/food_card_slot.gd" id="5_tipki"]
@@ -128,6 +129,7 @@ offset_top = 10.0
 offset_right = -18.0
 offset_bottom = 187.0
 grow_horizontal = 0
+script = ExtResource("4_jkv2x")
 
 [node name="StatsSummaryContainer" type="VBoxContainer" parent="UI/StatsSummaryPanel"]
 layout_mode = 0
@@ -137,26 +139,32 @@ offset_right = 200.0
 offset_bottom = 59.0
 
 [node name="Harga" type="Label" parent="UI/StatsSummaryPanel/StatsSummaryContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Harga"
 
 [node name="Karbohidrat" type="Label" parent="UI/StatsSummaryPanel/StatsSummaryContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Karbohidrat"
 
 [node name="Protein" type="Label" parent="UI/StatsSummaryPanel/StatsSummaryContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Protein"
 
 [node name="Vitamin" type="Label" parent="UI/StatsSummaryPanel/StatsSummaryContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Vitamin"
 
 [node name="Lemak" type="Label" parent="UI/StatsSummaryPanel/StatsSummaryContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Lemak"
 
 [node name="Gula" type="Label" parent="UI/StatsSummaryPanel/StatsSummaryContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Gula"
 
@@ -613,27 +621,28 @@ grow_horizontal = 2
 [node name="CardSlot" type="Panel" parent="UI/BuffSlotContainer"]
 custom_minimum_size = Vector2(80, 112)
 layout_mode = 2
-script = ExtResource("8_tipki")
+script = ExtResource("5_tipki")
+max_cards = 1
 metadata/_custom_type_script = "uid://btwakv2103085"
 
 [node name="CardSlot2" type="Panel" parent="UI/BuffSlotContainer"]
 custom_minimum_size = Vector2(80, 112)
 layout_mode = 2
-script = ExtResource("8_tipki")
+script = ExtResource("5_tipki")
 max_cards = 1
 metadata/_custom_type_script = "uid://btwakv2103085"
 
 [node name="CardSlot3" type="Panel" parent="UI/BuffSlotContainer"]
 custom_minimum_size = Vector2(80, 112)
 layout_mode = 2
-script = ExtResource("8_tipki")
+script = ExtResource("5_tipki")
 max_cards = 1
 metadata/_custom_type_script = "uid://btwakv2103085"
 
 [node name="CardSlot4" type="Panel" parent="UI/BuffSlotContainer"]
 custom_minimum_size = Vector2(80, 112)
 layout_mode = 2
-script = ExtResource("8_tipki")
+script = ExtResource("5_tipki")
 max_cards = 1
 metadata/_custom_type_script = "uid://btwakv2103085"
 
