@@ -1,17 +1,24 @@
-[gd_scene load_steps=2 format=3 uid="uid://cjq5t60ybmbh0"]
+[gd_scene load_steps=6 format=3 uid="uid://cjq5t60ybmbh0"]
 
-[ext_resource type="Script" uid="uid://btwakv2103085" path="res://addons/simple_cards/containers/slot/card_slot.gd" id="1_0tt0k"]
+[ext_resource type="Script" uid="uid://btwakv2103085" path="res://addons/simple_cards/card/containers/slot/card_slot.gd" id="1_0tt0k"]
+[ext_resource type="Script" uid="uid://dgntf7k6ufoci" path="res://scenes/shop_panel.gd" id="1_gu57e"]
+[ext_resource type="Script" uid="uid://ctmplussnoot6" path="res://scenes/shop_slot.gd" id="2_8b1yh"]
+[ext_resource type="Script" uid="uid://bbi8i6vef3f6y" path="res://addons/simple_cards/card/containers/hand/card_hand.gd" id="4_xf0ew"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xf0ew"]
 
 [node name="Panel" type="Panel"]
-offset_right = 1036.0
+offset_right = 1023.0
 offset_bottom = 363.0
+script = ExtResource("1_gu57e")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
+visible = false
 layout_mode = 0
-offset_left = 137.0
-offset_top = 65.0
-offset_right = 637.0
-offset_bottom = 177.0
+offset_left = 125.0
+offset_top = 69.0
+offset_right = 625.0
+offset_bottom = 207.0
 scale = Vector2(1.5, 1.5)
 alignment = 1
 
@@ -21,7 +28,7 @@ layout_mode = 2
 [node name="CardSlot" type="Panel" parent="HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(80, 112)
 layout_mode = 2
-script = ExtResource("1_0tt0k")
+script = ExtResource("2_8b1yh")
 metadata/_custom_type_script = "uid://btwakv2103085"
 
 [node name="Label" type="Label" parent="HBoxContainer/VBoxContainer"]
@@ -99,12 +106,13 @@ layout_mode = 2
 text = "Harga:"
 
 [node name="CloseButton" type="Button" parent="."]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 50)
 layout_mode = 0
-offset_left = 925.0
-offset_top = 12.0
-offset_right = 1025.0
-offset_bottom = 62.0
+offset_left = 909.0
+offset_top = 14.0
+offset_right = 1009.0
+offset_bottom = 64.0
 
 [node name="Label" type="Label" parent="CloseButton"]
 layout_mode = 0
@@ -116,14 +124,15 @@ text = "Close"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="."]
+[node name="RefreshButton" type="Button" parent="."]
+unique_name_in_owner = true
 layout_mode = 0
-offset_left = 923.0
-offset_top = 274.0
-offset_right = 1022.0
-offset_bottom = 348.0
+offset_left = 908.0
+offset_top = 276.0
+offset_right = 1007.0
+offset_bottom = 350.0
 
-[node name="Label" type="Label" parent="Button"]
+[node name="Label" type="Label" parent="RefreshButton"]
 layout_mode = 0
 offset_left = 17.0
 offset_top = 11.0
@@ -131,3 +140,72 @@ offset_right = 77.0
 offset_bottom = 34.0
 text = "Refresh 
 (5 coins)"
+
+[node name="ShopHand" type="Panel" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_xf0ew")
+max_cards = 6
+metadata/_custom_type_script = "uid://bbi8i6vef3f6y"
+
+[node name="CardDetailPanel" type="Panel" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 2.0
+offset_right = 221.0
+offset_bottom = 235.0
+
+[node name="CardDetailContainer" type="VBoxContainer" parent="CardDetailPanel"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 9.0
+offset_right = 200.0
+offset_bottom = 59.0
+
+[node name="Nama" type="Label" parent="CardDetailPanel/CardDetailContainer"]
+layout_mode = 2
+text = "Nama"
+label_settings = SubResource("LabelSettings_xf0ew")
+
+[node name="Kategori" type="Label" parent="CardDetailPanel/CardDetailContainer"]
+layout_mode = 2
+text = "Kategori "
+
+[node name="Harga" type="Label" parent="CardDetailPanel/CardDetailContainer"]
+layout_mode = 2
+text = "Harga"
+
+[node name="Karbohidrat" type="Label" parent="CardDetailPanel/CardDetailContainer"]
+layout_mode = 2
+text = "Karbohidrat"
+
+[node name="Protein" type="Label" parent="CardDetailPanel/CardDetailContainer"]
+layout_mode = 2
+text = "Protein"
+
+[node name="Vitamin" type="Label" parent="CardDetailPanel/CardDetailContainer"]
+layout_mode = 2
+text = "Vitamin"
+
+[node name="Lemak" type="Label" parent="CardDetailPanel/CardDetailContainer"]
+layout_mode = 2
+text = "Lemak"
+
+[node name="Gula" type="Label" parent="CardDetailPanel/CardDetailContainer"]
+layout_mode = 2
+text = "Gula"
+
+[connection signal="card_added" from="HBoxContainer/VBoxContainer/CardSlot" to="." method="_on_card_slot_card_added"]
+[connection signal="pressed" from="CloseButton" to="." method="_on_close_button_pressed"]
+[connection signal="pressed" from="RefreshButton" to="." method="_on_refresh_button_pressed"]
