@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dm115oleoggyt" path="res://addons/simple_cards/card/card_layout/card_layout.gd" id="1_ay1pi"]
 
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0a68r"]
 bg_color = Color(1, 0.30176032, 0.50300115, 0.4862745)
 border_width_left = 2

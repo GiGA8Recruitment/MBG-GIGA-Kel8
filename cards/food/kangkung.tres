@@ -6,8 +6,8 @@
 [resource]
 script = ExtResource("2_78m37")
 card_name = "Kangkung"
-category = "Sayur"
 card_image = ExtResource("1_wcset")
+kategori = 2
 harga = 15
 lemak = 5
 gula = 5

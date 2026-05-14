@@ -6,8 +6,8 @@
 [resource]
 script = ExtResource("2_pipwm")
 card_name = "Sayur Asem"
-category = "Sayur"
 card_image = ExtResource("1_sku52")
+kategori = 2
 harga = 10
 gula = 10
 vitamin = 15

@@ -6,8 +6,8 @@
 [resource]
 script = ExtResource("2_lokj6")
 card_name = "Kol Goreng"
-category = "Sayur"
 card_image = ExtResource("1_c242h")
+kategori = 2
 harga = 5
 lemak = 10
 vitamin = 10

@@ -6,12 +6,10 @@
 [resource]
 script = ExtResource("2_g1m01")
 card_name = "Nasi Goreng"
-category = "Karbo"
 card_image = ExtResource("1_ov1os")
 harga = 25
 karbohidrat = 20
 protein = 5
 lemak = 10
 front_layout_name = &"food_layout"
-back_layout_name = &"food_layout"
 metadata/_custom_type_script = "uid://clcv636replkf"

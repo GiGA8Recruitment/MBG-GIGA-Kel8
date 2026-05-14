@@ -12,5 +12,4 @@ harga = 15
 karbohidrat = 20
 lemak = 15
 front_layout_name = &"food_layout"
-back_layout_name = &"food_layout"
 metadata/_custom_type_script = "uid://clcv636replkf"

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://campsjrxwba25"
-path="res://.godot/imported/icon_card_slot.png-52b63107c736ceafea2763bbd18f9d94.ctex"
+uid="uid://vf4u02voslcq"
+path="res://.godot/imported/air_putih.png-e49c208469827288e61cf01d2f7c18fb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/simple_cards/containers/slot/icon_card_slot.png"
-dest_files=["res://.godot/imported/icon_card_slot.png-52b63107c736ceafea2763bbd18f9d94.ctex"]
+source_file="res://assets/images/air_putih.png"
+dest_files=["res://.godot/imported/air_putih.png-e49c208469827288e61cf01d2f7c18fb.ctex"]
 
 [params]
 

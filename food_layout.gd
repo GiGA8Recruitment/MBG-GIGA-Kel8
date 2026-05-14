@@ -12,10 +12,14 @@ func _update_display() -> void:
 	image.texture = data.card_image
 	
 func _focus_in() -> void:
-	card_instance.tween_scale(Vector2(1.2,1.2), 0.2)
+	#card_instance.tween_scale(Vector2(1.2,1.2), 0.2)
 	#print(card_instance.get_screen_position())
-	#card_instance.tween_position(Vector2(0.0, 1.1), 0.3)
+	var tween = create_tween()
+	tween.tween_property(self, "position", Vector2(0, -20), 0.2)
+	#card_instance.tween_position(Vector2(0,-20), 0.3)
 
 func _focus_out() -> void:
-	card_instance.tween_scale(Vector2(1,1), 0.2)
+	#card_instance.tween_scale(Vector2(1,1), 0.2)
+	var tween = create_tween()
+	tween.tween_property(self, "position", Vector2(0, 0), 0.2)
 	#card_instance.tween_position(Vector2(0,0), 0.3)

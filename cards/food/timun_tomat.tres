@@ -6,7 +6,6 @@
 [resource]
 script = ExtResource("2_2smig")
 card_name = "Timun Tomat"
-category = "Sayur"
 card_image = ExtResource("1_7rlum")
 harga = 5
 vitamin = 5

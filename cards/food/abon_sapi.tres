@@ -6,8 +6,8 @@
 [resource]
 script = ExtResource("2_d3ap1")
 card_name = "Abon Sapi"
-category = "Pelengkap"
 card_image = ExtResource("1_46fum")
+kategori = 3
 harga = 5
 protein = 5
 front_layout_name = &"food_layout"

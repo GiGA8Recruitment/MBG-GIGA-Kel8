@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ciidamgiqhrw6"
-path="res://.godot/imported/ayamgoreng.png-51890777de174e8320945492a3c24bd1.ctex"
+uid="uid://cd5j8y20kssjr"
+path="res://.godot/imported/overcook.png-bb1de5bb4e06e7a7072436070d121f92.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/ayamgoreng.png"
-dest_files=["res://.godot/imported/ayamgoreng.png-51890777de174e8320945492a3c24bd1.ctex"]
+source_file="res://assets/images/overcook.png"
+dest_files=["res://.godot/imported/overcook.png-bb1de5bb4e06e7a7072436070d121f92.ctex"]
 
 [params]
 

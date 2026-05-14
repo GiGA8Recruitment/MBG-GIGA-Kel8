@@ -5,6 +5,7 @@
 [ext_resource type="FontFile" uid="uid://fpoco0u13011" path="res://examples/cards/standard_deck/KarenFat.ttf" id="2_jahet"]
 [ext_resource type="Texture2D" uid="uid://clwd04qm16woo" path="res://examples/cards/standard_deck/heart.png" id="3_2yl1v"]
 
+
 [sub_resource type="Resource" id="Resource_cho7o"]
 resource_local_to_scene = true
 script = ExtResource("2_cho7o")

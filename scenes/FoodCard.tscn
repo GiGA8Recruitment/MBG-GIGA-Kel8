@@ -4,7 +4,7 @@
 
 [node name="FoodCard" type="Button"]
 self_modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(80, 112)
+custom_minimum_size = Vector2(81, 114)
 offset_right = 80.0
 offset_bottom = 112.0
 pivot_offset = Vector2(40, 56)

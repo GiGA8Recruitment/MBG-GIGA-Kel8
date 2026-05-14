@@ -6,8 +6,8 @@
 [resource]
 script = ExtResource("2_2ashk")
 card_name = "Tumis Buncis"
-category = "Sayur"
 card_image = ExtResource("1_70lhc")
+kategori = 2
 harga = 5
 lemak = 5
 gula = 5

@@ -6,8 +6,8 @@
 [resource]
 script = ExtResource("2_rry3q")
 card_name = "Tempe Bacem"
-category = "Protein"
 card_image = ExtResource("1_fu6nm")
+kategori = 1
 harga = 10
 protein = 10
 gula = 5
