@@ -38,4 +38,4 @@ enum Powerup {NONE,
 @export var protein:int
 @export var lemak:int
 @export var gula:int
-@export var vitamin:int	
+@export var vitamin:int
