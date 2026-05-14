@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://pv300mgh1qbj"]
 
 [ext_resource type="Script" uid="uid://ci8ju72qvgsyt" path="res://custom_food_layout.gd" id="1_n62c1"]
-[ext_resource type="Texture2D" uid="uid://c27sp8edpxqra" path="res://assets/KarboTemplate1.png" id="2_u4146"]
+[ext_resource type="Texture2D" uid="uid://x6x1th2lv1r5" path="res://assets/images/bahan/ayamgoreng.png" id="2_n62c1"]
 [ext_resource type="FontFile" uid="uid://b05apd647gksd" path="res://assets/Minecraftia-Regular.ttf" id="3_i7u7y"]
 [ext_resource type="Texture2D" uid="uid://cljf003xu8hd3" path="res://assets/245281.jpg" id="3_n62c1"]
 
@@ -32,7 +32,7 @@ metadata/_custom_type_script = "uid://dm115oleoggyt"
 
 [node name="SubViewport" type="SubViewport" parent="."]
 handle_input_locally = false
-size = Vector2i(80, 112)
+size = Vector2i(81, 114)
 render_target_update_mode = 4
 
 [node name="Border" type="PanelContainer" parent="SubViewport"]
@@ -43,16 +43,24 @@ offset_right = 80.0
 offset_bottom = 112.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_n62c1")
 
+[node name="BG" type="PanelContainer" parent="SubViewport"]
+z_index = -1
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 78.0
+offset_bottom = 110.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_i7u7y")
+
 [node name="Template" type="TextureRect" parent="SubViewport"]
 unique_name_in_owner = true
 z_index = 1
 texture_filter = 1
 offset_left = -24.0
-offset_top = -10.0
+offset_top = -8.0
 offset_right = 104.0
-offset_bottom = 118.0
-texture = ExtResource("2_u4146")
-expand_mode = 1
+offset_bottom = 120.0
+texture = ExtResource("2_n62c1")
+stretch_mode = 4
 
 [node name="Nama" type="Label" parent="SubViewport"]
 unique_name_in_owner = true
@@ -168,11 +176,3 @@ theme_override_font_sizes/font_size = 8
 text = "25"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="BG" type="PanelContainer" parent="SubViewport"]
-z_index = -1
-offset_left = 2.0
-offset_top = 2.0
-offset_right = 78.0
-offset_bottom = 110.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_i7u7y")

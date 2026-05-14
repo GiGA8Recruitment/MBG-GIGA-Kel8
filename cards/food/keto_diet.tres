@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="FoodCardResource" load_steps=3 format=3 uid="uid://c25fqvscpqlja"]
+
+[ext_resource type="Texture2D" uid="uid://ch802psllw4a2" path="res://assets/images/slot_wild.png" id="1_ug0of"]
+[ext_resource type="Script" uid="uid://clcv636replkf" path="res://FoodCardResource.gd" id="2_fhg66"]
+
+[resource]
+script = ExtResource("2_fhg66")
+card_name = "Keto Diet"
+card_image = ExtResource("1_ug0of")
+kategori = 4
+power_up = 9
+front_layout_name = &"food_layout"

@@ -1,75 +1,69 @@
 [gd_scene load_steps=3 format=3 uid="uid://c1owmc52vk5lr"]
 
 [ext_resource type="Script" uid="uid://c48jda54vw8ja" path="res://food_layout.gd" id="1_6cskk"]
-[ext_resource type="Texture2D" uid="uid://dfqry82y0dhqy" path="res://assets/images/mbgcard.png" id="2_1wsy2"]
+[ext_resource type="Texture2D" uid="uid://d874vvff7sas" path="res://assets/images/bahan/miegoreng.png" id="2_1wsy2"]
 
 [node name="CardLayout" type="SubViewportContainer"]
 texture_filter = 1
 offset_right = 80.0
 offset_bottom = 112.0
-stretch = true
 script = ExtResource("1_6cskk")
 metadata/is_layout = true
 metadata/layout_id = "food_layout"
 metadata/tags = ["food"]
 metadata/_custom_type_script = "uid://dm115oleoggyt"
 
-[node name="SubViewport" type="SubViewport" parent="."]
-handle_input_locally = false
-size = Vector2i(80, 112)
-render_target_update_mode = 4
+[node name="Control" type="Control" parent="."]
+layout_mode = 2
 
-[node name="Label" type="Label" parent="SubViewport"]
+[node name="TextureRect" type="TextureRect" parent="Control"]
 unique_name_in_owner = true
-offset_left = 2.0
-offset_top = 44.0
-offset_right = 78.0
-offset_bottom = 67.0
+layout_mode = 0
+offset_left = -24.0
+offset_top = -8.0
+offset_right = 104.0
+offset_bottom = 120.0
+texture = ExtResource("2_1wsy2")
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
 text = "Front"
 horizontal_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="SubViewport"]
-unique_name_in_owner = true
-offset_left = -24.0
-offset_top = -10.0
-offset_right = 104.0
-offset_bottom = 118.0
-texture = ExtResource("2_1wsy2")
-
-[node name="Detail" type="VBoxContainer" parent="SubViewport"]
+[node name="Detail" type="VBoxContainer" parent="."]
 unique_name_in_owner = true
 visible = false
-offset_left = 4.0
-offset_top = 4.0
-offset_right = 98.0
-offset_bottom = 162.0
+layout_mode = 2
 
-[node name="Harga" type="Label" parent="SubViewport/Detail"]
+[node name="Harga" type="Label" parent="Detail"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Harga"
 
-[node name="Karbohidrat" type="Label" parent="SubViewport/Detail"]
+[node name="Karbohidrat" type="Label" parent="Detail"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Karbohidrat"
 
-[node name="Protein" type="Label" parent="SubViewport/Detail"]
+[node name="Protein" type="Label" parent="Detail"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Protein"
 
-[node name="Vitamin" type="Label" parent="SubViewport/Detail"]
+[node name="Vitamin" type="Label" parent="Detail"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Vitamin"
 
-[node name="Gula" type="Label" parent="SubViewport/Detail"]
+[node name="Gula" type="Label" parent="Detail"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Gula"
 
-[node name="Lemak" type="Label" parent="SubViewport/Detail"]
+[node name="Lemak" type="Label" parent="Detail"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Lemak"

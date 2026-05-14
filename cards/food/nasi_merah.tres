@@ -6,7 +6,6 @@
 [resource]
 script = ExtResource("1_r7y5l")
 card_name = "Nasi Merah"
-category = "Karbo"
 card_image = ExtResource("1_x3u4f")
 harga = 30
 karbohidrat = 15

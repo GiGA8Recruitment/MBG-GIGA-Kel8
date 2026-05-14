@@ -1,17 +1,23 @@
-[gd_resource type="Resource" script_class="CardDeck" load_steps=9 format=3 uid="uid://bw6arxp28re4x"]
+[gd_resource type="Resource" script_class="CardDeck" load_steps=16 format=3 uid="uid://bw6arxp28re4x"]
 
 [ext_resource type="Script" uid="uid://c8315v58tr66b" path="res://addons/simple_cards/card/card_resource/card_resource.gd" id="1_ndwhy"]
 [ext_resource type="Script" uid="uid://lhb5ry3o8icy" path="res://addons/simple_cards/deck/card_deck.gd" id="2_jj8s3"]
 [ext_resource type="Resource" uid="uid://gw7b3m2lyjtc" path="res://cards/food/mie_goreng.tres" id="2_jtwys"]
 [ext_resource type="Resource" uid="uid://cl3wsk0jv27yu" path="res://cards/food/nasi_goreng.tres" id="3_jat0q"]
+[ext_resource type="Resource" uid="uid://x742s2nks7jl" path="res://cards/food/sereal.tres" id="3_k3fog"]
 [ext_resource type="Resource" uid="uid://bb6nnwkgc0n7k" path="res://cards/food/nasi_merah.tres" id="4_7frs3"]
-[ext_resource type="Resource" uid="uid://deg6igb5dphvm" path="res://cards/food/nasi_putih.tres" id="5_k3fog"]
-[ext_resource type="Resource" uid="uid://cccpahme3sw5b" path="res://cards/food/ayam_goreng.tres" id="6_jat0q"]
-[ext_resource type="Resource" uid="uid://dohk0nwcnh0y7" path="res://cards/food/test_custom.tres" id="7_7frs3"]
-
+[ext_resource type="Resource" uid="uid://bb787f5pwdsm3" path="res://cards/food/bandeng.tres" id="4_m5pk5"]
+[ext_resource type="Resource" uid="uid://slttex6pq1kb" path="res://cards/food/kol_goreng.tres" id="5_6la1n"]
+[ext_resource type="Resource" uid="uid://bhl16ciy08sml" path="res://cards/food/sop_wortel.tres" id="6_ng03j"]
+[ext_resource type="Resource" uid="uid://d0qj4fr5bbkwg" path="res://cards/food/nugget_dino.tres" id="7_0wstd"]
+[ext_resource type="Resource" uid="uid://bifnspmu8t51m" path="res://cards/food/kangkung.tres" id="9_ng03j"]
+[ext_resource type="Resource" uid="uid://cbre57a3g6g7r" path="res://cards/food/tahu_tempe.tres" id="10_0wstd"]
+[ext_resource type="Resource" uid="uid://bxkd84b0w72do" path="res://cards/food/pudding_buah.tres" id="11_cinoi"]
+[ext_resource type="Resource" uid="uid://l0l84tqut2eb" path="res://cards/food/dori_asam_manis.tres" id="12_cinoi"]
+[ext_resource type="Resource" uid="uid://bj3dmyde3rjre" path="res://cards/food/clean_fat.tres" id="14_6yiir"]
 
 [resource]
 script = ExtResource("2_jj8s3")
 deck_name = &"food_deck"
-cards = Array[ExtResource("1_ndwhy")]([ExtResource("2_jtwys"), ExtResource("3_jat0q"), ExtResource("4_7frs3"), ExtResource("5_k3fog"), ExtResource("6_jat0q"), ExtResource("7_7frs3")])
+cards = Array[ExtResource("1_ndwhy")]([ExtResource("2_jtwys"), ExtResource("3_k3fog"), ExtResource("4_m5pk5"), ExtResource("5_6la1n"), ExtResource("6_ng03j"), ExtResource("7_0wstd"), ExtResource("3_jat0q"), ExtResource("9_ng03j"), ExtResource("10_0wstd"), ExtResource("11_cinoi"), ExtResource("12_cinoi"), ExtResource("4_7frs3"), ExtResource("14_6yiir")])
 metadata/_custom_type_script = "uid://lhb5ry3o8icy"

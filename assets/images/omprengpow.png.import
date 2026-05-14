@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://noubcqanlwh1"
-path="res://.godot/imported/ompreng.png-03414908a3c7c564cd4aab71a50d6b9f.ctex"
+uid="uid://c2glor8vmjxy0"
+path="res://.godot/imported/omprengpow.png-7528e2407664b113fece704455bf1267.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/ompreng.png"
-dest_files=["res://.godot/imported/ompreng.png-03414908a3c7c564cd4aab71a50d6b9f.ctex"]
+source_file="res://assets/images/omprengpow.png"
+dest_files=["res://.godot/imported/omprengpow.png-7528e2407664b113fece704455bf1267.ctex"]
 
 [params]
 

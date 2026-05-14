@@ -6,6 +6,7 @@
 [resource]
 script = ExtResource("2_4y26f")
 card_name = "Semangka"
+category = "Pelengkap"
 card_image = ExtResource("1_40xf4")
 kategori = 3
 harga = 10

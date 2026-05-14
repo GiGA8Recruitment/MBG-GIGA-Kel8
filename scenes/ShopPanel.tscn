@@ -1,0 +1,133 @@
+[gd_scene load_steps=2 format=3 uid="uid://cjq5t60ybmbh0"]
+
+[ext_resource type="Script" uid="uid://btwakv2103085" path="res://addons/simple_cards/containers/slot/card_slot.gd" id="1_0tt0k"]
+
+[node name="Panel" type="Panel"]
+offset_right = 1036.0
+offset_bottom = 363.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 137.0
+offset_top = 65.0
+offset_right = 637.0
+offset_bottom = 177.0
+scale = Vector2(1.5, 1.5)
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="CardSlot" type="Panel" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(80, 112)
+layout_mode = 2
+script = ExtResource("1_0tt0k")
+metadata/_custom_type_script = "uid://btwakv2103085"
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Harga:"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="CardSlot" type="Panel" parent="HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(80, 112)
+layout_mode = 2
+script = ExtResource("1_0tt0k")
+max_cards = 1
+metadata/_custom_type_script = "uid://btwakv2103085"
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Harga:"
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="CardSlot" type="Panel" parent="HBoxContainer/VBoxContainer3"]
+custom_minimum_size = Vector2(80, 112)
+layout_mode = 2
+script = ExtResource("1_0tt0k")
+max_cards = 1
+metadata/_custom_type_script = "uid://btwakv2103085"
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+text = "Harga:"
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="CardSlot" type="Panel" parent="HBoxContainer/VBoxContainer4"]
+custom_minimum_size = Vector2(80, 112)
+layout_mode = 2
+script = ExtResource("1_0tt0k")
+max_cards = 1
+metadata/_custom_type_script = "uid://btwakv2103085"
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer4"]
+layout_mode = 2
+text = "Harga:"
+
+[node name="VBoxContainer5" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="CardSlot" type="Panel" parent="HBoxContainer/VBoxContainer5"]
+custom_minimum_size = Vector2(80, 112)
+layout_mode = 2
+script = ExtResource("1_0tt0k")
+max_cards = 1
+metadata/_custom_type_script = "uid://btwakv2103085"
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer5"]
+layout_mode = 2
+text = "Harga:"
+
+[node name="VBoxContainer6" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="CardSlot" type="Panel" parent="HBoxContainer/VBoxContainer6"]
+custom_minimum_size = Vector2(80, 112)
+layout_mode = 2
+script = ExtResource("1_0tt0k")
+max_cards = 1
+metadata/_custom_type_script = "uid://btwakv2103085"
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer6"]
+layout_mode = 2
+text = "Harga:"
+
+[node name="CloseButton" type="Button" parent="."]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 0
+offset_left = 925.0
+offset_top = 12.0
+offset_right = 1025.0
+offset_bottom = 62.0
+
+[node name="Label" type="Label" parent="CloseButton"]
+layout_mode = 0
+offset_left = 26.0
+offset_top = 13.0
+offset_right = 68.0
+offset_bottom = 36.0
+text = "Close"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 923.0
+offset_top = 274.0
+offset_right = 1022.0
+offset_bottom = 348.0
+
+[node name="Label" type="Label" parent="Button"]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 11.0
+offset_right = 77.0
+offset_bottom = 34.0
+text = "Refresh 
+(5 coins)"

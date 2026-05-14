@@ -8,7 +8,6 @@ script = ExtResource("2_fxhjv")
 card_name = "Es Krim"
 card_image = ExtResource("1_8b56j")
 kategori = 3
-rarity = 1
 harga = 10
 karbohidrat = 5
 lemak = 10
