@@ -98,6 +98,7 @@ func _ready() -> void:
 	food_deck_manager.starting_pile = draw_pile
 	food_deck_manager.shuffle_on_setup = true
 	food_deck_manager.setup()	
+	
 	play_button.disabled = true
 	player_hand.card_added.connect(_on_card_added)
 	shop_hand.card_added.connect(_on_shop_card_added)
@@ -111,7 +112,6 @@ func _ready() -> void:
 	game_over_panel.exit_pressed.connect(_on_exit)
 
 	open_shop()
-
 	
 	for slot in card_slots:
 		slot.card_dropped_on.connect(_on_card_dropped)
