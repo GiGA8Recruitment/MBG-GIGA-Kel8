@@ -487,8 +487,9 @@ func spawn_from_deck(deck: CardDeck):
 func show_details(card: Card):
 	var data = card.card_data as FoodCardResource
 	if data:
+		var kat_str = FoodCardResource.Kategori.find_key(data.kategori).capitalize()
 		detail_panel.get_node("CardDetailContainer/Nama").text = "Nama: " + data.card_name
-		detail_panel.get_node("CardDetailContainer/Kategori").text = "Kategori: " + str(data.kategori)
+		detail_panel.get_node("CardDetailContainer/Kategori").text = "Kategori: " + kat_str
 		detail_panel.get_node("CardDetailContainer/Harga").text = "Harga: " + str(data.harga)	
 		detail_panel.get_node("CardDetailContainer/Karbohidrat").text = "Karbo: " + str(data.karbohidrat)
 		detail_panel.get_node("CardDetailContainer/Protein").text = "Protein: " + str(data.protein)
@@ -499,8 +500,9 @@ func show_details(card: Card):
 func show_shop_details(card: Card):
 	var data = card.card_data as FoodCardResource
 	if data:
+		var kat_str = FoodCardResource.Kategori.find_key(data.kategori).capitalize()
 		shop_card_detail_panel.get_node("CardDetailContainer/Nama").text = "Nama: " + data.card_name
-		shop_card_detail_panel.get_node("CardDetailContainer/Kategori").text = "Kategori: " + str(data.kategori)
+		shop_card_detail_panel.get_node("CardDetailContainer/Kategori").text = "Kategori: " + kat_str
 		shop_card_detail_panel.get_node("CardDetailContainer/Harga").text = "Harga: " + str(data.harga)	
 		shop_card_detail_panel.get_node("CardDetailContainer/Karbohidrat").text = "Karbo: " + str(data.karbohidrat)
 		shop_card_detail_panel.get_node("CardDetailContainer/Protein").text = "Protein: " + str(data.protein)
