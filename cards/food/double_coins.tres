@@ -5,8 +5,9 @@
 
 [resource]
 script = ExtResource("2_i7ttj")
-card_name = "Rezeki Melimpah"
-card_image = ExtResource("1_sqwtd")
 kategori = 4
 power_up = 1
+card_name = "Rezeki Melimpah"
+card_image = ExtResource("1_sqwtd")
 front_layout_name = &"food_layout"
+back_layout_name = &"food_layout"

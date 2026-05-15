@@ -5,8 +5,9 @@
 
 [resource]
 script = ExtResource("2_v46dq")
-card_name = "Porsi Kuli"
-card_image = ExtResource("1_jf1b6")
 kategori = 4
 power_up = 6
+card_name = "Porsi Kuli"
+card_image = ExtResource("1_jf1b6")
 front_layout_name = &"food_layout"
+back_layout_name = &"food_layout"

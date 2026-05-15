@@ -5,10 +5,11 @@
 
 [resource]
 script = ExtResource("2_0v33l")
-card_name = "Telur Dadar"
-card_image = ExtResource("1_ux5m4")
 kategori = 1
-harga = 5
 protein = 10
 lemak = 10
+card_name = "Telur Dadar"
+card_image = ExtResource("1_ux5m4")
+harga = 5
 front_layout_name = &"food_layout"
+back_layout_name = &"food_layout"

@@ -5,11 +5,12 @@
 
 [resource]
 script = ExtResource("2_hakp1")
-card_name = "Nugget Dino"
-card_image = ExtResource("1_fub5o")
 kategori = 1
-harga = 5
 karbohidrat = 5
 protein = 10
 lemak = 10
+card_name = "Nugget Dino"
+card_image = ExtResource("1_fub5o")
+harga = 5
 front_layout_name = &"food_layout"
+back_layout_name = &"food_layout"

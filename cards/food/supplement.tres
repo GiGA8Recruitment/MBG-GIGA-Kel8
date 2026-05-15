@@ -5,8 +5,9 @@
 
 [resource]
 script = ExtResource("2_y610j")
-card_name = "pil vitamin"
-card_image = ExtResource("1_0tfa1")
 kategori = 4
 power_up = 4
+card_name = "pil vitamin"
+card_image = ExtResource("1_0tfa1")
 front_layout_name = &"food_layout"
+back_layout_name = &"food_layout"

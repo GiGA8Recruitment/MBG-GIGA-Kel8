@@ -5,8 +5,9 @@
 
 [resource]
 script = ExtResource("2_jmrih")
-card_name = "perfect"
-card_image = ExtResource("1_3jsma")
 kategori = 4
 power_up = 10
+card_name = "perfect"
+card_image = ExtResource("1_3jsma")
 front_layout_name = &"food_layout"
+back_layout_name = &"food_layout"

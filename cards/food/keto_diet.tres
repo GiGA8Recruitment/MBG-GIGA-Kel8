@@ -5,8 +5,9 @@
 
 [resource]
 script = ExtResource("2_fhg66")
-card_name = "Keto Diet"
-card_image = ExtResource("1_ug0of")
 kategori = 4
 power_up = 9
+card_name = "Keto Diet"
+card_image = ExtResource("1_ug0of")
 front_layout_name = &"food_layout"
+back_layout_name = &"food_layout"

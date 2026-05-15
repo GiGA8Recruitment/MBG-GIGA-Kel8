@@ -5,8 +5,9 @@
 
 [resource]
 script = ExtResource("2_uvn8k")
-card_name = "Gosong"
-card_image = ExtResource("1_kgmah")
 kategori = 4
 power_up = 7
+card_name = "Gosong"
+card_image = ExtResource("1_kgmah")
 front_layout_name = &"food_layout"
+back_layout_name = &"food_layout"

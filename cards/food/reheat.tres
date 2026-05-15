@@ -5,8 +5,9 @@
 
 [resource]
 script = ExtResource("2_ety7s")
-card_name = "Microwave"
-card_image = ExtResource("1_nk2ak")
 kategori = 4
 power_up = 5
+card_name = "Microwave"
+card_image = ExtResource("1_nk2ak")
 front_layout_name = &"food_layout"
+back_layout_name = &"food_layout"

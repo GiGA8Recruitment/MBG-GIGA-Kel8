@@ -67,7 +67,7 @@ var current_stats := MealStats.new()
 
 # CURRENT PLAYER STATS
 
-var CURRENT_MONEY: int 		= 500
+var CURRENT_MONEY: int 		= 300
 var CURRENT_SCORE: int 		= 0
 var CURRENT_LIVES: int 		= 3
 var CURRENT_DIFFICULTY: int = 1
@@ -331,7 +331,7 @@ func print_player_stats():
 	print_diff()
 	
 func discard_card(card: Card):
-	card.move_to(discard_pile)
+	await card.move_to(discard_pile, 1)
 	
 #func _on_play_pressed():
 	#_sum_stats()

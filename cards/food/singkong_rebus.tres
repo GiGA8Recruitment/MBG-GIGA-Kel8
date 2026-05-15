@@ -5,9 +5,10 @@
 
 [resource]
 script = ExtResource("2_jrnm3")
+karbohidrat = 10
+gula = 5
 card_name = "Singkong Rebus"
 card_image = ExtResource("1_1st16")
 harga = 10
-karbohidrat = 10
-gula = 5
 front_layout_name = &"food_layout"
+back_layout_name = &"food_layout"
