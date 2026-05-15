@@ -57,7 +57,7 @@ var selected_shop_card = null
 
 # TARGET
 
-@onready var TARGET_KARBO 	= 20
+@onready var TARGET_KARBO 	= 10
 @onready var TARGET_PROTEIN = 15
 @onready var TARGET_VITAMIN = 10
 @onready var MAX_LEMAK	 	= 25
@@ -197,47 +197,32 @@ func _on_shop_pressed():
 		return
 	shop_panel.show()
 	
-func _on_play_pressed():
+func _on_play_pressed() -> void:
 	if CURRENT_GAMESTATE != GameState.PREPARE:
 		return
-	play_button.disabled = true
-	
+
+	_toggle_interaction(false)
+
 	current_stats = StatCalculator.calculate(card_slots)
 	apply_buffs(current_stats)
 	stat_panel.display(current_stats)
-	
+
 	var result = MealEvaluator.evaluate(
 		current_stats,
-		TARGET_KARBO,
-		TARGET_PROTEIN,
-		TARGET_VITAMIN,
-		MAX_GULA,
-		MAX_LEMAK
+		TARGET_KARBO, TARGET_PROTEIN, TARGET_VITAMIN,
+		MAX_GULA, MAX_LEMAK
 	)
-	
-	var reward_money = 0
-	var reward_score = 0
+
+	var reward_money = 50
+	var reward_score = 50
 	if result.success:
-		reward_money = 20 + (CURRENT_DIFFICULTY * 5)
-		reward_score = 100 * CURRENT_DIFFICULTY
-	
-	#var result_text = meal_result_label.build_result_text(
-		#result.success,
-		#current_stats,
-		#reward_money,
-		#reward_score,
-		#result.reasons if not result.success else []
-	#)
-	#
-	#await meal_result_label.tween_text(result_text)
-	#await get_tree().create_timer(2.0).timeout
-	#await meal_result_label.tween_text("", 0.25)
-	
+		reward_money += 50 + (CURRENT_DIFFICULTY * 5)
+		reward_score += 100 * CURRENT_DIFFICULTY
+
 	if result.success:
-		round_success(reward_money, reward_score)
+		await round_success(reward_money, reward_score)
 	else:
-		round_failed(result.reasons)
-	update_play_button()
+		await round_failed(result.reasons, reward_money, reward_score)
 
 	
 #func evaluate_meal():
@@ -281,20 +266,20 @@ func _on_play_pressed():
 	
 func round_success(reward_money: int, reward_score: int) -> void:
 	await meal_result_label.show_result(true)
+
 	CURRENT_MONEY += reward_money
 	CURRENT_SCORE += reward_score
 	print_player_stats()
 	increase_difficulty()
 	next_round()
 	
-func round_failed(reasons: Array):
-	await meal_result_label.show_result(false)	
+func round_failed(reasons: Array, reward_money: int, reward_score: int) -> void:
+	await meal_result_label.show_result(false)
+	
+	CURRENT_MONEY += reward_money
+	CURRENT_SCORE += reward_score
+
 	CURRENT_LIVES -= 1
-	print("ROUND GAGAL")
-	print("Alasan gagal:")
-	for reason in reasons:
-		print("- ", reason)
-	print("Sisa nyawa: ", CURRENT_LIVES)
 	print_player_stats()
 
 	if CURRENT_LIVES <= 0:
@@ -328,6 +313,8 @@ func clear_board():
 func game_over() -> void:
 	CURRENT_GAMESTATE = GameState.GAME_OVER
 	play_button.disabled = true
+	player_hand.visible = false
+
 
 	# Tunggu sebentar setelah animasi result selesai
 	await get_tree().create_timer(0.5).timeout
@@ -406,12 +393,12 @@ func increase_difficulty():
 	#MAX_LEMAK += 5 * CURRENT_DIFFICULTY
 	
 func generate_target():
-	TARGET_KARBO = randi_range(10, 20) + (CURRENT_DIFFICULTY * 5)
-	TARGET_PROTEIN = randi_range(10, 20) + (CURRENT_DIFFICULTY * 5)
-	TARGET_VITAMIN = randi_range(5, 15) + (CURRENT_DIFFICULTY * 5)
+	TARGET_KARBO = randi_range(5, 10) + (CURRENT_DIFFICULTY * 5)
+	TARGET_PROTEIN = randi_range(10, 15) + (CURRENT_DIFFICULTY * 5)
+	TARGET_VITAMIN = randi_range(1, 5) + (CURRENT_DIFFICULTY * 5)
 
-	MAX_GULA = max(20, 30 - CURRENT_DIFFICULTY)
-	MAX_LEMAK = max(20, 30 - CURRENT_DIFFICULTY)
+	MAX_GULA = max(25, 35 - CURRENT_DIFFICULTY)
+	MAX_LEMAK = max(25, 35 - CURRENT_DIFFICULTY)
 	
 #func _sum_stats():
 	#CURRENT_HARGA = 0
@@ -548,8 +535,6 @@ func _set_ui_disabled(enabled: bool) -> void:
 	discard_pile.visible = !enabled
 	draw_pile.visible = !enabled
 	trash_slot.visible = !enabled
-	player_hand.visible = !enabled
-	#buff_container.visible = !enabled
 	play_button.visible = !enabled
 	for slot in card_slots:
 		if enabled: slot.lock()
@@ -559,6 +544,15 @@ func _set_ui_disabled(enabled: bool) -> void:
 		else: slot.unlock()
 	if enabled: trash_slot.lock()
 	else: trash_slot.unlock()
+	
+func _toggle_interaction(is_active: bool) -> void:
+	play_button.disabled  = !is_active
+
+	for slot in card_slots:
+		slot.slot_locked = !is_active
+	
+	#for card in player_hand.cards:
+		#card.disabled = !is_active
 		
 func clear_shop():
 	for card in shop_hand.cards:
@@ -591,12 +585,12 @@ func update_refresh_button():
 func add_card_to_selected(card: Card):
 	selected_shop_card = card
 	
-func open_shop():
-		shop_panel.show()
-		clear_shop()
-		draw_card(SHOP_DRAW_SIZE, draw_pile, shop_hand)
-		_set_ui_disabled(true)
-		print_money()
+func open_shop() -> void:
+	shop_panel.show()
+	clear_shop()
+	draw_card(SHOP_DRAW_SIZE, draw_pile, shop_hand)
+	_set_ui_disabled(true)
+	print_money()
 	
 func _on_restart() -> void:
 	# Reset semua state
@@ -614,6 +608,8 @@ func _on_restart() -> void:
 		card.move_to(discard_pile)
 	await discard_pile.move_all_to(draw_pile, 0)
 	draw_pile.shuffle()
+	player_hand.visible = true
+	
 
 	# Update semua label
 	print_player_stats()
