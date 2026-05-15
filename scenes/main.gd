@@ -67,7 +67,7 @@ var current_stats := MealStats.new()
 
 # CURRENT PLAYER STATS
 
-var CURRENT_MONEY: int 		= 100
+var CURRENT_MONEY: int 		= 500
 var CURRENT_SCORE: int 		= 0
 var CURRENT_LIVES: int 		= 3
 var CURRENT_DIFFICULTY: int = 1
@@ -86,7 +86,7 @@ var CURRENT_GAMESTATE = GameState.SHOP
 
 #region CONST
 
-const STARTING_HAND_SIZE = 5
+const STARTING_HAND_SIZE = 0
 const REFRESH_COST = 5
 const SHOP_DRAW_SIZE = 6
 
@@ -97,11 +97,7 @@ func _ready() -> void:
 	food_deck_manager.shuffle_on_setup = true
 	food_deck_manager.setup()
 
-	if CURRENT_GAMESTATE == GameState.SHOP:
-		shop_panel.show()
-		draw_card(SHOP_DRAW_SIZE, draw_pile, shop_hand)
-		_set_ui_disabled(true)
-		print_money()
+	open_shop()
 	
 	play_button.disabled = true
 	player_hand.card_added.connect(_on_card_added)
@@ -121,6 +117,7 @@ func _ready() -> void:
 		
 	draw_card(STARTING_HAND_SIZE)
 	print_player_stats()
+	generate_target()
 	display_target()
 
 func _on_buy_pressed():
@@ -141,7 +138,6 @@ func _on_buy_pressed():
 	selected_shop_card.move_to(player_hand)
 	print("transaksi sukses")
 	selected_shop_card = null
-	
 
 func _on_close_shop_presesd():
 	if shop_panel.visible:
@@ -180,7 +176,7 @@ func _on_card_back_to_hand(card: Card):
 func _on_card_dropped(card: Card):
 	current_stats = StatCalculator.calculate(card_slots)
 	stat_panel.display(current_stats)
-	update_play_button()	
+	update_play_button()
 
 func _on_card_dropped_on_trash_slot(card: Card):
 	#if CURRENT_MONEY < 5:
@@ -214,35 +210,37 @@ func _on_play_pressed():
 		round_success()
 	else:
 		round_failed(result.reasons)
+	update_play_button()
+
 	
-func evaluate_meal():
-	var success = true
-	var failed_reasons = []
-
-	if current_stats.karbo < TARGET_KARBO:
-		success = false
-		failed_reasons.append("Karbo kurang")
-
-	if current_stats.protein < TARGET_PROTEIN:
-		success = false
-		failed_reasons.append("Protein kurang")
-
-	if current_stats.vitamin < TARGET_VITAMIN:
-		success = false
-		failed_reasons.append("Vitamin kurang")
-
-	if current_stats.gula > MAX_GULA:
-		success = false
-		failed_reasons.append("Gula terlalu tinggi")
-
-	if current_stats.lemak > MAX_LEMAK:
-		success = false
-		failed_reasons.append("Lemak terlalu tinggi")
-
-	if success:
-		round_success()
-	else:
-		round_failed(failed_reasons)
+#func evaluate_meal():
+	#var success = true
+	#var failed_reasons = []
+#
+	#if current_stats.karbo < TARGET_KARBO:
+		#success = false
+		#failed_reasons.append("Karbo kurang")
+#
+	#if current_stats.protein < TARGET_PROTEIN:
+		#success = false
+		#failed_reasons.append("Protein kurang")
+#
+	#if current_stats.vitamin < TARGET_VITAMIN:
+		#success = false
+		#failed_reasons.append("Vitamin kurang")
+#
+	#if current_stats.gula > MAX_GULA:
+		#success = false
+		#failed_reasons.append("Gula terlalu tinggi")
+#
+	#if current_stats.lemak > MAX_LEMAK:
+		#success = false
+		#failed_reasons.append("Lemak terlalu tinggi")
+#
+	#if success:
+		#round_success()
+	#else:
+		#round_failed(failed_reasons)
 		
 func round_success():
 	print("ROUND BERHASIL")
@@ -253,7 +251,6 @@ func round_success():
 	print_player_stats()
 	increase_difficulty()
 	next_round()
-	display_target()
 	
 func round_failed(reasons: Array):
 	CURRENT_LIVES -= 1
@@ -270,10 +267,12 @@ func round_failed(reasons: Array):
 		next_round()
 		
 func next_round():
+	CURRENT_GAMESTATE = GameState.SHOP
+	open_shop()
 	generate_target()
 	display_target()
 	clear_board()
-	draw_card(5)
+	#draw_card(5)
 
 func clear_board():
 	for slot in card_slots:
@@ -539,6 +538,15 @@ func update_refresh_button():
 	
 func add_card_to_selected(card: Card):
 	selected_shop_card = card
+	
+func open_shop():
+	if CURRENT_GAMESTATE == GameState.SHOP:
+		shop_panel.show()
+		clear_shop()
+		draw_card(SHOP_DRAW_SIZE, draw_pile, shop_hand)
+		_set_ui_disabled(true)
+		print_money()
+	
 
 #func _process(delta: float) -> void:
 	#pass
