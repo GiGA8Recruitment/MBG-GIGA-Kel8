@@ -1,0 +1,99 @@
+[gd_scene load_steps=4 format=3 uid="uid://dx5sx1nce2f7s"]
+
+[ext_resource type="Script" uid="uid://3pgy0iywhwol" path="res://scenes/game_over_panel.gd" id="1_dme80"]
+
+[sub_resource type="Theme" id="Theme_muem4"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_dme80"]
+font_size = 96
+
+[node name="GameOverPanel" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dme80")
+
+[node name="Overlay" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_muem4")
+color = Color(0, 0, 0, 1)
+
+[node name="Card" type="PanelContainer" parent="Overlay"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Overlay/Card"]
+layout_mode = 2
+
+[node name="IconLabel" type="Label" parent="Overlay/Card/VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="Overlay/Card/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+text = "Game Over"
+label_settings = SubResource("LabelSettings_dme80")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SubLabel" type="Label" parent="Overlay/Card/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="StatsContainer" type="GridContainer" parent="Overlay/Card/VBoxContainer"]
+visible = false
+layout_mode = 2
+columns = 3
+
+[node name="ScoreLabel" type="Label" parent="Overlay/Card/VBoxContainer/StatsContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="RondeLabel" type="Label" parent="Overlay/Card/VBoxContainer/StatsContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="DiffLabel" type="Label" parent="Overlay/Card/VBoxContainer/StatsContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="Overlay/Card/VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="RestartButton" type="Button" parent="Overlay/Card/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "Restart"
+
+[node name="ExitButton" type="Button" parent="Overlay/Card/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "Exit
+"

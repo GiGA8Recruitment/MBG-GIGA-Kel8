@@ -13,4 +13,3 @@ card_name = "Telur Balado"
 card_image = ExtResource("1_rc3r0")
 harga = 15
 front_layout_name = &"food_layout"
-back_layout_name = &"food_layout"

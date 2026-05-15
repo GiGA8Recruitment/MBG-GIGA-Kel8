@@ -13,4 +13,3 @@ card_name = "Es Krim"
 card_image = ExtResource("1_8b56j")
 harga = 10
 front_layout_name = &"food_layout"
-back_layout_name = &"food_layout"

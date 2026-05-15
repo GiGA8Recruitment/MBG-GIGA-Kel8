@@ -11,5 +11,4 @@ card_name = "Mie Goreng"
 card_image = ExtResource("1_lvhwb")
 harga = 15
 front_layout_name = &"food_layout"
-back_layout_name = &"food_layout"
 metadata/_custom_type_script = "uid://clcv636replkf"

@@ -1,13 +1,13 @@
 [gd_resource type="Resource" script_class="FoodCardResource" load_steps=3 format=3 uid="uid://d32242kovrl3x"]
 
-[ext_resource type="Texture2D" uid="uid://ch802psllw4a2" path="res://assets/images/slot_wild.png" id="1_sqwtd"]
+[ext_resource type="Texture2D" uid="uid://dslipph1w87if" path="res://assets/images/dana_lebih.png" id="1_sqwtd"]
 [ext_resource type="Script" uid="uid://clcv636replkf" path="res://FoodCardResource.gd" id="2_i7ttj"]
 
 [resource]
 script = ExtResource("2_i7ttj")
 kategori = 4
 power_up = 1
-card_name = "Rezeki Melimpah"
+card_name = "Dana Lebih"
 card_image = ExtResource("1_sqwtd")
+harga = 30
 front_layout_name = &"food_layout"
-back_layout_name = &"food_layout"

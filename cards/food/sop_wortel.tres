@@ -12,4 +12,3 @@ card_name = "Sop Wortel"
 card_image = ExtResource("1_ayx8x")
 harga = 10
 front_layout_name = &"food_layout"
-back_layout_name = &"food_layout"

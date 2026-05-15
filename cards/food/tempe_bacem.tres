@@ -12,4 +12,3 @@ card_name = "Tempe Bacem"
 card_image = ExtResource("1_fu6nm")
 harga = 10
 front_layout_name = &"food_layout"
-back_layout_name = &"food_layout"

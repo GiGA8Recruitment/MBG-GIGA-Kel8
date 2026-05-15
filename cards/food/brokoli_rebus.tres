@@ -11,4 +11,3 @@ card_name = "Brokoli Rebus"
 card_image = ExtResource("1_ynnqa")
 harga = 30
 front_layout_name = &"food_layout"
-back_layout_name = &"food_layout"

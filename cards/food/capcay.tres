@@ -12,4 +12,3 @@ card_name = "Capcay"
 card_image = ExtResource("1_q1lre")
 harga = 15
 front_layout_name = &"food_layout"
-back_layout_name = &"food_layout"

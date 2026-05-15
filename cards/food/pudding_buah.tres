@@ -13,4 +13,3 @@ card_name = "Pudding Buah"
 card_image = ExtResource("1_47jfx")
 harga = 10
 front_layout_name = &"food_layout"
-back_layout_name = &"food_layout"

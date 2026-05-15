@@ -12,4 +12,3 @@ card_name = "Biskuit"
 card_image = ExtResource("1_b1vua")
 harga = 5
 front_layout_name = &"food_layout"
-back_layout_name = &"food_layout"

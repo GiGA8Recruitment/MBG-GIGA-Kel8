@@ -12,4 +12,3 @@ card_name = "Gorengan"
 card_image = ExtResource("1_dqqfa")
 harga = 5
 front_layout_name = &"food_layout"
-back_layout_name = &"food_layout"

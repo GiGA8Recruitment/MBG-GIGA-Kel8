@@ -20,7 +20,7 @@ extends Node
 	%BuffSlotContainer/CardSlot4
 ]
 
-@onready var buff_container = %BuffSlotContainer
+#@onready var buff_container = %BuffSlotContainer
 @onready var button_container = %ButtonContainer
 
 @onready var draw_pile 		= %DrawPile
@@ -50,7 +50,9 @@ var selected_shop_card = null
 @onready var money_label	= %MoneyLabel
 @onready var skor_label		= %SkorLabel
 @onready var health_label	= %HealthLabel
-@onready var diff_label 	= %DiffLabel
+@onready var level_label 	= %LevelLabel
+@onready var meal_result_label = %MealResultLabel
+@onready var game_over_panel = %GameOverPanel
 
 
 # TARGET
@@ -105,6 +107,8 @@ func _ready() -> void:
 	close_shop_button.pressed.connect(_on_close_shop_presesd)
 	refresh_shop_button.pressed.connect(_on_refresh_shop_pressed)
 	buy_button.pressed.connect(_on_buy_pressed)
+	game_over_panel.restart_pressed.connect(_on_restart)
+	game_over_panel.exit_pressed.connect(_on_exit)
 
 	open_shop()
 
@@ -194,9 +198,14 @@ func _on_shop_pressed():
 	shop_panel.show()
 	
 func _on_play_pressed():
+	if CURRENT_GAMESTATE != GameState.PREPARE:
+		return
+	play_button.disabled = true
+	
 	current_stats = StatCalculator.calculate(card_slots)
 	apply_buffs(current_stats)
 	stat_panel.display(current_stats)
+	
 	var result = MealEvaluator.evaluate(
 		current_stats,
 		TARGET_KARBO,
@@ -205,8 +214,27 @@ func _on_play_pressed():
 		MAX_GULA,
 		MAX_LEMAK
 	)
+	
+	var reward_money = 0
+	var reward_score = 0
 	if result.success:
-		round_success()
+		reward_money = 20 + (CURRENT_DIFFICULTY * 5)
+		reward_score = 100 * CURRENT_DIFFICULTY
+	
+	#var result_text = meal_result_label.build_result_text(
+		#result.success,
+		#current_stats,
+		#reward_money,
+		#reward_score,
+		#result.reasons if not result.success else []
+	#)
+	#
+	#await meal_result_label.tween_text(result_text)
+	#await get_tree().create_timer(2.0).timeout
+	#await meal_result_label.tween_text("", 0.25)
+	
+	if result.success:
+		round_success(reward_money, reward_score)
 	else:
 		round_failed(result.reasons)
 	update_play_button()
@@ -241,10 +269,17 @@ func _on_play_pressed():
 	#else:
 		#round_failed(failed_reasons)
 		
-func round_success():
-	print("ROUND BERHASIL")
-	var reward_money = 20 + (CURRENT_DIFFICULTY * 5)
-	var reward_score = 100 * CURRENT_DIFFICULTY
+#func round_success():
+	#print("ROUND BERHASIL")
+	#var reward_money = 20 + (CURRENT_DIFFICULTY * 5)
+	#var reward_score = 100 * CURRENT_DIFFICULTY
+	#CURRENT_MONEY += reward_money
+	#CURRENT_SCORE += reward_score
+	#print_player_stats()
+	#increase_difficulty()
+	#next_round()
+	
+func round_success(reward_money: int, reward_score: int) -> void:
 	CURRENT_MONEY += reward_money
 	CURRENT_SCORE += reward_score
 	print_player_stats()
@@ -282,11 +317,25 @@ func clear_board():
 		var card = slot.get_card()
 		card.move_to(discard_pile)
 		
-func game_over():
-	play_button.disabled = true
-	print("GAME OVER")
-	print("Final Score: ", CURRENT_SCORE)
+#func game_over():
+	#play_button.disabled = true
+	#print("GAME OVER")
+	#print("Final Score: ", CURRENT_SCORE)
+	#CURRENT_GAMESTATE = GameState.GAME_OVER
+	
+func game_over() -> void:
 	CURRENT_GAMESTATE = GameState.GAME_OVER
+	play_button.disabled = true
+
+	# Tunggu sebentar setelah animasi result selesai
+	await get_tree().create_timer(0.5).timeout
+
+	game_over_panel.show_game_over(
+		CURRENT_SCORE,
+		CURRENT_DIFFICULTY,   # pakai sebagai ronde jika tidak ada var terpisah
+		CURRENT_DIFFICULTY
+	)
+	_set_ui_disabled(true)
 	
 func display_target():
 	target_panel.get_node("TargetContainer/Karbohidrat").text = "Karbohidrat: " + str(TARGET_KARBO)
@@ -320,17 +369,17 @@ func print_score():
 func print_lives():
 	health_label.text = "Health: " + str(CURRENT_LIVES)
 	
-func print_diff():
-	diff_label.text = "Diff: " + str(CURRENT_DIFFICULTY)
+func print_level():
+	level_label.text = "Level: " + str(CURRENT_DIFFICULTY)
 	
 func print_player_stats():
 	print_money()
 	print_lives()
 	print_score()
-	print_diff()
+	print_level()
 	
 func discard_card(card: Card):
-	await card.move_to(discard_pile, 1)
+	card.move_to(discard_pile, 1)
 	
 #func _on_play_pressed():
 	#_sum_stats()
@@ -497,7 +546,8 @@ func _set_ui_disabled(enabled: bool) -> void:
 	discard_pile.visible = !enabled
 	draw_pile.visible = !enabled
 	trash_slot.visible = !enabled
-	buff_container.visible = !enabled
+	#buff_container.visible = !enabled
+	play_button.visible = !enabled
 	for slot in card_slots:
 		if enabled: slot.lock()
 		else: slot.unlock()
@@ -545,6 +595,34 @@ func open_shop():
 		_set_ui_disabled(true)
 		print_money()
 	
+func _on_restart() -> void:
+	# Reset semua state
+	CURRENT_MONEY      = 500
+	CURRENT_SCORE      = 0
+	CURRENT_LIVES      = 3
+	CURRENT_DIFFICULTY = 1
+	NEXT_DIFF_SCORE    = 1000
 
+	game_over_panel.hide()
+
+	# Bersihkan semua kartu yang ada
+	clear_board()
+	for card in player_hand.cards.duplicate():
+		card.move_to(discard_pile)
+	await discard_pile.move_all_to(draw_pile, 0)
+	draw_pile.shuffle()
+
+	# Update semua label
+	print_player_stats()
+
+	# Mulai ulang dari shop
+	CURRENT_GAMESTATE = GameState.SHOP
+	generate_target()
+	display_target()
+	open_shop()
+
+func _on_exit() -> void:
+	get_tree().quit()
+	
 #func _process(delta: float) -> void:
 	#pass

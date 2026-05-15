@@ -13,4 +13,3 @@ card_name = "Tumis Buncis"
 card_image = ExtResource("1_70lhc")
 harga = 5
 front_layout_name = &"food_layout"
-back_layout_name = &"food_layout"

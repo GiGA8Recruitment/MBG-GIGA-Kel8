@@ -1,13 +1,14 @@
 [gd_resource type="Resource" script_class="FoodCardResource" load_steps=3 format=3 uid="uid://c25fqvscpqlja"]
 
-[ext_resource type="Texture2D" uid="uid://ch802psllw4a2" path="res://assets/images/slot_wild.png" id="1_ug0of"]
+[ext_resource type="Texture2D" uid="uid://5w38bkgkw0w5" path="res://assets/images/porsi_atlet.png" id="1_ug0of"]
 [ext_resource type="Script" uid="uid://clcv636replkf" path="res://FoodCardResource.gd" id="2_fhg66"]
 
 [resource]
 script = ExtResource("2_fhg66")
 kategori = 4
 power_up = 9
-card_name = "Keto Diet"
+card_name = "Poris Atlet"
 card_image = ExtResource("1_ug0of")
+harga = 30
+rarity = 2
 front_layout_name = &"food_layout"
-back_layout_name = &"food_layout"

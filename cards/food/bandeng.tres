@@ -12,4 +12,3 @@ card_name = "Bandeng"
 card_image = ExtResource("1_8rgsf")
 harga = 20
 front_layout_name = &"food_layout"
-back_layout_name = &"food_layout"

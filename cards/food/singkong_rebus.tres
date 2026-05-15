@@ -11,4 +11,3 @@ card_name = "Singkong Rebus"
 card_image = ExtResource("1_1st16")
 harga = 10
 front_layout_name = &"food_layout"
-back_layout_name = &"food_layout"

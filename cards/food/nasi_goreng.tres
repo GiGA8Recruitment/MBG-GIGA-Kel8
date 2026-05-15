@@ -12,5 +12,4 @@ card_name = "Nasi Goreng"
 card_image = ExtResource("1_ov1os")
 harga = 25
 front_layout_name = &"food_layout"
-back_layout_name = &"food_layout"
 metadata/_custom_type_script = "uid://clcv636replkf"

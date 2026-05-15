@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://bwyj0rvwbrlo1"]
+[gd_scene load_steps=43 format=3 uid="uid://bwyj0rvwbrlo1"]
 
 [ext_resource type="Script" uid="uid://bt08wwpc43yyr" path="res://scenes/main.gd" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://bbi8i6vef3f6y" path="res://addons/simple_cards/card/containers/hand/card_hand.gd" id="2_0xm2m"]
@@ -15,6 +15,9 @@
 [ext_resource type="Texture2D" uid="uid://ch802psllw4a2" path="res://assets/images/slot_wild.png" id="10_muem4"]
 [ext_resource type="Texture2D" uid="uid://dlcd7c85q8rne" path="res://assets/images/slot_carb.png" id="11_dp3eg"]
 [ext_resource type="Texture2D" uid="uid://cjyk46t2ipft2" path="res://assets/images/slot_prot.png" id="12_0ld40"]
+[ext_resource type="FontFile" uid="uid://fpoco0u13011" path="res://examples/cards/standard_deck/KarenFat.ttf" id="16_muem4"]
+[ext_resource type="Script" uid="uid://cfm1pal0apypf" path="res://meal_result_label.gd" id="17_muem4"]
+[ext_resource type="PackedScene" uid="uid://dx5sx1nce2f7s" path="res://scenes/game_over_panel.tscn" id="18_dp3eg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o6xl0"]
 bg_color = Color(0.9764706, 0.9019608, 0.8117647, 1)
@@ -33,6 +36,34 @@ content_margin_top = 10.0
 bg_color = Color(0.1764706, 0.1764706, 0.1764706, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_choun"]
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_dp3eg"]
+font_color = Color(1, 0.78431374, 0.14509805, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_0ld40"]
+font_color = Color(0.90588236, 0.38039216, 0.29411766, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_gqmmt"]
+font_color = Color(0.6, 0.9019608, 0.37254903, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_yc10j"]
+font_color = Color(1, 0.78431374, 0.14509805, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_jscy8"]
+font_color = Color(0.90434873, 0.3798438, 0.2924442, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_pm3ni"]
+font_color = Color(0.6, 0.9019608, 0.37254903, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_y6deb"]
+font_color = Color(1, 0.78431374, 0.14509805, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_og1vs"]
+font_color = Color(0.90588236, 0.38039216, 0.29411766, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_2wyq8"]
+font_color = Color(0.6, 0.9019608, 0.37254903, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o6xl0"]
 
@@ -224,7 +255,7 @@ unique_name_in_owner = true
 offset_left = 19.0
 offset_top = 18.0
 offset_right = 238.0
-offset_bottom = 253.0
+offset_bottom = 267.0
 
 [node name="CardDetailContainer" type="VBoxContainer" parent="UI/CardDetailPanel"]
 layout_mode = 0
@@ -233,10 +264,13 @@ offset_top = 9.0
 offset_right = 200.0
 offset_bottom = 59.0
 
+[node name="Title" type="Label" parent="UI/CardDetailPanel/CardDetailContainer"]
+layout_mode = 2
+text = "Detail kartu:"
+
 [node name="Nama" type="Label" parent="UI/CardDetailPanel/CardDetailContainer"]
 layout_mode = 2
 text = "Nama"
-label_settings = SubResource("LabelSettings_choun")
 
 [node name="Kategori" type="Label" parent="UI/CardDetailPanel/CardDetailContainer"]
 layout_mode = 2
@@ -249,14 +283,17 @@ text = "Harga"
 [node name="Karbohidrat" type="Label" parent="UI/CardDetailPanel/CardDetailContainer"]
 layout_mode = 2
 text = "Karbohidrat"
+label_settings = SubResource("LabelSettings_dp3eg")
 
 [node name="Protein" type="Label" parent="UI/CardDetailPanel/CardDetailContainer"]
 layout_mode = 2
 text = "Protein"
+label_settings = SubResource("LabelSettings_0ld40")
 
 [node name="Vitamin" type="Label" parent="UI/CardDetailPanel/CardDetailContainer"]
 layout_mode = 2
 text = "Vitamin"
+label_settings = SubResource("LabelSettings_gqmmt")
 
 [node name="Lemak" type="Label" parent="UI/CardDetailPanel/CardDetailContainer"]
 layout_mode = 2
@@ -285,8 +322,13 @@ offset_top = 9.0
 offset_right = 200.0
 offset_bottom = 59.0
 
+[node name="Label" type="Label" parent="UI/StatsSummaryPanel/StatsSummaryContainer"]
+layout_mode = 2
+text = "Total Stats Kartu:"
+
 [node name="Harga" type="Label" parent="UI/StatsSummaryPanel/StatsSummaryContainer"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 text = "Harga"
 
@@ -294,16 +336,19 @@ text = "Harga"
 unique_name_in_owner = true
 layout_mode = 2
 text = "Karbohidrat"
+label_settings = SubResource("LabelSettings_yc10j")
 
 [node name="Protein" type="Label" parent="UI/StatsSummaryPanel/StatsSummaryContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Protein"
+label_settings = SubResource("LabelSettings_jscy8")
 
 [node name="Vitamin" type="Label" parent="UI/StatsSummaryPanel/StatsSummaryContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Vitamin"
+label_settings = SubResource("LabelSettings_pm3ni")
 
 [node name="Lemak" type="Label" parent="UI/StatsSummaryPanel/StatsSummaryContainer"]
 unique_name_in_owner = true
@@ -320,10 +365,10 @@ unique_name_in_owner = true
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -241.86499
-offset_top = 209.01
-offset_right = -16.86499
-offset_bottom = 356.00995
+offset_left = -245.0
+offset_top = 209.0
+offset_right = -20.0
+offset_bottom = 383.0
 grow_horizontal = 0
 
 [node name="TargetContainer" type="VBoxContainer" parent="UI/TargetPanel"]
@@ -333,17 +378,24 @@ offset_top = 9.0
 offset_right = 200.0
 offset_bottom = 59.0
 
+[node name="Label" type="Label" parent="UI/TargetPanel/TargetContainer"]
+layout_mode = 2
+text = "Target Stats:"
+
 [node name="Karbohidrat" type="Label" parent="UI/TargetPanel/TargetContainer"]
 layout_mode = 2
 text = "Karbohidrat"
+label_settings = SubResource("LabelSettings_y6deb")
 
 [node name="Protein" type="Label" parent="UI/TargetPanel/TargetContainer"]
 layout_mode = 2
 text = "Protein"
+label_settings = SubResource("LabelSettings_og1vs")
 
 [node name="Vitamin" type="Label" parent="UI/TargetPanel/TargetContainer"]
 layout_mode = 2
 text = "Vitamin"
+label_settings = SubResource("LabelSettings_2wyq8")
 
 [node name="Lemak" type="Label" parent="UI/TargetPanel/TargetContainer"]
 layout_mode = 2
@@ -660,16 +712,13 @@ texture = ExtResource("10_muem4")
 [node name="ButtonContainer" type="VBoxContainer" parent="UI"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 100)
-anchors_preset = 3
-anchor_left = 1.0
+anchors_preset = 2
 anchor_top = 1.0
-anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -166.45502
-offset_top = -237.86914
-offset_right = -16.454834
-offset_bottom = -15.869141
-grow_horizontal = 0
+offset_left = 21.395
+offset_top = -216.655
+offset_right = 171.39519
+offset_bottom = -24.654968
 grow_vertical = 0
 size_flags_horizontal = 8
 size_flags_vertical = 8
@@ -681,12 +730,6 @@ custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
 text = "Shop
 "
-
-[node name="PlayButton" type="Button" parent="UI/ButtonContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 75)
-layout_mode = 2
-text = "Play"
 
 [node name="MoneyLabel" type="Label" parent="UI/ButtonContainer"]
 unique_name_in_owner = true
@@ -709,7 +752,7 @@ layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_tipki")
 text = "Health:"
 
-[node name="DiffLabel" type="Label" parent="UI/ButtonContainer"]
+[node name="LevelLabel" type="Label" parent="UI/ButtonContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 45)
 layout_mode = 2
@@ -764,10 +807,10 @@ custom_minimum_size = Vector2(80, 112)
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 16.71
-offset_top = -56.0
-offset_right = 96.71
-offset_bottom = 56.0
+offset_left = 18.0
+offset_top = -40.0
+offset_right = 98.0
+offset_bottom = 72.0
 grow_vertical = 2
 script = ExtResource("8_tipki")
 metadata/_custom_type_script = "uid://btwakv2103085"
@@ -784,6 +827,7 @@ vertical_alignment = 1
 
 [node name="BuffSlotContainer" type="HBoxContainer" parent="UI"]
 unique_name_in_owner = true
+visible = false
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -821,9 +865,50 @@ script = ExtResource("5_tipki")
 max_cards = 1
 metadata/_custom_type_script = "uid://btwakv2103085"
 
+[node name="PlayButton" type="Button" parent="UI"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 75)
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -165.56
+offset_top = -92.849976
+offset_right = -15.560059
+offset_bottom = -17.849976
+grow_horizontal = 0
+grow_vertical = 0
+text = "Play"
+
+[node name="MealResultLabel" type="Label" parent="."]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -606.0
+offset_top = -240.0
+offset_right = 610.0
+offset_bottom = -176.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("16_muem4")
+theme_override_font_sizes/font_size = 64
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("17_muem4")
+
+[node name="GameOverPanel" parent="." instance=ExtResource("18_dp3eg")]
+unique_name_in_owner = true
+visible = false
+
 [connection signal="card_added" from="UI/PlayerHand" to="." method="_on_card_hand_card_added"]
 [connection signal="container_full" from="UI/Ompreng/CardSlotContainer/CardSlot7" to="." method="_on_card_slot_6_container_full"]
 [connection signal="container_full" from="UI/Ompreng/CardSlotContainer/CardSlot6" to="." method="_on_card_slot_6_container_full"]
 [connection signal="container_full" from="UI/Ompreng/CardSlotContainer/CardSlot8" to="." method="_on_card_slot_6_container_full"]
 [connection signal="pressed" from="UI/ButtonContainer/ShopButton" to="." method="_on_play_button_pressed"]
-[connection signal="pressed" from="UI/ButtonContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="UI/PlayButton" to="." method="_on_play_button_pressed"]
