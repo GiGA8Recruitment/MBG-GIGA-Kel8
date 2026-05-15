@@ -37,15 +37,20 @@ extends Node
 @onready var play_button	= %PlayButton
 @onready var shop_button	= %ShopButton
 
+#region SHOP
 @onready var close_shop_button = %CloseButton
 @onready var refresh_shop_button = %RefreshButton
 @onready var shop_hand = %ShopHand
 @onready var shop_card_detail_panel = %ShopCardDetailPanel
 @onready var shop_money_label = %ShopMoneyLabel
+@onready var buy_button = %BuyButton
+var selected_shop_card = null
+#endregion
 
 @onready var money_label	= %MoneyLabel
 @onready var skor_label		= %SkorLabel
 @onready var health_label	= %HealthLabel
+@onready var diff_label 	= %DiffLabel
 
 
 # TARGET
@@ -81,8 +86,7 @@ var CURRENT_GAMESTATE = GameState.SHOP
 
 #region CONST
 
-const STARTING_HAND_SIZE = 10
-const DRAW_SIZE = 5
+const STARTING_HAND_SIZE = 5
 const REFRESH_COST = 5
 const SHOP_DRAW_SIZE = 6
 
@@ -101,12 +105,14 @@ func _ready() -> void:
 	
 	play_button.disabled = true
 	player_hand.card_added.connect(_on_card_added)
-	shop_hand.card_added.connect(_on_card_added)
+	shop_hand.card_added.connect(_on_shop_card_added)
 	play_button.pressed.connect(_on_play_pressed)
 	shop_button.pressed.connect(_on_shop_pressed)
 	trash_slot.card_dropped_on.connect(_on_card_dropped_on_trash_slot)
 	close_shop_button.pressed.connect(_on_close_shop_presesd)
 	refresh_shop_button.pressed.connect(_on_refresh_shop_pressed)
+	buy_button.pressed.connect(_on_buy_pressed)
+	
 	
 	for slot in card_slots:
 		slot.card_dropped_on.connect(_on_card_dropped)
@@ -117,8 +123,26 @@ func _ready() -> void:
 	print_player_stats()
 	display_target()
 
+func _on_buy_pressed():
+	if selected_shop_card == null:
+		return
+	var data = selected_shop_card.card_data as FoodCardResource
+	if CURRENT_MONEY < data.harga:
+		print("Uang tdk cukup")
+		return
+	if player_hand.is_full():
+		print("player hand full, tdk dapat membeli")
+		return
+		
+	substract_money(data.harga)
+	print_money()
+	update_refresh_button()
 	
+	selected_shop_card.move_to(player_hand)
+	print("transaksi sukses")
+	selected_shop_card = null
 	
+
 func _on_close_shop_presesd():
 	if shop_panel.visible:
 		shop_panel.hide()
@@ -132,6 +156,12 @@ func _on_card_added(card: Card, _index: int):
 	card.is_front_face = true
 	card.card_clicked.connect(show_details)
 	card.drag_started.connect(show_details)
+	
+func _on_shop_card_added(card: Card, _index: int):
+	card.is_front_face = true
+	card.card_clicked.connect(show_shop_details)
+	card.card_clicked.connect(add_card_to_selected)
+	card.drag_started.connect(show_shop_details)
 	
 func _on_card_back_to_hand(card: Card):
 	card.move_to(player_hand)
@@ -219,10 +249,8 @@ func round_success():
 	var reward_money = 20 + (CURRENT_DIFFICULTY * 5)
 	var reward_score = 100 * CURRENT_DIFFICULTY
 	CURRENT_MONEY += reward_money
-	CURRENT_MONEY += reward_score
-	print_money()
-	print_score()
-	print_lives()
+	CURRENT_SCORE += reward_score
+	print_player_stats()
 	increase_difficulty()
 	next_round()
 	display_target()
@@ -242,6 +270,8 @@ func round_failed(reasons: Array):
 		next_round()
 		
 func next_round():
+	generate_target()
+	display_target()
 	clear_board()
 	draw_card(5)
 
@@ -255,8 +285,10 @@ func clear_board():
 		card.move_to(discard_pile)
 		
 func game_over():
+	play_button.disabled = true
 	print("GAME OVER")
 	print("Final Score: ", CURRENT_SCORE)
+	CURRENT_GAMESTATE = GameState.GAME_OVER
 	
 func display_target():
 	target_panel.get_node("TargetContainer/Karbohidrat").text = "Karbohidrat: " + str(TARGET_KARBO)
@@ -290,10 +322,14 @@ func print_score():
 func print_lives():
 	health_label.text = "Health: " + str(CURRENT_LIVES)
 	
+func print_diff():
+	diff_label.text = "Diff: " + str(CURRENT_DIFFICULTY)
+	
 func print_player_stats():
 	print_money()
 	print_lives()
 	print_score()
+	print_diff()
 	
 func discard_card(card: Card):
 	card.move_to(discard_pile)
@@ -311,14 +347,22 @@ func increase_difficulty():
 	if CURRENT_SCORE >= NEXT_DIFF_SCORE:
 		CURRENT_DIFFICULTY += 1
 		NEXT_DIFF_SCORE += 1000
-	adjust_target()
-		
-func adjust_target():
-	TARGET_KARBO += 5 * CURRENT_DIFFICULTY
-	TARGET_PROTEIN += 5 * CURRENT_DIFFICULTY
-	TARGET_VITAMIN += 5 * CURRENT_DIFFICULTY
-	MAX_GULA += 5 * CURRENT_DIFFICULTY
-	MAX_LEMAK += 5 * CURRENT_DIFFICULTY
+	generate_target()
+			
+#func adjust_target():
+	#TARGET_KARBO += 5 * CURRENT_DIFFICULTY
+	#TARGET_PROTEIN += 5 * CURRENT_DIFFICULTY
+	#TARGET_VITAMIN += 5 * CURRENT_DIFFICULTY
+	#MAX_GULA += 5 * CURRENT_DIFFICULTY
+	#MAX_LEMAK += 5 * CURRENT_DIFFICULTY
+	
+func generate_target():
+	TARGET_KARBO = randi_range(10, 20) + (CURRENT_DIFFICULTY * 5)
+	TARGET_PROTEIN = randi_range(10, 20) + (CURRENT_DIFFICULTY * 5)
+	TARGET_VITAMIN = randi_range(5, 15) + (CURRENT_DIFFICULTY * 5)
+
+	MAX_GULA = max(20, 30 - CURRENT_DIFFICULTY)
+	MAX_LEMAK = max(20, 30 - CURRENT_DIFFICULTY)
 	
 #func _sum_stats():
 	#CURRENT_HARGA = 0
@@ -415,7 +459,18 @@ func show_details(card: Card):
 		detail_panel.get_node("CardDetailContainer/Vitamin").text = "Vitamin: " + str(data.vitamin)
 		detail_panel.get_node("CardDetailContainer/Lemak").text = "Lemak: " + str(data.lemak)
 		detail_panel.get_node("CardDetailContainer/Gula").text = "Gula: " + str(data.gula)
-		detail_panel.show()
+		
+func show_shop_details(card: Card):
+	var data = card.card_data as FoodCardResource
+	if data:
+		shop_card_detail_panel.get_node("CardDetailContainer/Nama").text = "Nama: " + data.card_name
+		shop_card_detail_panel.get_node("CardDetailContainer/Kategori").text = "Kategori: " + str(data.kategori)
+		shop_card_detail_panel.get_node("CardDetailContainer/Harga").text = "Harga: " + str(data.harga)	
+		shop_card_detail_panel.get_node("CardDetailContainer/Karbohidrat").text = "Karbo: " + str(data.karbohidrat)
+		shop_card_detail_panel.get_node("CardDetailContainer/Protein").text = "Protein: " + str(data.protein)
+		shop_card_detail_panel.get_node("CardDetailContainer/Vitamin").text = "Vitamin: " + str(data.vitamin)
+		shop_card_detail_panel.get_node("CardDetailContainer/Lemak").text = "Lemak: " + str(data.lemak)
+		shop_card_detail_panel.get_node("CardDetailContainer/Gula").text = "Gula: " + str(data.gula)
 		
 func get_active_buffs() -> Array:
 	var buffs = []
@@ -459,10 +514,10 @@ func clear_shop():
 		card.move_to(discard_pile)
 		
 func refresh_shop():
-	clear_shop()
 	if CURRENT_MONEY < 5:
 		print("duit abis")
 		return
+	clear_shop()
 	substract_money(REFRESH_COST)
 	print_money()
 	update_refresh_button()
@@ -481,6 +536,9 @@ func update_refresh_button():
 	if CURRENT_MONEY >= 5:
 		has_enough_money = true
 	refresh_shop_button.disabled = !has_enough_money
+	
+func add_card_to_selected(card: Card):
+	selected_shop_card = card
 
 #func _process(delta: float) -> void:
 	#pass
