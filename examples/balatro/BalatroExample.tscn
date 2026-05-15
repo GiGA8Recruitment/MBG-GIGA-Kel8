@@ -13,7 +13,6 @@
 [ext_resource type="Script" uid="uid://b1s6x4iyt2pps" path="res://addons/simple_cards/shape/premade_shapes/line_shape.gd" id="10_asqof"]
 [ext_resource type="Script" uid="uid://qd3kangeiqg" path="res://addons/simple_cards/shape/premade_shapes/grid_shape.gd" id="11_gmp31"]
 
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m6hid"]
 bg_color = Color(0.16078432, 0.2784314, 0.20784314, 1)
 border_width_left = 16
