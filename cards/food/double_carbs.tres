@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="FoodCardResource" load_steps=3 format=3 uid="uid://ju7f8yqw2hjn"]
 
-[ext_resource type="Texture2D" uid="uid://ch802psllw4a2" path="res://assets/images/slot_wild.png" id="1_jf1b6"]
+[ext_resource type="Texture2D" uid="uid://sq8j5qajge6c" path="res://assets/images/porsi_kuli.png" id="1_jf1b6"]
 [ext_resource type="Script" uid="uid://clcv636replkf" path="res://FoodCardResource.gd" id="2_v46dq"]
 
 [resource]
@@ -8,5 +8,6 @@ script = ExtResource("2_v46dq")
 card_name = "Porsi Kuli"
 card_image = ExtResource("1_jf1b6")
 kategori = 4
+rarity = 1
 power_up = 6
 front_layout_name = &"food_layout"

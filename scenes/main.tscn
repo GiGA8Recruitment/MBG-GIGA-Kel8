@@ -536,9 +536,9 @@ text = "Skor: "
 
 [node name="PileContainer" type="HBoxContainer" parent="UI"]
 offset_left = 19.0
-offset_top = 519.0
+offset_top = 463.0
 offset_right = 183.0
-offset_bottom = 631.0
+offset_bottom = 575.0
 
 [node name="DiscardPile" type="Panel" parent="UI/PileContainer"]
 unique_name_in_owner = true
@@ -573,9 +573,9 @@ text = "Draw"
 [node name="Trash" type="Panel" parent="UI"]
 custom_minimum_size = Vector2(80, 112)
 offset_left = 18.0
-offset_top = 353.0
+offset_top = 347.0
 offset_right = 98.0
-offset_bottom = 465.0
+offset_bottom = 459.0
 script = ExtResource("8_tipki")
 metadata/_custom_type_script = "uid://btwakv2103085"
 

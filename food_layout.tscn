@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c1owmc52vk5lr"]
 
 [ext_resource type="Script" uid="uid://c48jda54vw8ja" path="res://food_layout.gd" id="1_6cskk"]
-[ext_resource type="Texture2D" uid="uid://d874vvff7sas" path="res://assets/images/bahan/miegoreng.png" id="2_1wsy2"]
+[ext_resource type="Texture2D" uid="uid://7n05gtnf2qtr" path="res://assets/images/bahan/puddingbuah.png" id="2_1wsy2"]
 
 [node name="CardLayout" type="SubViewportContainer"]
 texture_filter = 1
