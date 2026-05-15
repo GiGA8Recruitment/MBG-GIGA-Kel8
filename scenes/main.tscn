@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bwyj0rvwbrlo1"]
+[gd_scene load_steps=32 format=3 uid="uid://bwyj0rvwbrlo1"]
 
 [ext_resource type="Script" uid="uid://bt08wwpc43yyr" path="res://scenes/main.gd" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://bbi8i6vef3f6y" path="res://addons/simple_cards/card/containers/hand/card_hand.gd" id="2_0xm2m"]
@@ -48,6 +48,13 @@ metadata/_custom_type_script = "uid://b1s6x4iyt2pps"
 content_margin_left = 10.0
 content_margin_top = 10.0
 bg_color = Color(0.1764706, 0.1764706, 0.1764706, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pm3ni"]
+
+[sub_resource type="Resource" id="Resource_jkv2x"]
+script = ExtResource("5_jkv2x")
+card_spacing = 85.0
+metadata/_custom_type_script = "uid://b1s6x4iyt2pps"
 
 [sub_resource type="LabelSettings" id="LabelSettings_jbj1t"]
 
@@ -124,10 +131,10 @@ unique_name_in_owner = true
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -243.0
-offset_top = 10.0
-offset_right = -18.0
-offset_bottom = 187.0
+offset_left = -244.055
+offset_top = 17.58
+offset_right = -19.055176
+offset_bottom = 194.58
 grow_horizontal = 0
 script = ExtResource("4_jkv2x")
 
@@ -173,10 +180,10 @@ unique_name_in_owner = true
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -243.0
-offset_top = 192.0
-offset_right = -18.0
-offset_bottom = 339.0
+offset_left = -241.86499
+offset_top = 209.01
+offset_right = -16.86499
+offset_bottom = 356.00995
 grow_horizontal = 0
 
 [node name="TargetContainer" type="VBoxContainer" parent="UI/TargetPanel"]
@@ -230,14 +237,17 @@ metadata/_custom_type_script = "uid://bbi8i6vef3f6y"
 [node name="Ompreng" type="TextureRect" parent="UI"]
 unique_name_in_owner = true
 texture_filter = 1
-anchors_preset = 5
+anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
+anchor_bottom = 0.5
 offset_left = -214.0
-offset_top = 152.0
+offset_top = -128.0
 offset_right = 214.0
-offset_bottom = 408.0
+offset_bottom = 128.0
 grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("6_choun")
 stretch_mode = 2
 
@@ -508,11 +518,19 @@ offset_bottom = 120.0
 texture = ExtResource("10_muem4")
 
 [node name="ButtonContainer" type="VBoxContainer" parent="UI"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 100)
-offset_left = 857.0
-offset_top = 346.0
-offset_right = 1007.0
-offset_bottom = 618.0
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -166.45502
+offset_top = -237.86914
+offset_right = -16.454834
+offset_bottom = -15.869141
+grow_horizontal = 0
+grow_vertical = 0
 size_flags_horizontal = 8
 size_flags_vertical = 8
 
@@ -552,10 +570,14 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_tipki")
 text = "Health:"
 
 [node name="PileContainer" type="HBoxContainer" parent="UI"]
-offset_left = 19.0
-offset_top = 438.0
-offset_right = 183.0
-offset_bottom = 550.0
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 19.59
+offset_top = -130.82
+offset_right = 183.59
+offset_bottom = -18.820007
+grow_vertical = 0
 
 [node name="DiscardPile" type="Panel" parent="UI/PileContainer"]
 unique_name_in_owner = true
@@ -590,10 +612,14 @@ text = "Draw"
 [node name="TrashSlot" type="Panel" parent="UI"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(80, 112)
-offset_left = 20.0
-offset_top = 322.0
-offset_right = 100.0
-offset_bottom = 434.0
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 16.71
+offset_top = -56.0
+offset_right = 96.71
+offset_bottom = 56.0
+grow_vertical = 2
 script = ExtResource("8_tipki")
 metadata/_custom_type_script = "uid://btwakv2103085"
 
@@ -613,9 +639,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -166.0
-offset_top = 20.0
+offset_top = 19.11
 offset_right = 166.0
-offset_bottom = 132.0
+offset_bottom = 131.11006
 grow_horizontal = 2
 
 [node name="CardSlot" type="Panel" parent="UI/BuffSlotContainer"]
@@ -648,20 +674,24 @@ metadata/_custom_type_script = "uid://btwakv2103085"
 
 [node name="ShopPanel" type="Panel" parent="."]
 unique_name_in_owner = true
-visible = false
-offset_left = 17.0
-offset_top = 117.0
-offset_right = 1003.0
-offset_bottom = 489.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="CloseButton" type="Button" parent="ShopPanel"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 50)
-layout_mode = 0
-offset_left = 868.0
-offset_top = 19.0
-offset_right = 968.0
-offset_bottom = 69.0
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -116.61499
+offset_top = 16.485
+offset_right = -16.61499
+offset_bottom = 66.48503
+grow_horizontal = 0
 
 [node name="Label" type="Label" parent="ShopPanel/CloseButton"]
 layout_mode = 0
@@ -672,23 +702,6 @@ offset_bottom = 36.0
 text = "Close"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="RefreshButton" type="Button" parent="ShopPanel"]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = 866.0
-offset_top = 280.0
-offset_right = 965.0
-offset_bottom = 354.0
-
-[node name="Label" type="Label" parent="ShopPanel/RefreshButton"]
-layout_mode = 0
-offset_left = 17.0
-offset_top = 11.0
-offset_right = 77.0
-offset_bottom = 34.0
-text = "Refresh 
-(5 coins)"
 
 [node name="ShopHand" type="Panel" parent="ShopPanel"]
 unique_name_in_owner = true
@@ -704,12 +717,15 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_pm3ni")
 script = ExtResource("2_0xm2m")
+shape = SubResource("Resource_jkv2x")
 max_cards = 6
 metadata/_custom_type_script = "uid://bbi8i6vef3f6y"
 
 [node name="ShopCardDetailPanel" type="Panel" parent="ShopPanel"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 0
 offset_left = 2.0
 offset_right = 221.0
@@ -754,6 +770,42 @@ text = "Lemak"
 [node name="Gula" type="Label" parent="ShopPanel/ShopCardDetailPanel/ShopCardDetailContainer"]
 layout_mode = 2
 text = "Gula"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ShopPanel"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -166.0
+offset_top = -159.0
+offset_right = -15.625
+offset_bottom = -16.14502
+grow_horizontal = 0
+grow_vertical = 0
+alignment = 2
+
+[node name="RefreshButton" type="Button" parent="ShopPanel/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(50, 80)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ShopPanel/VBoxContainer/RefreshButton"]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 11.0
+offset_right = 77.0
+offset_bottom = 34.0
+text = "Refresh 
+(5 coins)"
+
+[node name="ShopMoneyLabel" type="Label" parent="ShopPanel/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_tipki")
+text = "Uang: "
 
 [connection signal="card_added" from="UI/PlayerHand" to="." method="_on_card_hand_card_added"]
 [connection signal="container_full" from="UI/Ompreng/CardSlotContainer/CardSlot7" to="." method="_on_card_slot_6_container_full"]
