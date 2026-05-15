@@ -98,7 +98,6 @@ func _ready() -> void:
 	food_deck_manager.starting_pile = draw_pile
 	food_deck_manager.shuffle_on_setup = true
 	food_deck_manager.setup()	
-	
 	play_button.disabled = true
 	player_hand.card_added.connect(_on_card_added)
 	shop_hand.card_added.connect(_on_shop_card_added)
@@ -112,6 +111,7 @@ func _ready() -> void:
 	game_over_panel.exit_pressed.connect(_on_exit)
 
 	open_shop()
+
 	
 	for slot in card_slots:
 		slot.card_dropped_on.connect(_on_card_dropped)
@@ -280,6 +280,7 @@ func _on_play_pressed():
 	#next_round()
 	
 func round_success(reward_money: int, reward_score: int) -> void:
+	await meal_result_label.show_result(true)
 	CURRENT_MONEY += reward_money
 	CURRENT_SCORE += reward_score
 	print_player_stats()
@@ -287,6 +288,7 @@ func round_success(reward_money: int, reward_score: int) -> void:
 	next_round()
 	
 func round_failed(reasons: Array):
+	await meal_result_label.show_result(false)	
 	CURRENT_LIVES -= 1
 	print("ROUND GAGAL")
 	print("Alasan gagal:")
@@ -546,6 +548,7 @@ func _set_ui_disabled(enabled: bool) -> void:
 	discard_pile.visible = !enabled
 	draw_pile.visible = !enabled
 	trash_slot.visible = !enabled
+	player_hand.visible = !enabled
 	#buff_container.visible = !enabled
 	play_button.visible = !enabled
 	for slot in card_slots:
@@ -623,6 +626,3 @@ func _on_restart() -> void:
 
 func _on_exit() -> void:
 	get_tree().quit()
-	
-#func _process(delta: float) -> void:
-	#pass
