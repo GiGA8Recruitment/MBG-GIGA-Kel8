@@ -9,4 +9,5 @@ card_name = "Gosong"
 card_image = ExtResource("1_kgmah")
 kategori = 4
 power_up = 7
+harga = 10
 front_layout_name = &"food_layout"

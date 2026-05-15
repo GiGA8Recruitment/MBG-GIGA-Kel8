@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bwyj0rvwbrlo1"]
+[gd_scene load_steps=34 format=3 uid="uid://bwyj0rvwbrlo1"]
 
 [ext_resource type="Script" uid="uid://bt08wwpc43yyr" path="res://scenes/main.gd" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://bbi8i6vef3f6y" path="res://addons/simple_cards/card/containers/hand/card_hand.gd" id="2_0xm2m"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://ch802psllw4a2" path="res://assets/images/slot_wild.png" id="10_muem4"]
 [ext_resource type="Texture2D" uid="uid://dlcd7c85q8rne" path="res://assets/images/slot_carb.png" id="11_dp3eg"]
 [ext_resource type="Texture2D" uid="uid://cjyk46t2ipft2" path="res://assets/images/slot_prot.png" id="12_0ld40"]
+[ext_resource type="Script" uid="uid://dgntf7k6ufoci" path="res://scenes/shop_panel.gd" id="16_jbj1t"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o6xl0"]
 bg_color = Color(0.9764706, 0.9019608, 0.8117647, 1)
@@ -49,6 +50,15 @@ content_margin_left = 10.0
 content_margin_top = 10.0
 bg_color = Color(0.1764706, 0.1764706, 0.1764706, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jbj1t"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pm3ni"]
+
+[sub_resource type="Resource" id="Resource_muem4"]
+script = ExtResource("5_jkv2x")
+card_spacing = 85.0
+metadata/_custom_type_script = "uid://b1s6x4iyt2pps"
+
 [sub_resource type="LabelSettings" id="LabelSettings_jbj1t"]
 
 [node name="Main" type="Node"]
@@ -74,6 +84,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_o6xl0")
 
 [node name="CardDetailPanel" type="Panel" parent="UI"]
 unique_name_in_owner = true
+visible = false
 offset_left = 19.0
 offset_top = 18.0
 offset_right = 238.0
@@ -124,10 +135,8 @@ unique_name_in_owner = true
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -243.0
-offset_top = 10.0
-offset_right = -18.0
-offset_bottom = 187.0
+offset_left = -225.0
+offset_bottom = 177.0
 grow_horizontal = 0
 script = ExtResource("4_jkv2x")
 
@@ -173,9 +182,8 @@ unique_name_in_owner = true
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -243.0
+offset_left = -225.0
 offset_top = 192.0
-offset_right = -18.0
 offset_bottom = 339.0
 grow_horizontal = 0
 
@@ -215,10 +223,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -40.0
-offset_top = -149.0
-offset_right = 40.0
-offset_bottom = -37.0
+offset_left = -40.5
+offset_top = -140.0
+offset_right = 40.5
+offset_bottom = -26.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_o6xl0")
@@ -234,9 +242,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -214.0
-offset_top = 152.0
+offset_top = 100.0
 offset_right = 214.0
-offset_bottom = 408.0
+offset_bottom = 356.0
 grow_horizontal = 2
 texture = ExtResource("6_choun")
 stretch_mode = 2
@@ -507,12 +515,19 @@ offset_right = 102.5
 offset_bottom = 120.0
 texture = ExtResource("10_muem4")
 
+[node name="PlayButton" type="Button" parent="UI"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 75)
+offset_left = 750.0
+offset_top = 420.0
+offset_right = 900.0
+offset_bottom = 495.0
+text = "Play"
+
 [node name="ButtonContainer" type="VBoxContainer" parent="UI"]
 custom_minimum_size = Vector2(150, 100)
-offset_left = 857.0
-offset_top = 346.0
-offset_right = 1007.0
-offset_bottom = 618.0
+offset_right = 150.0
+offset_bottom = 272.0
 size_flags_horizontal = 8
 size_flags_vertical = 8
 
@@ -523,12 +538,6 @@ custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
 text = "Shop
 "
-
-[node name="PlayButton" type="Button" parent="UI/ButtonContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 75)
-layout_mode = 2
-text = "Play"
 
 [node name="MoneyLabel" type="Label" parent="UI/ButtonContainer"]
 unique_name_in_owner = true
@@ -552,6 +561,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_tipki")
 text = "Health:"
 
 [node name="PileContainer" type="HBoxContainer" parent="UI"]
+visible = false
 offset_left = 19.0
 offset_top = 438.0
 offset_right = 183.0
@@ -609,6 +619,7 @@ vertical_alignment = 1
 
 [node name="BuffSlotContainer" type="HBoxContainer" parent="UI"]
 unique_name_in_owner = true
+visible = false
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -646,24 +657,36 @@ script = ExtResource("5_tipki")
 max_cards = 1
 metadata/_custom_type_script = "uid://btwakv2103085"
 
-[node name="ShopPanel" type="Panel" parent="."]
+[node name="ShopPanel" type="Panel" parent="UI"]
 unique_name_in_owner = true
 visible = false
-offset_left = 17.0
-offset_top = 117.0
-offset_right = 1003.0
-offset_bottom = 489.0
+z_index = 10
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -195.0
+offset_right = 400.0
+offset_bottom = 155.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jbj1t")
+script = ExtResource("16_jbj1t")
 
-[node name="CloseButton" type="Button" parent="ShopPanel"]
+[node name="CloseButton" type="Button" parent="UI/ShopPanel"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 50)
-layout_mode = 0
-offset_left = 868.0
-offset_top = 19.0
-offset_right = 968.0
-offset_bottom = 69.0
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -100.0
+offset_bottom = 50.0
+grow_horizontal = 0
 
-[node name="Label" type="Label" parent="ShopPanel/CloseButton"]
+[node name="Label" type="Label" parent="UI/ShopPanel/CloseButton"]
 layout_mode = 0
 offset_left = 26.0
 offset_top = 13.0
@@ -673,15 +696,20 @@ text = "Close"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="RefreshButton" type="Button" parent="ShopPanel"]
+[node name="RefreshButton" type="Button" parent="UI/ShopPanel"]
 unique_name_in_owner = true
-layout_mode = 0
-offset_left = 866.0
-offset_top = 280.0
-offset_right = 965.0
-offset_bottom = 354.0
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -99.0
+offset_top = -74.0
+grow_horizontal = 0
+grow_vertical = 0
 
-[node name="Label" type="Label" parent="ShopPanel/RefreshButton"]
+[node name="Label" type="Label" parent="UI/ShopPanel/RefreshButton"]
 layout_mode = 0
 offset_left = 17.0
 offset_top = 11.0
@@ -690,7 +718,7 @@ offset_bottom = 34.0
 text = "Refresh 
 (5 coins)"
 
-[node name="ShopHand" type="Panel" parent="ShopPanel"]
+[node name="ShopHand" type="Panel" parent="UI/ShopPanel"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 8
@@ -704,60 +732,104 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_pm3ni")
 script = ExtResource("2_0xm2m")
+enable_reordering = false
+shape = SubResource("Resource_muem4")
 max_cards = 6
 metadata/_custom_type_script = "uid://bbi8i6vef3f6y"
 
-[node name="ShopCardDetailPanel" type="Panel" parent="ShopPanel"]
+[node name="ShopCardDetailPanel" type="Panel" parent="UI/ShopPanel"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 0
 offset_left = 2.0
 offset_right = 221.0
 offset_bottom = 235.0
 
-[node name="ShopCardDetailContainer" type="VBoxContainer" parent="ShopPanel/ShopCardDetailPanel"]
+[node name="ShopCardDetailContainer" type="VBoxContainer" parent="UI/ShopPanel/ShopCardDetailPanel"]
 layout_mode = 0
 offset_left = 13.0
 offset_top = 9.0
 offset_right = 200.0
 offset_bottom = 59.0
 
-[node name="Nama" type="Label" parent="ShopPanel/ShopCardDetailPanel/ShopCardDetailContainer"]
+[node name="Nama" type="Label" parent="UI/ShopPanel/ShopCardDetailPanel/ShopCardDetailContainer"]
 layout_mode = 2
 text = "Nama"
 label_settings = SubResource("LabelSettings_jbj1t")
 
-[node name="Kategori" type="Label" parent="ShopPanel/ShopCardDetailPanel/ShopCardDetailContainer"]
+[node name="Kategori" type="Label" parent="UI/ShopPanel/ShopCardDetailPanel/ShopCardDetailContainer"]
 layout_mode = 2
 text = "Kategori "
 
-[node name="Harga" type="Label" parent="ShopPanel/ShopCardDetailPanel/ShopCardDetailContainer"]
+[node name="Harga" type="Label" parent="UI/ShopPanel/ShopCardDetailPanel/ShopCardDetailContainer"]
 layout_mode = 2
 text = "Harga"
 
-[node name="Karbohidrat" type="Label" parent="ShopPanel/ShopCardDetailPanel/ShopCardDetailContainer"]
+[node name="Karbohidrat" type="Label" parent="UI/ShopPanel/ShopCardDetailPanel/ShopCardDetailContainer"]
 layout_mode = 2
 text = "Karbohidrat"
 
-[node name="Protein" type="Label" parent="ShopPanel/ShopCardDetailPanel/ShopCardDetailContainer"]
+[node name="Protein" type="Label" parent="UI/ShopPanel/ShopCardDetailPanel/ShopCardDetailContainer"]
 layout_mode = 2
 text = "Protein"
 
-[node name="Vitamin" type="Label" parent="ShopPanel/ShopCardDetailPanel/ShopCardDetailContainer"]
+[node name="Vitamin" type="Label" parent="UI/ShopPanel/ShopCardDetailPanel/ShopCardDetailContainer"]
 layout_mode = 2
 text = "Vitamin"
 
-[node name="Lemak" type="Label" parent="ShopPanel/ShopCardDetailPanel/ShopCardDetailContainer"]
+[node name="Lemak" type="Label" parent="UI/ShopPanel/ShopCardDetailPanel/ShopCardDetailContainer"]
 layout_mode = 2
 text = "Lemak"
 
-[node name="Gula" type="Label" parent="ShopPanel/ShopCardDetailPanel/ShopCardDetailContainer"]
+[node name="Gula" type="Label" parent="UI/ShopPanel/ShopCardDetailPanel/ShopCardDetailContainer"]
 layout_mode = 2
 text = "Gula"
+
+[node name="GameOverPanel" type="Panel" parent="UI"]
+unique_name_in_owner = true
+visible = false
+z_index = 10
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TryAgainButton" type="Button" parent="UI/GameOverPanel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -140.0
+offset_top = -45.0
+offset_right = 140.0
+offset_bottom = 45.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ExitButton" type="Button" parent="UI/GameOverPanel"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -140.5
+offset_top = 54.5
+offset_right = 140.5
+offset_bottom = 145.5
+grow_horizontal = 2
+grow_vertical = 2
 
 [connection signal="card_added" from="UI/PlayerHand" to="." method="_on_card_hand_card_added"]
 [connection signal="container_full" from="UI/Ompreng/CardSlotContainer/CardSlot7" to="." method="_on_card_slot_6_container_full"]
 [connection signal="container_full" from="UI/Ompreng/CardSlotContainer/CardSlot6" to="." method="_on_card_slot_6_container_full"]
 [connection signal="container_full" from="UI/Ompreng/CardSlotContainer/CardSlot8" to="." method="_on_card_slot_6_container_full"]
+[connection signal="pressed" from="UI/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="UI/ButtonContainer/ShopButton" to="." method="_on_play_button_pressed"]
-[connection signal="pressed" from="UI/ButtonContainer/PlayButton" to="." method="_on_play_button_pressed"]

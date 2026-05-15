@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b2yqfofqf1bmf"
-path="res://.godot/imported/nasiputihArt.png-0e6f09a274ce78c53007c612fe30277a.ctex"
+uid="uid://qccbofucsw5r"
+path="res://.godot/imported/perfectiont.png-83b201d186fb8b331663de685abd599a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/nasiputihArt.png"
-dest_files=["res://.godot/imported/nasiputihArt.png-0e6f09a274ce78c53007c612fe30277a.ctex"]
+source_file="res://assets/images/perfectiont.png"
+dest_files=["res://.godot/imported/perfectiont.png-83b201d186fb8b331663de685abd599a.ctex"]
 
 [params]
 

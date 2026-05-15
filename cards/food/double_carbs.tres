@@ -10,4 +10,5 @@ card_image = ExtResource("1_jf1b6")
 kategori = 4
 rarity = 1
 power_up = 6
+harga = 25
 front_layout_name = &"food_layout"

@@ -9,4 +9,5 @@ card_name = "Saus Tiram"
 card_image = ExtResource("1_dyg5r")
 kategori = 4
 power_up = 8
+harga = 10
 front_layout_name = &"food_layout"

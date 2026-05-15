@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://yf7evsks7lfp"
-path="res://.godot/imported/VitaminTemplate1.png-a6c075d5d37277c5b1da0fcf8d28cc2c.ctex"
+uid="uid://5w38bkgkw0w5"
+path="res://.godot/imported/porsi_atlet.png-43a68a7fe5d7bf93aa7345e3a1e5f03a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/VitaminTemplate1.png"
-dest_files=["res://.godot/imported/VitaminTemplate1.png-a6c075d5d37277c5b1da0fcf8d28cc2c.ctex"]
+source_file="res://assets/images/porsi_atlet.png"
+dest_files=["res://.godot/imported/porsi_atlet.png-43a68a7fe5d7bf93aa7345e3a1e5f03a.ctex"]
 
 [params]
 

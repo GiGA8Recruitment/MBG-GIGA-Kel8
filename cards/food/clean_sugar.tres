@@ -9,4 +9,5 @@ card_name = "Air Putih"
 card_image = ExtResource("1_557ps")
 kategori = 4
 power_up = 2
+harga = 15
 front_layout_name = &"food_layout"
