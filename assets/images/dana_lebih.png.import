@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cljf003xu8hd3"
-path="res://.godot/imported/245281.jpg-cf1405e2c52a36d68e6544c54ae73570.ctex"
+uid="uid://dslipph1w87if"
+path="res://.godot/imported/dana_lebih.png-e803a230743a24e40fb70c6ef854e835.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/245281.jpg"
-dest_files=["res://.godot/imported/245281.jpg-cf1405e2c52a36d68e6544c54ae73570.ctex"]
+source_file="res://assets/images/dana_lebih.png"
+dest_files=["res://.godot/imported/dana_lebih.png-e803a230743a24e40fb70c6ef854e835.ctex"]
 
 [params]
 

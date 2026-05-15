@@ -9,4 +9,5 @@ card_name = "Tisu Minyak"
 card_image = ExtResource("1_jgtnx")
 kategori = 4
 power_up = 3
+harga = 15
 front_layout_name = &"food_layout"

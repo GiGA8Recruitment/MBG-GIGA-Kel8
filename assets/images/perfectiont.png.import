@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://yf7evsks7lfp"
-path="res://.godot/imported/VitaminTemplate1.png-a6c075d5d37277c5b1da0fcf8d28cc2c.ctex"
+uid="uid://qccbofucsw5r"
+path="res://.godot/imported/perfectiont.png-83b201d186fb8b331663de685abd599a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/VitaminTemplate1.png"
-dest_files=["res://.godot/imported/VitaminTemplate1.png-a6c075d5d37277c5b1da0fcf8d28cc2c.ctex"]
+source_file="res://assets/images/perfectiont.png"
+dest_files=["res://.godot/imported/perfectiont.png-83b201d186fb8b331663de685abd599a.ctex"]
 
 [params]
 

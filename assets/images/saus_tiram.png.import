@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://n6lu7y556eyh"
-path="res://.godot/imported/ProteinTemplate1.png-769c6fb7cee4a320bd10178c79586dc8.ctex"
+uid="uid://duxtx6ghcm1m7"
+path="res://.godot/imported/saus_tiram.png-2d64a698eb17cf1a0565bdd43a16eb96.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ProteinTemplate1.png"
-dest_files=["res://.godot/imported/ProteinTemplate1.png-769c6fb7cee4a320bd10178c79586dc8.ctex"]
+source_file="res://assets/images/saus_tiram.png"
+dest_files=["res://.godot/imported/saus_tiram.png-2d64a698eb17cf1a0565bdd43a16eb96.ctex"]
 
 [params]
 

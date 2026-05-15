@@ -23,6 +23,7 @@ extends Node
 @onready var draw_pile 		= %DrawPile
 @onready var discard_pile 	= %DiscardPile
 @onready var trash_slot 	= %TrashSlot
+@onready var ompreng 		= %Ompreng
 
 @onready var detail_panel 	= %CardDetailPanel
 @onready var stat_panel 	= %StatsSummaryPanel
@@ -37,26 +38,21 @@ extends Node
 
 @onready var shop_panel 	= %ShopPanel
 
+@onready var game_over_panel = %GameOverPanel
+@onready var try_again_button = %TryAgainButton
+@onready var exit_button = %ExitButton
+
 # TARGET
 
 @onready var TARGET_KARBO 	= 10
 @onready var TARGET_PROTEIN = 10
 @onready var TARGET_VITAMIN = 10
-@onready var MAX_LEMAK	 	= 10
-@onready var MAX_GULA 		= 10
+@onready var MAX_LEMAK	 	= 50
+@onready var MAX_GULA 		= 50
 
 # CURRENT GIZI
 
 var current_stats := MealStats.new()
-
-# CURRENT PLAYER STATS
-
-var CURRENT_MONEY: int 		= 100
-var CURRENT_SCORE: int 		= 0
-var CURRENT_LIVES: int 		= 3
-var CURRENT_DIFFICULTY: int = 1
-var NEXT_DIFF_SCORE: int 	= 1000
-var NEXT_BUFF_SCORE: int	= 5000
 
 # STATE
 
@@ -69,7 +65,7 @@ enum GameState {
 
 # CONST
 
-const STARTING_HAND_SIZE = 10
+const STARTING_HAND_SIZE = 8
 const DRAW_SIZE = 5
 
 func _ready() -> void:
@@ -94,6 +90,13 @@ func _ready() -> void:
 	print_lives()
 	display_target()
 
+	shop_panel.shop_closed.connect(next_round)
+	shop_panel.card_bought.connect(_on_card_bought_from_shop)
+	shop_panel.shop_updated.connect(print_money)
+
+	try_again_button.pressed.connect(_on_try_again_pressed)
+	exit_button.pressed.connect(_on_exit_pressed)
+
 func _on_card_added(card: Card, _index: int):
 	card.is_front_face = true
 	card.card_clicked.connect(show_details)
@@ -109,6 +112,7 @@ func _on_card_back_to_hand(card: Card):
 	#play_button.disabled = false
 	
 func _on_card_dropped(card: Card):
+	detail_panel.hide()
 	current_stats = StatCalculator.calculate(card_slots)
 	stat_panel.display(current_stats)
 	play_button.disabled = false
@@ -118,15 +122,18 @@ func _on_card_dropped(card: Card):
 	#_sum_stats()
 	
 func _on_card_dropped_on_trash_slot(card: Card):
-	if CURRENT_MONEY < 5:
-		print("uang tdk cukup")
-		return
-	subtract_money(5)
-	discard_card(card)
-	draw_card(1)
-	#return_money(card)
-
-	print_money()
+	detail_panel.hide()
+	var data = card.card_data as FoodCardResource
+	if data:
+		# Hitung refund 50% dari harga kartu
+		var refund = int(data.harga * 0.5)
+		RoundManager.current_money += refund
+		
+		# Hapus kartu secara permanen
+		card.queue_free()
+		
+		print_money()
+		print("Kartu dijual: +" + str(refund))
 	
 func _on_shop_pressed():
 	if shop_panel.visible:
@@ -181,45 +188,37 @@ func _on_play_pressed():
 		#round_failed(failed_reasons)
 		#
 func round_success():
-	print("ROUND BERHASIL")
-
-	var reward_money = 20 + (CURRENT_DIFFICULTY * 5)
-	var reward_score = 100 * CURRENT_DIFFICULTY
-
-	CURRENT_MONEY += reward_money
-	CURRENT_MONEY += reward_score
+	var old_difficulty = RoundManager.current_difficulty
+	RoundManager.round_success()
+	
+	if RoundManager.current_difficulty > old_difficulty:
+		adjust_target()
 
 	print_money()
 	print_score()
 	print_lives()
-
-	increase_difficulty()
-	next_round()
 	display_target()
+
+	clear_board()
+	open_shop()
 	
 func round_failed(reasons: Array):
-	CURRENT_LIVES -= 1
-
-	print("ROUND GAGAL")
-	print("Alasan gagal:")
-
-	for reason in reasons:
-		print("- ", reason)
-
-	print("Sisa nyawa: ", CURRENT_LIVES)
+	RoundManager.round_failed(reasons)
 	
 	print_lives()
 	print_money()
 	print_score()
+	clear_board()
 
-	if CURRENT_LIVES <= 0:
-		game_over()
+	if RoundManager.is_game_over():
+		game_over() # Panel Game Over muncul dan tombol interaksi mati
 	else:
-		next_round()
+		open_shop()
 		
 func next_round():
+	ompreng.show()
 	clear_board()
-	draw_card(5)
+	# draw_card(5)
 
 func clear_board():
 	for slot in card_slots:
@@ -229,10 +228,6 @@ func clear_board():
 
 		var card = slot.get_card()
 		card.move_to(discard_pile)
-		
-func game_over():
-	print("GAME OVER")
-	print("Final Score: ", CURRENT_SCORE)
 	
 func display_target():
 	target_panel.get_node("TargetContainer/Karbohidrat").text = "Karbohidrat: " + str(TARGET_KARBO)
@@ -247,7 +242,7 @@ func display_target():
 	
 func return_money(card: Card):
 	var data = card.card_data as FoodCardResource
-	CURRENT_MONEY += int(data.harga / 2)
+	RoundManager.current_money += int(data.harga / 2)
 
 func draw_starting_hand():
 	await draw_pile.deal_to(player_hand, STARTING_HAND_SIZE, 0.4, 0.1)
@@ -257,9 +252,17 @@ func draw_starting_hand():
 	
 func open_shop():
 	shop_panel.show()
+	shop_panel.player_hand_ref = player_hand
+	shop_panel.open_shop(food_deck_manager.deck)
+	ompreng.hide()
+
+func _on_card_bought_from_shop(card: Card):
+	card.move_to(player_hand)
+	print_money()
 
 func close_shop():
 	shop_panel.hide()
+	ompreng.show()
 	
 func draw_card(amount) -> void:
 	if draw_pile.is_empty():
@@ -271,13 +274,13 @@ func draw_card(amount) -> void:
 # PRINT N DISPLAY	
 
 func print_money():
-	money_label.text = "Uang: " + str(CURRENT_MONEY)
+	money_label.text = "Uang: " + str(RoundManager.current_money)
 	
 func print_score():
-	skor_label.text = "Skor: " + str(CURRENT_SCORE)
+	skor_label.text = "Skor: " + str(RoundManager.current_score)
 	
 func print_lives():
-	health_label.text = "Health: " + str(CURRENT_LIVES)
+	health_label.text = "Health: " + str(RoundManager.current_lives)
 	
 func discard_card(card: Card):
 	card.move_to(discard_pile)
@@ -292,26 +295,22 @@ func discard_card(card: Card):
 
 	
 func subtract_money(amount: int):
-	if CURRENT_MONEY < amount:
+	if RoundManager.current_money < amount:
 		return
-	CURRENT_MONEY -= amount
-	
-
-	
-
+	RoundManager.current_money -= amount
 
 func increase_difficulty():
-	if CURRENT_SCORE >= NEXT_DIFF_SCORE:
-		CURRENT_DIFFICULTY += 1
-		NEXT_DIFF_SCORE += 1000
+	if RoundManager.current_score >= RoundManager.next_diff_score:
+		RoundManager.current_difficulty += 1
+		RoundManager.next_diff_score += 1000
 	adjust_target()
 		
 func adjust_target():
-	TARGET_KARBO += 5 * CURRENT_DIFFICULTY
-	TARGET_PROTEIN += 5 * CURRENT_DIFFICULTY
-	TARGET_VITAMIN += 5 * CURRENT_DIFFICULTY
-	MAX_GULA += 5 * CURRENT_DIFFICULTY
-	MAX_LEMAK += 5 * CURRENT_DIFFICULTY
+	TARGET_KARBO += 5 * RoundManager.current_difficulty
+	TARGET_PROTEIN += 5 * RoundManager.current_difficulty
+	TARGET_VITAMIN += 5 * RoundManager.current_difficulty
+	MAX_GULA += 5 * RoundManager.current_difficulty
+	MAX_LEMAK += 5 * RoundManager.current_difficulty
 
 
 	
@@ -437,3 +436,22 @@ func apply_buffs(stats: MealStats):
 
 #func _process(delta: float) -> void:
 	#pass
+
+func game_over():
+	game_over_panel.show()
+	print("GAME OVER")
+	print("Final Score: ", RoundManager.current_score)
+	
+	play_button.disabled = true
+	shop_button.disabled = true
+
+func _on_try_again_pressed():
+	RoundManager.current_score = 0
+	RoundManager.current_money = 100
+	RoundManager.current_lives = 3
+	RoundManager.current_difficulty = 1
+
+	get_tree().reload_current_scene()
+
+func _on_exit_pressed():
+	get_tree().quit()

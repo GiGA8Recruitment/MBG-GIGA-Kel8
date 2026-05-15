@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="FoodCardResource" load_steps=3 format=3 uid="uid://tmpg6rp0iy8t"]
 
-[ext_resource type="Texture2D" uid="uid://ch802psllw4a2" path="res://assets/images/slot_wild.png" id="1_nk2ak"]
+[ext_resource type="Texture2D" uid="uid://bp3xi10yt5git" path="res://assets/images/microwave.png" id="1_nk2ak"]
 [ext_resource type="Script" uid="uid://clcv636replkf" path="res://FoodCardResource.gd" id="2_ety7s"]
 
 [resource]
@@ -8,5 +8,7 @@ script = ExtResource("2_ety7s")
 card_name = "Microwave"
 card_image = ExtResource("1_nk2ak")
 kategori = 4
+rarity = 1
 power_up = 5
+harga = 25
 front_layout_name = &"food_layout"

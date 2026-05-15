@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="FoodCardResource" load_steps=3 format=3 uid="uid://d151l8323o7i6"]
 
-[ext_resource type="Texture2D" uid="uid://ch802psllw4a2" path="res://assets/images/slot_wild.png" id="1_0tfa1"]
+[ext_resource type="Texture2D" uid="uid://c8avklxpfowl5" path="res://assets/images/pil_vitamin.png" id="1_0tfa1"]
 [ext_resource type="Script" uid="uid://clcv636replkf" path="res://FoodCardResource.gd" id="2_y610j"]
 
 [resource]
@@ -8,5 +8,7 @@ script = ExtResource("2_y610j")
 card_name = "pil vitamin"
 card_image = ExtResource("1_0tfa1")
 kategori = 4
+rarity = 1
 power_up = 4
+harga = 25
 front_layout_name = &"food_layout"

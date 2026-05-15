@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bknqcmq6nap0n"
-path="res://.godot/imported/ProteinTemplate.png-ab4594bd0ef362c636c1392f51b64101.ctex"
+uid="uid://bp3xi10yt5git"
+path="res://.godot/imported/microwave.png-7980d6a5c9cce9215222036478d205ae.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ProteinTemplate.png"
-dest_files=["res://.godot/imported/ProteinTemplate.png-ab4594bd0ef362c636c1392f51b64101.ctex"]
+source_file="res://assets/images/microwave.png"
+dest_files=["res://.godot/imported/microwave.png-7980d6a5c9cce9215222036478d205ae.ctex"]
 
 [params]
 

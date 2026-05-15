@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c27sp8edpxqra"
-path="res://.godot/imported/KarboTemplate1.png-2d4cfaa3ef3b439c819bbebe2ab57651.ctex"
+uid="uid://sq8j5qajge6c"
+path="res://.godot/imported/porsi_kuli.png-a474f7f181e7a9fc7f09483b68aae3cf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/KarboTemplate1.png"
-dest_files=["res://.godot/imported/KarboTemplate1.png-2d4cfaa3ef3b439c819bbebe2ab57651.ctex"]
+source_file="res://assets/images/porsi_kuli.png"
+dest_files=["res://.godot/imported/porsi_kuli.png-a474f7f181e7a9fc7f09483b68aae3cf.ctex"]
 
 [params]
 

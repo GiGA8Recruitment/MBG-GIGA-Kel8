@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="FoodCardResource" load_steps=3 format=3 uid="uid://djrmwcnb7rynh"]
 
-[ext_resource type="Texture2D" uid="uid://ch802psllw4a2" path="res://assets/images/slot_wild.png" id="1_dyg5r"]
+[ext_resource type="Texture2D" uid="uid://duxtx6ghcm1m7" path="res://assets/images/saus_tiram.png" id="1_dyg5r"]
 [ext_resource type="Script" uid="uid://clcv636replkf" path="res://FoodCardResource.gd" id="2_e5rwu"]
 
 [resource]
@@ -9,4 +9,5 @@ card_name = "seafood"
 card_image = ExtResource("1_dyg5r")
 kategori = 4
 power_up = 8
+harga = 10
 front_layout_name = &"food_layout"

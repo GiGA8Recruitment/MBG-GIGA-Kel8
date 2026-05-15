@@ -7,6 +7,7 @@
 script = ExtResource("2_2smig")
 card_name = "Timun Tomat"
 card_image = ExtResource("1_7rlum")
+kategori = 2
 harga = 5
 vitamin = 5
 front_layout_name = &"food_layout"

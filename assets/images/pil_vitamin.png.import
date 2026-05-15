@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b2yqfofqf1bmf"
-path="res://.godot/imported/nasiputihArt.png-0e6f09a274ce78c53007c612fe30277a.ctex"
+uid="uid://c8avklxpfowl5"
+path="res://.godot/imported/pil_vitamin.png-2598f5549da2942333749fdd741d5d21.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/nasiputihArt.png"
-dest_files=["res://.godot/imported/nasiputihArt.png-0e6f09a274ce78c53007c612fe30277a.ctex"]
+source_file="res://assets/images/pil_vitamin.png"
+dest_files=["res://.godot/imported/pil_vitamin.png-2598f5549da2942333749fdd741d5d21.ctex"]
 
 [params]
 
