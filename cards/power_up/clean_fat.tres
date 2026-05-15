@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_voypf")
-card_type = 1
+effect_type = 3
+rarity = 1
 front_layout_name = &"food_layout"
 back_layout_name = &"food_layout"

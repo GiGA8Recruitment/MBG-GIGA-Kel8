@@ -95,10 +95,7 @@ const SHOP_DRAW_SIZE = 6
 func _ready() -> void:
 	food_deck_manager.starting_pile = draw_pile
 	food_deck_manager.shuffle_on_setup = true
-	food_deck_manager.setup()
-
-	open_shop()
-	
+	food_deck_manager.setup()	
 	play_button.disabled = true
 	player_hand.card_added.connect(_on_card_added)
 	shop_hand.card_added.connect(_on_shop_card_added)
@@ -108,7 +105,9 @@ func _ready() -> void:
 	close_shop_button.pressed.connect(_on_close_shop_presesd)
 	refresh_shop_button.pressed.connect(_on_refresh_shop_pressed)
 	buy_button.pressed.connect(_on_buy_pressed)
-	
+
+	open_shop()
+
 	
 	for slot in card_slots:
 		slot.card_dropped_on.connect(_on_card_dropped)
@@ -540,7 +539,6 @@ func add_card_to_selected(card: Card):
 	selected_shop_card = card
 	
 func open_shop():
-	if CURRENT_GAMESTATE == GameState.SHOP:
 		shop_panel.show()
 		clear_shop()
 		draw_card(SHOP_DRAW_SIZE, draw_pile, shop_hand)
