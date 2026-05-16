@@ -26,6 +26,7 @@ extends Node
 @onready var draw_pile 		= %DrawPile
 @onready var discard_pile 	= %DiscardPile
 @onready var trash_slot 	= %TrashSlot
+@onready var ompreng 		= %Ompreng
 
 @onready var detail_panel 	= %CardDetailPanel
 @onready var stat_panel 	= %StatsSummaryPanel
@@ -54,6 +55,10 @@ var selected_shop_card = null
 @onready var meal_result_label = %MealResultLabel
 @onready var game_over_panel = %GameOverPanel
 
+
+@onready var game_over_panel = %GameOverPanel
+@onready var try_again_button = %TryAgainButton
+@onready var exit_button = %ExitButton
 
 # TARGET
 
@@ -151,6 +156,13 @@ func _on_close_shop_presesd():
 func _on_refresh_shop_pressed():
 	refresh_shop()
 
+	shop_panel.shop_closed.connect(next_round)
+	shop_panel.card_bought.connect(_on_card_bought_from_shop)
+	shop_panel.shop_updated.connect(print_money)
+
+	try_again_button.pressed.connect(_on_try_again_pressed)
+	exit_button.pressed.connect(_on_exit_pressed)
+
 func _on_card_added(card: Card, _index: int):
 	card.is_front_face = true
 	card.card_clicked.connect(show_details)
@@ -177,6 +189,7 @@ func _on_card_back_to_hand(card: Card):
 	#play_button.disabled = false
 	
 func _on_card_dropped(card: Card):
+	detail_panel.hide()
 	current_stats = StatCalculator.calculate(card_slots)
 	stat_panel.display(current_stats)
 	update_play_button()
@@ -282,10 +295,10 @@ func round_failed(reasons: Array, reward_money: int, reward_score: int) -> void:
 	CURRENT_LIVES -= 1
 	print_player_stats()
 
-	if CURRENT_LIVES <= 0:
-		game_over()
+	if RoundManager.is_game_over():
+		game_over() # Panel Game Over muncul dan tombol interaksi mati
 	else:
-		next_round()
+		open_shop()
 		
 func next_round():
 	CURRENT_GAMESTATE = GameState.SHOP
@@ -336,7 +349,7 @@ func display_target():
 	
 func return_money(card: Card):
 	var data = card.card_data as FoodCardResource
-	CURRENT_MONEY += int(data.harga / 2)
+	RoundManager.current_money += int(data.harga / 2)
 
 func draw_card(amount, from_pile: CardPile=draw_pile, to_hand: CardHand=player_hand) -> void:
 	if from_pile.is_empty() || from_pile.cards.size() < amount:
@@ -353,10 +366,10 @@ func print_money():
 	shop_money_label.text = "Uang: " + str(CURRENT_MONEY)
 	
 func print_score():
-	skor_label.text = "Skor: " + str(CURRENT_SCORE)
+	skor_label.text = "Skor: " + str(RoundManager.current_score)
 	
 func print_lives():
-	health_label.text = "Health: " + str(CURRENT_LIVES)
+	health_label.text = "Health: " + str(RoundManager.current_lives)
 	
 func print_level():
 	level_label.text = "Level: " + str(CURRENT_DIFFICULTY)

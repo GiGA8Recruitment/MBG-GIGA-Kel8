@@ -30,6 +30,7 @@ static func _apply_powerups(
 	powerups: Array,
 	foods: Array
 ):
+	var daftar_seafood = ["bandeng", "dori asam manis", "lele goreng"]
 
 	powerups.sort_custom(func(a, b): return a.power_up < b.power_up)
 	for powerup in powerups:
@@ -54,8 +55,10 @@ static func _apply_powerups(
 				stats.protein = int(stats.protein * 0.75)
 				stats.vitamin = int(stats.vitamin * 0.75)
 			FoodCardResource.Powerup.SEAFOOD_BOOST:
-				if "seafood" in foods:
-					stats.protein = int(stats.protein * 1.2)
+				for makanan in foods:
+					if makanan in daftar_seafood:
+						stats.protein = int(stats.protein * 1.75)
+						break
 			FoodCardResource.Powerup.KETO_DIET:
 				if stats.karbo >= 20:
 					stats.protein *= 2

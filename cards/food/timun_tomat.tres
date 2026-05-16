@@ -9,5 +9,6 @@ kategori = 2
 vitamin = 5
 card_name = "Timun Tomat"
 card_image = ExtResource("1_7rlum")
+kategori = 2
 harga = 5
 front_layout_name = &"food_layout"

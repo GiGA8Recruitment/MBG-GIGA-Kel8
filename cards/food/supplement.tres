@@ -6,6 +6,7 @@
 [resource]
 script = ExtResource("2_y610j")
 kategori = 4
+rarity = 1
 power_up = 4
 card_name = "Pil Vitamin"
 card_image = ExtResource("1_0tfa1")

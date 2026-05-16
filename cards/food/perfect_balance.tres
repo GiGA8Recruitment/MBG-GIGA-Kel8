@@ -6,6 +6,7 @@
 [resource]
 script = ExtResource("2_jmrih")
 kategori = 4
+rarity = 2
 power_up = 10
 card_name = "perfect"
 card_image = ExtResource("1_3jsma")

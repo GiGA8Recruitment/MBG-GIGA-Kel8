@@ -6,6 +6,7 @@
 [resource]
 script = ExtResource("2_fhg66")
 kategori = 4
+rarity = 2
 power_up = 9
 card_name = "Poris Atlet"
 card_image = ExtResource("1_ug0of")

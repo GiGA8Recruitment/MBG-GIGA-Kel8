@@ -6,6 +6,7 @@
 [resource]
 script = ExtResource("2_ety7s")
 kategori = 4
+rarity = 1
 power_up = 5
 card_name = "Microwave"
 card_image = ExtResource("1_nk2ak")

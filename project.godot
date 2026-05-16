@@ -18,6 +18,15 @@ config/icon="res://icon.svg"
 [autoload]
 
 CG="*res://addons/simple_cards/card_global.gd"
+RoundManager="*res://scenes/round_manager.gd"
+
+[display]
+
+window/size/viewport_width=960
+window/size/viewport_height=540
+window/size/window_width_override=1920
+window/size/window_height_override=1080
+window/stretch/mode="viewport"
 
 [display]
 
