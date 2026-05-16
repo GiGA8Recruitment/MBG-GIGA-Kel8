@@ -5,11 +5,11 @@
 
 [resource]
 script = ExtResource("2_2ashk")
-card_name = "Tumis Buncis"
-card_image = ExtResource("1_70lhc")
 kategori = 2
-harga = 5
 lemak = 5
 gula = 5
 vitamin = 10
+card_name = "Tumis Buncis"
+card_image = ExtResource("1_70lhc")
+harga = 5
 front_layout_name = &"food_layout"

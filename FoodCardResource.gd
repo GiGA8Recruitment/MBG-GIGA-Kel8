@@ -1,11 +1,7 @@
 @tool
-class_name FoodCardResource extends CardResource
-
-@export var card_name:String =""
-@export var card_image: Texture2D
+class_name FoodCardResource extends BaseCardResource
 
 enum Kategori {KARBOHIDRAT, PROTEIN, VITAMIN, PELENGKAP, POWERUP, BUFF}
-enum Rarity {COMMON, RARE, SPECIAL}
 enum Powerup {NONE,
 				#coins final x2
 				DOUBLE_COINS, 
@@ -30,10 +26,7 @@ enum Powerup {NONE,
 				}
 
 @export var kategori: Kategori
-@export var rarity: Rarity
 @export var power_up : Powerup = Powerup.NONE
-
-@export var harga:int
 @export var karbohidrat:int
 @export var protein:int
 @export var lemak:int

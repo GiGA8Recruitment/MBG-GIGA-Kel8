@@ -3,7 +3,7 @@ extends CardLayout
 
 @onready var title: Label = %Label
 @onready var image: TextureRect = %TextureRect
-
+@onready var shadow: ColorRect = %ShadowRect
 func _update_display() -> void:
 	var data = card_resource as FoodCardResource
 	if not data:

@@ -5,11 +5,11 @@
 
 [resource]
 script = ExtResource("2_78m37")
-card_name = "Kangkung"
-card_image = ExtResource("1_wcset")
 kategori = 2
-harga = 15
 lemak = 5
 gula = 5
 vitamin = 20
+card_name = "Kangkung"
+card_image = ExtResource("1_wcset")
+harga = 15
 front_layout_name = &"food_layout"

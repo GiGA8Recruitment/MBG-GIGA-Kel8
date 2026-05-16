@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PowerupCardResource" load_steps=2 format=3 uid="uid://dkkojbjhvhkql"]
+
+[ext_resource type="Script" uid="uid://cssn24upvf137" path="res://PowerupCardResource.gd" id="1_voypf"]
+
+[resource]
+script = ExtResource("1_voypf")
+effect_type = 3
+rarity = 1
+front_layout_name = &"food_layout"
+back_layout_name = &"food_layout"

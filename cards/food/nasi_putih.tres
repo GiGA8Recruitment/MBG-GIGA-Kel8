@@ -5,9 +5,9 @@
 
 [resource]
 script = ExtResource("2_6644r")
+karbohidrat = 15
 card_name = "Nasi Putih"
 card_image = ExtResource("1_y86dw")
 harga = 20
-karbohidrat = 15
 front_layout_name = &"food_layout"
 metadata/_custom_type_script = "uid://clcv636replkf"

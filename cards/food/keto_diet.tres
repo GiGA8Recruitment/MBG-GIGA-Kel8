@@ -5,10 +5,11 @@
 
 [resource]
 script = ExtResource("2_fhg66")
-card_name = "Poris Atlet"
-card_image = ExtResource("1_ug0of")
 kategori = 4
 rarity = 2
 power_up = 9
+card_name = "Poris Atlet"
+card_image = ExtResource("1_ug0of")
 harga = 30
+rarity = 2
 front_layout_name = &"food_layout"

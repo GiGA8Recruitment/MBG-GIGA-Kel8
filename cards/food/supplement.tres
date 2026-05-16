@@ -5,10 +5,11 @@
 
 [resource]
 script = ExtResource("2_y610j")
-card_name = "Pil Vitamin"
-card_image = ExtResource("1_0tfa1")
 kategori = 4
 rarity = 1
 power_up = 4
+card_name = "Pil Vitamin"
+card_image = ExtResource("1_0tfa1")
 harga = 25
+rarity = 1
 front_layout_name = &"food_layout"

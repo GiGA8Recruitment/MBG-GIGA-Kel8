@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="FoodCardResource" load_steps=3 format=3 uid="uid://tqwg4oo87j1h"]
+
+[ext_resource type="Texture2D" uid="uid://ch802psllw4a2" path="res://assets/images/slot_wild.png" id="1_8rrwa"]
+[ext_resource type="Script" uid="uid://clcv636replkf" path="res://FoodCardResource.gd" id="2_ynju8"]
+
+[resource]
+script = ExtResource("2_ynju8")
+kategori = 4
+power_up = 10
+card_name = "perfect"
+card_image = ExtResource("1_8rrwa")
+front_layout_name = &"food_layout"
+back_layout_name = &"food_layout"

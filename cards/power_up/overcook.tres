@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="FoodCardResource" load_steps=3 format=3 uid="uid://dino5e2pt1si8"]
+
+[ext_resource type="Texture2D" uid="uid://cd5j8y20kssjr" path="res://assets/images/overcook.png" id="1_q2asj"]
+[ext_resource type="Script" uid="uid://clcv636replkf" path="res://FoodCardResource.gd" id="2_43f58"]
+
+[resource]
+script = ExtResource("2_43f58")
+kategori = 4
+power_up = 7
+card_name = "Gosong"
+card_image = ExtResource("1_q2asj")
+front_layout_name = &"food_layout"
+back_layout_name = &"food_layout"
