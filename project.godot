@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="SimpleCardAddons"
-run/main_scene="uid://bwyj0rvwbrlo1"
+run/main_scene="uid://hlqnjtluwepu"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -21,7 +21,11 @@ CG="*res://addons/simple_cards/card_global.gd"
 
 [display]
 
-window/size/window_width_override=800
+window/size/viewport_width=1024
+window/size/viewport_height=576
+window/size/window_width_override=1024
+window/size/window_height_override=576
+window/stretch/mode="viewport"
 
 [dotnet]
 

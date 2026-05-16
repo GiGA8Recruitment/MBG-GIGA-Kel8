@@ -13,7 +13,7 @@
 	},
 	"res://custom_food_layout.tscn": {
 		"enabled": true,
-		"last_modified": 1778838809,
+		"last_modified": 1778838809.0,
 		"layout_id": "custom_food_layout",
 		"tags": [
 			"food"
@@ -37,7 +37,7 @@
 	},
 	"res://food_layout.tscn": {
 		"enabled": true,
-		"last_modified": 1778838810,
+		"last_modified": 1778856609,
 		"layout_id": "food_layout",
 		"tags": [
 			"food"
